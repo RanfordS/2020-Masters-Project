@@ -1,0 +1,87 @@
+%\documentclass[a4paper,twoside,11pt]{article}
+\documentclass[11pt, a4paper, oneside]{book} 
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+
+%\usepackage[style=authoryear]{biblatex}
+\usepackage[citestyle=authoryear,bibstyle=authoryear,natbib]{biblatex}
+\addbibresource{sources.bib}
+
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.14}
+\usepackage{tikz}
+\usetikzlibrary{arrows,patterns,calc,matrix}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{placeins}
+\usepackage{flafter}
+\usepackage[doublespacing]{setspace}
+
+\usepackage{lipsum}
+\usepackage{titlesec}
+\usepackage{nomencl}
+\makenomenclature
+\usepackage[toc,page]{appendix}
+\usepackage{verbatim}
+%\usepackage{algorithm2e}
+%\usepackage[noend]{algpseudocode}
+\usepackage{listings,xcolor}
+\lstdefinestyle{lua}{
+    language=[5.1]Lua,
+    basicstyle=\ttfamily,
+    tabsize=3,
+    showspaces=false,
+    showstringspaces=false,
+    numbers=left,
+    numberstyle=\color{lightgray},
+    numbersep=5pt,
+    %backgroundcolor=\color{black!5},
+    keywordstyle=\color{teal},
+    stringstyle=\color{red},
+    commentstyle=\color{black!50}
+}
+\usepackage{import}
+
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+
+%\usepackage{cleveref}
+\usepackage{hyperref}
+
+%\title{Agent Based Modelling of Crowd Dynamics}
+%\author{Alexander James Johnson}
+
+% headers and footers
+\pagestyle{fancy}
+\setlength{\headheight}{14pt}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
+\lhead{\rightmark}
+\rhead{\leftmark}
+
+\newcommand{\numberthis}{\addtocounter{equation}{1}\tag{\theequation}}
+%\newcommand{\nr}[1]{\refstepcounter{equation}\label{#1}\tag{\theequation}}
+
+\newcommand{\Rmag}[1]{\left|#1\right|}
+\newcommand{\Rvec}[1]{\mathbf{#1}}
+\newcommand{\Rnvec}[1]{\Rvec{\hat{#1}}}
+\newcommand{\Rmvec}[1]{\Rmag{\Rvec{#1}}}
+\newcommand{\Rtvec}[1]{\overset{\tau}{\Rvec{#1}}}
+\newcommand{\Rntvec}[1]{\overset{\tau}{\Rnvec{#1}}}
+\newcommand{\Rdt}{\ensuremath{\delta t}}
+\newcommand{\Rovercast}[2]{\overset{\mathclap{\scriptscriptstyle#2}}{#1}}
+\newcommand{\Rclamp}[1]{\ensuremath{\text{clamp}\left(#1\right)}}
+\newcommand{\Rthresh}[2]{\ensuremath{\left\rmoustache#1\right\lmoustache_{#2}}}
+\newcommand{\Rraisemath}[2]{\raisebox{#1}{$\displaystyle#2$}}
+\newcommand{\Reg}{{\itshape e.g.~}}
+\newcommand{\Rarrowscale}{0.5pt}
+
+\newcommand{\HIDE}[1]{\PackageWarning{HIDE}{Hidden text in \thesubsection}}
+\newcommand{\TODO}[1]{\texttt{TODO}: #1\PackageWarning{TODO}{#1}}

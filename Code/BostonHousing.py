@@ -16,6 +16,8 @@ inputs = (5,8,12,1)
 ## Plot settings
 plt.rc ('text', usetex=True)
 plt.rc ('font', family='serif')
+# set to false to diable figure save
+plot_filename = "BostonHousingResult.pdf"
 
 ##### End of settings #####
 
@@ -33,7 +35,7 @@ for i in range (num_inputs - 1):
 miny = min (train_y)
 maxy = max (train_y)
 mean = (maxy + miny)/2
-std =  (maxy - miny)/2
+std  = (maxy - miny)/2
 train_y = (train_y - mean)/std
 
 ## Initialise weights with random values
@@ -74,7 +76,11 @@ print ("Final mean square err:   {0}".format (mse_end))
 W = np.array (W)
 K = range (k+1)
 for i in range (num_inputs):
-    plt.plot (K, W[:,i].tolist())
+    plt.plot (K, W[:,i].tolist(), label="$w_{{{0}}}$".format (i))
+
+plt.legend ()
+if plot_filename:
+    plt.savefig (plot_filename)
 plt.show ()
 
 ##### EOF #####

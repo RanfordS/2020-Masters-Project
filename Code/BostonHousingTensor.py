@@ -9,7 +9,7 @@ layers = tf.keras.layers
 
 ## Parameters
 num_epochs = 5000
-num_hidden = 1
+num_hidden = 5
 
 ## Plot settings
 plt.rc ('text', usetex=True)
@@ -43,6 +43,7 @@ y_test  = (y_test  - y_mean)/y_std
 ## Create model
 model = tf.keras.models.Sequential (
 [   layers.Dense (num_hidden, input_dim=num_inputs, activation='tanh')
+,   layers.Dense (num_hidden, activation='tanh')
 ,   layers.Dense (1, activation='linear')
 ])
 model.compile (optimizer='adam',
@@ -53,7 +54,13 @@ model.compile (optimizer='adam',
 result = model.fit (x_train, y_train,
                     epochs=num_epochs,
                     batch_size=num_samples,
+                    use_multiprocessing=True,
+                    workers=12,
+                    verbose=0,
                     validation_data=(x_test, y_test))
+
+## Evaluate
+model.evaluate (x_test, y_test, verbose=2)
 
 ## Plot
 plt.plot (range (num_epochs), result.history['loss'], label='loss')
@@ -61,5 +68,3 @@ plt.plot (range (num_epochs), result.history['val_loss'], label='validation')
 plt.legend ()
 plt.show ()
 
-## Evaluate
-#model.evaluate (x_test, y_test, verbose=2)

@@ -1,0 +1,33 @@
+wiki summary (https://en.wikipedia.org/wiki/Artificial_neural_network)
+
+computing systems inspired by biological neural networks
+image recognition
+	large set of manually labeled data
+	no prior knowledge of what constitutes the label
+	auto' generates identifying characteristics from data
+collection of connected artificial neurons (nodes)
+	receive signal from previous layer (edges)
+	take weighted sum with bias
+	non-linear function
+	output new signal to next layer
+applications
+	computer vision
+	speech recognition
+	machine translation
+	social network filtering
+	playing games
+	medical diagnosis
+
+history
+
+1943: Warren McCulloch and Walter Pitts, created a computational model for neural networks [3] (Difficult paper)
+1949: D. O. Hebb, Learning hypothesis based on neural plasticity (Hebbian learning) [5]
+1954: Farley and Wesley A. Clark, first to simulate a Hebbian Network [6]
+1958: Rosenblatt, perceptron [7,8]
+1960: Henry J. Kelley, control theory backpropagation [15]
+1961: Arthur Earl Bryson Jr, backpropagation [16]
+1965: Ivakhnenko and Lapa, first functional with many layers [9,10,11]
+1970: Seppo Linnainmaa, automatic differentiation [17,18]
+1973: Stuart Dreyfus, adapt parameters in proportion to error gradients [19]
+1975: Paul John Werbos, pratical multi-layer network training [?]
+1982: Paul John Werbos, applied Linnainmaa's AD method to neural networks [12,20]

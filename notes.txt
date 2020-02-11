@@ -27,7 +27,21 @@ history
 1960: Henry J. Kelley, control theory backpropagation [15]
 1961: Arthur Earl Bryson Jr, backpropagation [16]
 1965: Ivakhnenko and Lapa, first functional with many layers [9,10,11]
+1969: Marvin Lee Minsk and Seymour Aubrey Papert, limit of perceptron [21]
 1970: Seppo Linnainmaa, automatic differentiation [17,18]
 1973: Stuart Dreyfus, adapt parameters in proportion to error gradients [19]
 1975: Paul John Werbos, pratical multi-layer network training [?]
 1982: Paul John Werbos, applied Linnainmaa's AD method to neural networks [12,20]
+1992: John (Juyang) Weng, Narendra Ahuja and Thomas S. Huang, max-pooling (CNN) [22,23,24]
+1992: Jürgen Schmidhuber, multi-level hierarchy of networks pre-trained unsupervised, backpropagation [25]
+2006: Geoffrey Hinton et al, learning proposition using successive layers with restricted Boltzmann machine [27]
+2010: Ciresan and colleagues, GPU backpropagation feasibility [29,30]
+2012: Andrew Yan-Tak Ng and Jeffrey Adgate Dean, high-level concepts without labels [28]
+
+
+
+LSTM (https://en.wikipedia.org/wiki/Long_short-term_memory)
+
+
+
+

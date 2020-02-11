@@ -1,0 +1,81 @@
+\begin{tikzpicture}%[x=1pt,y=1pt]
+    \newlength{\rs}
+    \setlength{\rs}{1.5pt}
+    % Nucleus
+    \fill (0\rs,0\rs) circle (2\rs);
+    % Soma
+    \draw[thick] (0\rs,0\rs) circle (8\rs);
+    % Dendrite
+    \draw[thick] ( 45:8\rs) -- ( 45:16\rs);
+        \draw[thick] ( 45:16\rs) -- ++(  0:4\rs);
+        \draw[thick] ( 45:16\rs) -- ++( 90:4\rs);
+    \draw[thick] ( 90:8\rs) -- ( 90:24\rs);
+        \draw[thick] ( 90:16\rs) -- ++( 45:4\rs);
+        \draw[thick] ( 90:16\rs) -- ++(135:4\rs);
+        \draw[thick] ( 90:24\rs) -- ++( 45:8\rs);
+        \draw[thick] ( 90:24\rs) -- ++(135:8\rs);
+    \draw[thick] (135:8\rs) -- (135:24\rs);
+        \draw[thick] (135:16\rs) -- ++( 90:4\rs);
+        \draw[thick] (135:16\rs) -- ++(180:4\rs);
+        \draw[thick] (135:24\rs) -- ++( 90:8\rs);
+        \draw[thick] (135:24\rs) -- ++(180:8\rs);
+    \draw[thick] (180:8\rs) -- (180:24\rs);
+        \draw[thick] (180:16\rs) -- ++(135:4\rs);
+        \draw[thick] (180:16\rs) -- ++(225:4\rs);
+        \draw[thick] (180:24\rs) -- ++(135:8\rs);
+        \draw[thick] (180:24\rs) -- ++(225:8\rs);
+    \draw[thick] (225:8\rs) -- (225:24\rs);
+        \draw[thick] (225:16\rs) -- ++(180:4\rs);
+        \draw[thick] (225:16\rs) -- ++(270:4\rs);
+        \draw[thick] (225:24\rs) -- ++(180:8\rs);
+        \draw[thick] (225:24\rs) -- ++(270:8\rs);
+    \draw[thick] (270:8\rs) -- (270:24\rs);
+        \draw[thick] (270:16\rs) -- ++(225:4\rs);
+        \draw[thick] (270:16\rs) -- ++(315:4\rs);
+        \draw[thick] (270:24\rs) -- ++(225:8\rs);
+        \draw[thick] (270:24\rs) -- ++(315:8\rs);
+    \draw[thick] (315:8\rs) -- (315:16\rs);
+        \draw[thick] (315:16\rs) -- ++(270:4\rs);
+        \draw[thick] (315:16\rs) -- ++(360:4\rs);
+    % Axon
+    \draw[thick] (8\rs,0\rs) -- (12\rs,0\rs);
+    \draw[thick,rounded corners=3\rs] (12\rs,-3\rs) rectangle (24\rs,3\rs);
+        \fill (18\rs,0\rs) circle (1.5\rs);
+    \draw[thick] (24\rs,0\rs) -- (26\rs,0\rs);
+    \draw[thick,rounded corners=3\rs] (26\rs,-3\rs) rectangle (38\rs,3\rs);
+        \fill (32\rs,0\rs) circle (1.5\rs);
+    \draw[thick] (38\rs,0\rs) -- (40\rs,0\rs);
+    \draw[thick,rounded corners=3\rs] (40\rs,-3\rs) rectangle (52\rs,3\rs);
+        \fill (46\rs,0\rs) circle (1.5\rs);
+    \draw[thick] (52\rs,0\rs) -- (54\rs,0\rs);
+    \draw[thick,rounded corners=3\rs] (54\rs,-3\rs) rectangle (66\rs,3\rs);
+        \fill (60\rs,0\rs) circle (1.5\rs);
+    \draw[thick] (66\rs,0\rs) -- (68\rs,0\rs);
+    \draw[thick,rounded corners=3\rs] (68\rs,-3\rs) rectangle (80\rs,3\rs);
+        \fill (74\rs,0\rs) circle (1.5\rs);
+    % Axon terminal
+    \draw[thick] (80\rs,0\rs) -- (82\rs,0\rs);
+        \draw[thick] (82\rs,0\rs) -- (86\rs,4\rs);
+            \draw[thick] (86\rs,4\rs) -- (86\rs,7\rs);
+            \draw[thick] (86\rs,4\rs) -- (89\rs,4\rs);
+        \draw[thick] (82\rs,0\rs) -- (86\rs,-4\rs);
+            \draw[thick] (86\rs,-4\rs) -- (86\rs,-7\rs);
+            \draw[thick] (86\rs,-4\rs) -- (89\rs,-4\rs);
+    % Labels
+    % Soma
+    \draw[latex'-] (65:9\rs) -- (65:36\rs);
+    \node[anchor=south west,inner sep=1\rs] at (65:36\rs) {Soma};
+    % Nucleus
+    \draw[latex'-] (-65:3\rs) -- (-65:36\rs);
+    \node[anchor=north west,inner sep=1\rs] at (-65:36\rs) {Nucleus};
+    % Dendrite
+    %\draw[latex'-] (225:25\rs) -- (225:36\rs);
+    \draw[latex'-] (-17.7\rs,-25.7\rs) -- (-30\rs,-38\rs);
+    \node[anchor=north east,inner sep=1\rs] at (-30\rs,-38\rs) {Dendrite};
+    % Axon
+    \draw[decorate,decoration={brace,raise=5\rs,amplitude=4\rs}] (12\rs,0\rs) -- (80\rs,0\rs);
+    \node[anchor=south,inner sep=1\rs] at (46\rs,9\rs) {Axon};
+    % Axon Terminal
+    \draw[latex'-] (87\rs,8\rs) -- (95\rs,16\rs);
+    \node[anchor=south west,inner sep=1\rs] at (95\rs,16\rs) {Axon Terminal};
+\end{tikzpicture}

@@ -17,6 +17,7 @@ applications
 	social network filtering
 	playing games
 	medical diagnosis
+confirmations are empirical, not theoretical
 
 history
 
@@ -40,8 +41,75 @@ history
 
 
 
+Recurrent Neural Network
+
+can use their internal memory to process variable length inputs
+
 LSTM (https://en.wikipedia.org/wiki/Long_short-term_memory)
 
+RNN architecture
+feedback connections
+can process entire sequences of data
+applications
+	connected handwriting recognition
+	speech recognition
+	anomaly detection
+	time series predictions
+components
+	cell
+		remembers values over arbitrary time interval
+	input gate
+	output gate
+	forget gate
+partially solves the vanishing gradient problem
+
+Recursive
+
+apply the same set of weights recursively
+structured input, structured prediction, variable-size input structure
+input traversed in topological order
+applications
+	natural language processing
+
+history
+
+1997: Sepp Hochreiter and Jürgen Schmidhuber, constant error carousel units [1,5]
+1999: Felix Gers, Jürgen Schmidhuber and Fred Cummins, forget gate introduced [5,6]
+2000: Felix Gers, Jürgen Schmidhuber and Fred Cummins, peephole connections [5,7]
+2014: Kyunghyun et al, simplified variant [8]
 
 
 
+Autoencoder
+
+network learns to copy the input to the output
+encoding section is narrower than the input/output
+
+	x       x'
+	    u
+	y       y'
+	    v
+	z       z'
+
+sparse autoencoder
+	improve performance on classification by encouraging sparsity
+	hidden layer may have more nodes than input, but only a small number may be active at a gicven time
+
+
+
+Deep Belief Network
+
+probabilistically reconstruct inputs
+acts as feature detector
+
+
+
+Vanishing Gradient Problem
+
+affects gradient-based learning methods and backpropagation
+caused by taking the product of many small values
+prevents value from changing, partially due to rounding errors
+solutions
+	multi-level heirarchy
+		pre-trained one level at a time
+		fine-tuned using back propagation

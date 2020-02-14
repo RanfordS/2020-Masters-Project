@@ -26,16 +26,19 @@ x_test  = x_test /255.0
 ## Custom activation
 def act_threshhold (x):
     condition = tf.less (x, tf.constant (0.0))
-    #return tf.where (condition, tf.constant (0.0), x + tf.constant (1.0))
-    return tf.where (condition, tf.constant (0.0), x*x)
+    #return tf.where (condition, tf.constant (0.0), x)# + tf.constant (1.0))
+    #return tf.where (condition, tf.constant (0.0), x*x)
     #return x*x
     #return tf.where (condition, tf.constant (0.0), tf.math.sqrt (x))
     #return tf.where (condition, tf.constant (0.1)*x, x)
     #return tf.where (condition, tf.constant (0.0), tf.constant (1.0))
-    #return tf.where (condition, tf.constant (0.0), tf.math.exp (-x))
+    #return tf.where (condition, tf.constant (0.0), tf.constant (1.0) - tf.math.exp (-x))
     #return tf.where (condition, tf.constant (0.0), tf.math.exp (x))
+    return tf.where (condition, tf.constant (0.0), x - x*tf.math.exp (x))
     #return tf.math.exp (x)
     #return tf.where (condition, tf.constant (0.0), tf.math.acos (x))
+    #return tf.where (condition, x*x, x)
+    #return tf.where (condition, tf.constant (0.0), x*x*x)
 
 ## Create model
 model = tf.keras.models.Sequential (

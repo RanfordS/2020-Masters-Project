@@ -1,7 +1,7 @@
 make_pdf = "pdflatex --shell-escape --interaction=nonstopmode Main.tex"
 
 print ("\n\27[1;4;33mDoing Repeat Builds\27[0m\n")
-for i = 1,0 do
+for i = 1,2 do
     print ("iteration:", i)
     os.execute (make_pdf.." > /dev/null")
     os.execute ("biber Main > /dev/null")

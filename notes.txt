@@ -93,13 +93,13 @@ encoding section is narrower than the input/output
 
 sparse autoencoder
 	improve performance on classification by encouraging sparsity
-	hidden layer may have more nodes than input, but only a small number may be active at a gicven time
+	hidden layer may have more nodes than input, but only a small number may be active at a given time (dropout)
 
 
 
 Deep Belief Network
 
-probabilistically reconstruct inputs
+probabilistically reconstruction inputs
 acts as feature detector
 
 
@@ -113,3 +113,39 @@ solutions
 	multi-level heirarchy
 		pre-trained one level at a time
 		fine-tuned using back propagation
+
+
+
+Reinforcement Learning [An Introduction to Deep Reinforcement Learning]
+
+concerned with software agents actions for cumulative rewards
+balance between exploration and exploitation
+no assumption of knowledge
+agent's performance compared with target, difference in performance gives rise to "regret"
+must reason about long term performance
+
+
+
+Unsupervised Learning
+
+finds previously unknown patterns within a data set
+allows the modelling of probability densities of given inputs
+	cluster analysis to group/segment attributes
+	anomaly detection
+	autoencoders
+	deep belief network
+		probabilistically reconstruction inputs
+		acts as feature detector
+
+
+
+Supervised Learning
+
+learning of a function that maps an input to an output
+function inferd from examples
+ideally, the algorithm will correctly label unseen instances
+
+issues
+	inductive bias
+	overfitting
+

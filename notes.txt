@@ -1,3 +1,14 @@
+Biological Neurons
+
+electrically excitable cell
+communicates with other via synapses
+three types of neuron
+	sensory (touch, sound, smell, light, temperature, taste)
+	motor (muscle control)
+	interneuron (connects sensory and motor to the central nervous system)
+
+
+
 wiki summary (https://en.wikipedia.org/wiki/Artificial_neural_network)
 
 computing systems inspired by biological neural networks

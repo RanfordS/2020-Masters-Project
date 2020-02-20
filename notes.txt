@@ -6,6 +6,12 @@ three types of neuron
 	sensory (touch, sound, smell, light, temperature, taste)
 	motor (muscle control)
 	interneuron (connects sensory and motor to the central nervous system)
+most synapses signal from ones axon to anothers dendrites
+synaptic signals may be excitatory or inhibitory
+all-or-none response
+	greater stimulation can increase firing frequency
+	threshold logic
+present in almost all animals
 
 
 

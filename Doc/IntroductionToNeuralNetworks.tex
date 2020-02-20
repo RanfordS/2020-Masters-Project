@@ -4,6 +4,24 @@
 
 \section{Biological Neurons}
 
+Biological neurons are electrically excitable cells that are found in almost all
+animals.
+These neurons can transmit and receive electrical signals to one another via
+synaptic connections, which maybe either excitatory or inhibitory.
+Any given neuron will be either active or inactive depending on whether or not
+its input exceeds a threshold.
+
+\begin{center}
+    \captionof{figure}{Diagram of a biological neuron.}
+    \vspace{1ex}
+    \input{DiagramNeuron.tex}
+\end{center}
+
+Signals are received by the neuron via connections to dendrites and soma.
+If the threshold is met, electrical signals are sent along the axon to the
+terminal, where it is connect to more neurons or to a controllable cell such as
+a neuromuscular junction.
+
 \TODO{Section: Biological Neurons}
 
 \section{Artificial Intelligence}
@@ -11,6 +29,28 @@
 \TODO{Section: Artificial Intelligence}
 
 \subsection{Perceptrons}
+
+The idea of the perceptron was originally conceived by
+\cite{Rosenblatt:1958:Perceptron}, to represent a simplified model of
+intelligent systems free from particularities of biological organisms, whilst
+maintaining some of their fundamental properties.
+
+The perceptron was built as a dedicated machine that consisted of a number of
+photovoltaic, analogous to a retina, that feed into an ``association area''.
+This association area contains a number of cells that each calculate a weighted
+sum of the receptor values and output a signal if it exceeds a threshold.
+These value weights were implemented using variable resistance wires that the
+perceptron could adjust automatically.
+The outputs from the association area are then connected to response cells,
+which operate in a similar fashion to the association cells.
+The activation of these response cells are the outputs of the perceptron, and
+indicated the classification of the input.
+
+This machine was initially trained to reliably identify three different shapes:
+a square, a circle, and a triangle; and did so with a better than chance
+probability.
+When attempting to use the perceptron for more complicated tasks, such as
+character recognition, it failed to produce better than chance results.
 
 \TODO{Subsection: Perceptrons}
 

@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+    [   neuron/.style=
+        {   draw
+        ,   regular polygon
+        ,   regular polygon sides=3
+        ,   shape border rotate=90
+        ,   inner sep=2pt
+        ,   node font=\small\ttfamily
+        }
+    ,   baseline=0pt
+    ]
+    \node[neuron] (S) at (0cm, 7mm) {S};
+    \node[neuron] (R) at (0cm,-7mm) {R};
+    \node[neuron] (M) at (2cm, 0cm) {M};
+    \draw[arrows={-Rrrow}] (S) to[out=0,in=150] (M);
+    \draw[-Circle] (R) to[out=0,in=210] (M);
+    \draw[-latex'] (M.east) .. controls (3cm,1cm) and (2cm,1cm) .. (M);
+    \draw[-latex'] (M.east) to (3cm,0cm);
+\end{tikzpicture}

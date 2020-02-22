@@ -37,6 +37,35 @@ Karel \v{C}apek's ``R.U.R.''.
 Some of the fictional writings of the $20^\text{th}$ century further continued
 to explore the concept in novels such as Isaac Asimov's ``I, Robot''.
 
+Academic research into artificial intelligence began around the 1940's,
+primarily due to findings in neurological research at the time.
+The first explorations of artificial neural networks was done by
+\cite{McCulloch:1943:Logical}, who investigated how simple logic functions
+might be performed by idealised networks.
+The neurons within these networks operated using some basic logic rules, applied
+to a discrete time system which, can be summarised using the expression
+\begin{align*}
+    N(t) &= (E_1(t-1) \vee E_2(t-1) \vee \dots)
+        \wedge \neg(I_1(t-1) \vee I_2(t-1) \vee \dots),
+\end{align*}
+where $N(t)$ is the state of a neuron at time $t$, and $E_i(t-1)$ and $I_i(t-1)$
+are the states of the excitatory and inhibitory connections from the previous
+time step respectively.
+The result is such that the neuron will only be active if at least one
+excitatory connection is active and all inhibitory connections are inactive.
+The versatility of this definition is demonstrated in the following examples.
+\begin{center}
+    \captionof{figure}{Common logic components using McCullochs neurons.}
+    \begin{tabular}{ccc}
+        SR Flip-flop & & AND Gate\\
+        \input{DiagramMcculSRFlipFlop.tex} & & \input{DiagramMcculAND.tex}\\
+        $\displaystyle N_M(t+1) = (N_S(t) \vee N_M(t)) \wedge\neg N_R(t)$ &
+        &
+        $\displaystyle N_R(t+2) = N_A(t) \vee N_B(t)$\\
+    \end{tabular}
+\end{center}
+
+
 \TODO{Section: Artificial Intelligence}
 
 \subsection{Perceptrons}

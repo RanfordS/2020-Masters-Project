@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.7.28)  21 FEB 2020 19:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.7.28)  22 FEB 2020 17:57
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1242,7 +1242,14 @@ File: pgflibraryshapes.multipart.code.tex 2010/01/07 v3.0.1a (rcs-revision 1.2)
 \pgfnodepartsixbox=\box60
 \pgfnodepartfivebox=\box61
 )))
-(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.
+code.tex
+File: pgflibraryarrows.meta.code.tex 2015/05/13 v3.0.1a (rcs-revision 1.13)
+\pgfarrowinset=\dimen193
+\pgfarrowlength=\dimen194
+\pgfarrowwidth=\dimen195
+\pgfarrowlinewidth=\dimen196
+) (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
@@ -1259,14 +1266,14 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@cnth=\count320
 \Gm@cntv=\count321
 \c@Gm@tempcnt=\count322
-\Gm@bindingoffset=\dimen193
-\Gm@wd@mp=\dimen194
-\Gm@odd@mp=\dimen195
-\Gm@even@mp=\dimen196
-\Gm@layoutwidth=\dimen197
-\Gm@layoutheight=\dimen198
-\Gm@layouthoffset=\dimen199
-\Gm@layoutvoffset=\dimen256
+\Gm@bindingoffset=\dimen197
+\Gm@wd@mp=\dimen198
+\Gm@odd@mp=\dimen199
+\Gm@even@mp=\dimen256
+\Gm@layoutwidth=\dimen257
+\Gm@layoutheight=\dimen258
+\Gm@layouthoffset=\dimen259
+\Gm@layoutvoffset=\dimen260
 \Gm@dimlist=\toks47
 )
 (/usr/share/texlive/texmf-dist/tex/latex/placeins/placeins.sty
@@ -1289,17 +1296,17 @@ Package: titlesec 2016/03/15 v2.10.1 Sectioning titles
 \ttl@box=\box62
 \beforetitleunit=\skip69
 \aftertitleunit=\skip70
-\ttl@plus=\dimen257
-\ttl@minus=\dimen258
+\ttl@plus=\dimen261
+\ttl@minus=\dimen262
 \ttl@toksa=\toks48
-\titlewidth=\dimen259
-\titlewidthlast=\dimen260
-\titlewidthfirst=\dimen261
+\titlewidth=\dimen263
+\titlewidthlast=\dimen264
+\titlewidthfirst=\dimen265
 )
 (/usr/share/texlive/texmf-dist/tex/latex/nomencl/nomencl.sty
 Package: nomencl 2005/09/22 v4.2 Nomenclature package (LN)
-\nomlabelwidth=\dimen262
-\nom@tempdim=\dimen263
+\nomlabelwidth=\dimen266
+\nom@tempdim=\dimen267
 \nomitemsep=\skip71
 )
 \@nomenclaturefile=\write5
@@ -1368,25 +1375,25 @@ Package: lineno 2005/11/02 line numbers on paragraphs v4.41
 \linenopenalty=\count332
 \output=\toks51
 \linenoprevgraf=\count333
-\linenumbersep=\dimen264
-\linenumberwidth=\dimen265
+\linenumbersep=\dimen268
+\linenumberwidth=\dimen269
 \c@linenumber=\count334
 \c@pagewiselinenumber=\count335
 \c@LN@truepage=\count336
 \c@internallinenumber=\count337
 \c@internallinenumbers=\count338
-\quotelinenumbersep=\dimen266
-\bframerule=\dimen267
-\bframesep=\dimen268
+\quotelinenumbersep=\dimen270
+\bframerule=\dimen271
+\bframesep=\dimen272
 \bframebox=\box64
 LaTeX Info: Redefining \\ on input line 3056.
 )
 \minted@appexistsfile=\read5
-\FV@BreakIndent=\dimen269
-\FV@BreakSymbolSepLeft=\dimen270
-\FV@BreakSymbolSepRight=\dimen271
-\FV@BreakSymbolIndentLeft=\dimen272
-\FV@BreakSymbolIndentRight=\dimen273
+\FV@BreakIndent=\dimen273
+\FV@BreakSymbolSepLeft=\dimen274
+\FV@BreakSymbolSepRight=\dimen275
+\FV@BreakSymbolIndentLeft=\dimen276
+\FV@BreakSymbolIndentRight=\dimen277
 \c@FancyVerbLineBreakLast=\count339
 \FV@LineBox=\box65
 \FV@LineIndentBox=\box66
@@ -1406,14 +1413,14 @@ etworksWithPythonAndTensorflow.out.pyg")...executed.
 \lst@gtempboxa=\box68
 \lst@token=\toks53
 \lst@length=\count343
-\lst@currlwidth=\dimen274
+\lst@currlwidth=\dimen278
 \lst@column=\count344
 \lst@pos=\count345
-\lst@lostspace=\dimen275
-\lst@width=\dimen276
+\lst@lostspace=\dimen279
+\lst@width=\dimen280
 \lst@newlines=\count346
 \lst@lineno=\count347
-\lst@maxwidth=\dimen277
+\lst@maxwidth=\dimen281
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
@@ -1431,23 +1438,23 @@ Package: import 2009/03/23  v 5.1
 )
 (/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2005/04/14 v1.61803 publication quality tables
-\heavyrulewidth=\dimen278
-\lightrulewidth=\dimen279
-\cmidrulewidth=\dimen280
-\belowrulesep=\dimen281
-\belowbottomsep=\dimen282
-\aboverulesep=\dimen283
-\abovetopsep=\dimen284
-\cmidrulesep=\dimen285
-\cmidrulekern=\dimen286
-\defaultaddspace=\dimen287
+\heavyrulewidth=\dimen282
+\lightrulewidth=\dimen283
+\cmidrulewidth=\dimen284
+\belowrulesep=\dimen285
+\belowbottomsep=\dimen286
+\aboverulesep=\dimen287
+\abovetopsep=\dimen288
+\cmidrulesep=\dimen289
+\cmidrulekern=\dimen290
+\defaultaddspace=\dimen291
 \@cmidla=\count350
 \@cmidlb=\count351
-\@aboverulesep=\dimen288
-\@belowrulesep=\dimen289
+\@aboverulesep=\dimen292
+\@belowrulesep=\dimen293
 \@thisruleclass=\count352
 \@lastruleclass=\count353
-\@thisrulewidth=\dimen290
+\@thisrulewidth=\dimen294
 )
 (/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 \fancy@headwidth=\skip72
@@ -1498,7 +1505,7 @@ Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
 Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 )
-\@linkdim=\dimen291
+\@linkdim=\dimen295
 \Hy@linkcounter=\count354
 \Hy@pagecounter=\count355
 
@@ -1521,10 +1528,10 @@ Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
 \c@Hy@tempcnt=\count357
 LaTeX Info: Redefining \url on input line 5041.
-\XeTeXLinkMargin=\dimen292
+\XeTeXLinkMargin=\dimen296
 \Fld@menulength=\count358
-\Field@Width=\dimen293
-\Fld@charsize=\dimen294
+\Field@Width=\dimen297
+\Fld@charsize=\dimen298
 Package hyperref Info: Hyper figures OFF on input line 6295.
 Package hyperref Info: Link nesting OFF on input line 6300.
 Package hyperref Info: Hyper index ON on input line 6303.
@@ -1605,13 +1612,13 @@ Package caption Info: End \AtBeginDocument code.
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count366
-\scratchdimen=\dimen295
+\scratchdimen=\dimen299
 \scratchbox=\box70
 \nofMPsegments=\count367
 \nofMParguments=\count368
 \everyMPshowfont=\toks54
 \MPscratchCnt=\count369
-\MPscratchDim=\dimen296
+\MPscratchDim=\dimen300
 \MPnumerator=\count370
 \makeMPintoPDFobject=\count371
 \everyMPtoPDFconversion=\toks55
@@ -1760,18 +1767,25 @@ Package TODO Warning: "Section: Biological Neurons" on input line 25.
 
 ]
 
-Package TODO Warning: "Section: Artificial Intelligence" on input line 40.
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 58.
+See the caption package documentation for explanation.
+
+(./DiagramMcculSRFlipFlop.tex) (./DiagramMcculAND.tex)
+
+Package TODO Warning: "Section: Artificial Intelligence" on input line 69.
+
+[6]
+
+Package TODO Warning: "Subsection: Perceptrons" on input line 95.
 
 
-Package TODO Warning: "Subsection: Perceptrons" on input line 66.
+Package TODO Warning: "Subsection: Backpropagation" on input line 99.
 
 
-Package TODO Warning: "Subsection: Backpropagation" on input line 70.
+Package TODO Warning: "Section: Types of Neurons" on input line 103.
 
-
-Package TODO Warning: "Section: Types of Neurons" on input line 74.
-
-[6]) (./IntroductionToPython.tex [7]
+) (./IntroductionToPython.tex [7]
 Chapter 2.
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 10.
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
@@ -1904,27 +1918,29 @@ Package logreq Info: Writing requests to 'NeuralNetworksWithPythonAndTensorflow
 
  ) 
 Here is how much of TeX's memory you used:
- 39958 strings out of 494953
- 896748 string characters out of 6180977
- 1533584 words of memory out of 5000000
- 42484 multiletter control sequences out of 15000+600000
- 12140 words of font info for 45 fonts, out of 8000000 for 9000
+ 40425 strings out of 494953
+ 908197 string characters out of 6180977
+ 1544869 words of memory out of 5000000
+ 42939 multiletter control sequences out of 15000+600000
+ 12308 words of font info for 46 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 64i,11n,84p,841b,983s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 64i,13n,84p,841b,983s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmtt10.pfb>
-Output written on NeuralNetworksWithPythonAndTensorflow.pdf (16 pages, 236504 b
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmtt10.pfb>
+Output written on NeuralNetworksWithPythonAndTensorflow.pdf (16 pages, 259829 b
 ytes).
 PDF statistics:
- 287 PDF objects out of 1000 (max. 8388607)
- 253 compressed objects within 3 object streams
- 52 named destinations out of 1000 (max. 500000)
+ 299 PDF objects out of 1000 (max. 8388607)
+ 263 compressed objects within 3 object streams
+ 54 named destinations out of 1000 (max. 500000)
  239 words of extra memory for PDF output out of 10000 (max. 10000000)
 

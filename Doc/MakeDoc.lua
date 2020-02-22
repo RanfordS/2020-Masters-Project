@@ -18,6 +18,11 @@ txt = res:read ("*a")
 res:close ()
 print ("\27[3m"..txt.."\27[0m")
 
+print ("\n\27[1;4;33mLaTeX Warnings:\27[0m\n")
+for warn in txt:gmatch ("! (.-)\n\n") do
+    print ("\27[1;35m"..warn.."\27[0m\n")
+end
+
 print ("\n\27[1;4;33mTODO:\27[0m\n")
 for warn in txt:gmatch ("Package TODO Warning: (.-)%.") do
     print ("\27[1;35m"..warn:gsub('\n','').."\27[0m\n")

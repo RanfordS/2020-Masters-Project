@@ -38,7 +38,7 @@ confirmations are empirical, not theoretical
 
 history
 
-1943: Warren McCulloch and Walter Pitts, created a computational model for neural networks [3] (Difficult paper)
+1943: Warren McCulloch and Walter Pitts, created a computational model for neural networks [3]
 1949: D. O. Hebb, Learning hypothesis based on neural plasticity (Hebbian learning) [5]
 1954: Farley and Wesley A. Clark, first to simulate a Hebbian Network [6]
 1958: Rosenblatt, perceptron [7,8]

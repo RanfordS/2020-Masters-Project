@@ -8,22 +8,23 @@
         ,   node font=\small\ttfamily
         }
     ,   baseline=0pt
+    ,   >={Stealth[scale=1.2]}
     ]
-    \node[neuron] (A) at (-2cm, 7mm) {A};
-    \node[neuron] (B) at (-2cm,-7mm) {B};
-    \node[neuron] (Af) at (0cm, 15mm) {1};
-    \node[neuron] (Ab) at (0cm,  5mm) {2};
-    \node[neuron] (Ba) at (0cm, -5mm) {3};
-    \node[neuron] (Bf) at (0cm,-15mm) {4};
+    \node[neuron] (A) at (-2cm, 6mm) {A};
+    \node[neuron] (B) at (-2cm,-6mm) {B};
+    \node[neuron] (Af) at (0cm, 18mm) {1};
+    \node[neuron] (Ab) at (0cm,  6mm) {2};
+    \node[neuron] (Ba) at (0cm, -6mm) {3};
+    \node[neuron] (Bf) at (0cm,-18mm) {4};
     \node[neuron] (R) at (2cm,0cm) {R};
-    \draw[-latex'] (A) to[out=0,in=240] (Af);
-    \draw[-latex'] (B) to[out=0,in=120] (Bf);
-    \draw[-latex'] (Af) to[out=0,in=120] (R);
-    \draw[-latex'] (Bf) to[out=0,in=240] (R);
-    \draw[-latex'] (A) to[out=0,in=120] (Ba);
-    \draw[-latex'] (B) to[out=0,in=240] (Ab);
-    \draw[-Circle] (A) to[out=0,in=180] (Ab);
-    \draw[-Circle] (B) to[out=0,in=180] (Ba);
-    \draw[-Circle] (Ab) to[out=0,in=180] (R.west);
-    \draw[-Circle] (Ba) to[out=0,in=180] (R.west);
+    \draw[->] (A) to[out=0,in=240] (Af);
+    \draw[->] (B) to[out=0,in=120] (Bf);
+    \draw[->] (Af) to[out=0,in=120] (R);
+    \draw[->] (Bf) to[out=0,in=240] (R);
+    \draw[->] (A) to[out=0,in=120] (Ba);
+    \draw[->] (B) to[out=0,in=240] (Ab);
+    \draw[-o] (A) to[out=0,in=180] (Ab);
+    \draw[-o] (B) to[out=0,in=180] (Ba);
+    \draw[-o] (Ab) to[out=0,in=180] (R.west);
+    \draw[-o] (Ba) to[out=0,in=180] (R.west);
 \end{tikzpicture}

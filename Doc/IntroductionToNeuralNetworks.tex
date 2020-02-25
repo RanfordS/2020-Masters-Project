@@ -55,7 +55,7 @@ The result is such that the neuron will only be active if at least one
 excitatory connection is active and all inhibitory connections are inactive.
 The versatility of this definition is demonstrated in the following examples.
 \begin{center}
-    \captionof{figure}{Common logic components using McCullochs neurons.}
+    \captionof{figure}{Two common logic circuits using McCullochs neurons.}
     \begin{tabular}{ccc}
         SR Flip-flop & & AND Gate\\
         \input{DiagramMcculSRFlipFlop.tex} & & \input{DiagramMcculAND.tex}\\
@@ -64,7 +64,21 @@ The versatility of this definition is demonstrated in the following examples.
         $\displaystyle N_R(t+2) = N_A(t) \vee N_B(t)$\\
     \end{tabular}
 \end{center}
+Where the arrows and circles indicate excitatory and inhibitory connections
+respectively.
+While this model provided insight into the mechanisms by which neurons operate,
+the structure was static, and incapable of learning.
 
+McCulloch's work was later cited by psychologist \cite{Hebb:1949:Organization},
+who proposed that the structure of biological neural networks was dynamic, and
+that frequently repeated stimuli caused gradual development.
+His theory was supported by research conducted by himself and others that showed
+that intelligence-test performance in mature patients was often unaffected by
+brain operations that would have prevented development in younger patients.
+This hypothesis became known as Hebbian learning.
+
+\TODO{Find a copy of ``Simulation of self-organizing systems by digital
+computer'' - B Farley, W Clark}
 
 \TODO{Section: Artificial Intelligence}
 
@@ -86,6 +100,10 @@ which operate in a similar fashion to the association cells.
 The activation of these response cells are the outputs of the perceptron, and
 indicated the classification of the input.
 
+The methods by which the perceptron adjusted it weights were based on which
+cells were active, and whether the correct output was produced.
+By doing this, the system undergoes a process analogous to Hebbian learning.
+
 This machine was initially trained to reliably identify three different shapes:
 a square, a circle, and a triangle; and did so with a better than chance
 probability.
@@ -95,6 +113,14 @@ character recognition, it failed to produce better than chance results.
 \TODO{Subsection: Perceptrons}
 
 \subsection{Backpropagation}
+
+In order for a neural network to learn, it must undergo some form of
+optimisation process.
+For the perceptron, this process was one of positive and negative reinforcement.
+
+\TODO{Need better tangent}
+Another optimisation method that later became the norm was that of gradient
+descent, which originated from control theory.
 
 \TODO{Subsection: Backpropagation}
 

@@ -84,21 +84,11 @@
 \newcommand{\Rarrowscale}{0.5pt}
 
 \newcommand{\HIDE}[1]{\PackageWarning{HIDE}{Hidden text in \thesubsection}}
-\newcommand{\TODO}[1]{\texttt{TODO}: \textit{#1}\PackageWarning{TODO}{"#1"}}
+\newcommand{\TODO}[1]{%
+    {\color{blue}\texttt{TODO}: \textit{#1}}%
+    \PackageWarning{TODO}{"#1"}%
+}
 
-\pgfarrowsdeclare{Rrrow}{Rrrow}
-{
-  \pgfarrowsleftextend{-5.59\pgflinewidth}
-  \pgfarrowsrightextend{4.5\pgflinewidth}
-}
-{
-  \pgfpathmoveto{\pgfpoint{4.5\pgflinewidth}{0pt}} %Point5
-  \pgfpathlineto{\pgfpoint{-0.63\pgflinewidth}{1.09\pgflinewidth}} %Point4
-  \pgfpathlineto{\pgfpoint{-5.48\pgflinewidth}{3.06\pgflinewidth}} %Point3
-  \pgfpathlineto{\pgfpoint{-5.59\pgflinewidth}{3.0\pgflinewidth}}%Point2
-  \pgfpathlineto{\pgfpoint{-3.95\pgflinewidth}{0pt}} %Point1
-  \pgfpathlineto{\pgfpoint{-5.59\pgflinewidth}{-3.0\pgflinewidth}}%Point8
-  \pgfpathlineto{\pgfpoint{-5.48\pgflinewidth}{-3.06\pgflinewidth}}%Point7
-  \pgfpathlineto{\pgfpoint{-0.63\pgflinewidth}{-1.09\pgflinewidth}}%Point6
-  \pgfusepathqfill
-}
+\newlength{\rs}
+
+

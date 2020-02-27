@@ -4,6 +4,7 @@
 
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{mathtools}
+\usepackage{xifthen}
 
 %\usepackage[style=authoryear]{biblatex}
 \usepackage[citestyle=authoryear,bibstyle=authoryear,natbib]{biblatex}
@@ -21,6 +22,7 @@
 \usetikzlibrary{arrows.meta}
 
 \usepackage[margin=1in]{geometry}
+\usepackage{changepage}
 \usepackage{placeins}
 \usepackage{flafter}
 \usepackage[doublespacing]{setspace}
@@ -82,6 +84,15 @@
 \newcommand{\Rraisemath}[2]{\raisebox{#1}{$\displaystyle#2$}}
 \newcommand{\Reg}{{\itshape e.g.~}}
 \newcommand{\Rarrowscale}{0.5pt}
+
+%\newcommand{\Rpdiff}[3][]{\frac{\partial^{#1}#2}{\partial^{#1}#3}}
+%\ifthenelse{\equal{#1}{}}{omitted}{given}
+
+\newcommand{\Rpdiff}[3][]{%
+    \ifthenelse{\equal{#1}{}}%
+        {\frac{\partial #2}{\partial #3}}%
+        {\frac{\partial^{#1} #2}{\partial^{#1} #3}}%
+}
 
 \newcommand{\HIDE}[1]{\PackageWarning{HIDE}{Hidden text in \thesubsection}}
 \newcommand{\TODO}[1]{%

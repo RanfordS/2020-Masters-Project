@@ -12,9 +12,8 @@ Any given neuron will be either active or inactive depending on whether or not
 its input exceeds a threshold.
 
 \begin{center}
-    \captionof{figure}{Diagram of a biological neuron.}
-    \vspace{1ex}
     \input{DiagramNeuron.tex}
+    \captionof{figure}{Diagram of a biological neuron.}
 \end{center}
 
 Signals are received by the neuron via connections to dendrites and soma.
@@ -55,7 +54,6 @@ The result is such that the neuron will only be active if at least one
 excitatory connection is active and all inhibitory connections are inactive.
 The versatility of this definition is demonstrated in the following examples.
 \begin{center}
-    \captionof{figure}{Two common logic circuits using McCullochs neurons.}
     \begin{tabular}{ccc}
         SR Flip-flop & & AND Gate\\
         \input{DiagramMcculSRFlipFlop.tex} & & \input{DiagramMcculAND.tex}\\
@@ -63,9 +61,11 @@ The versatility of this definition is demonstrated in the following examples.
         &
         $\displaystyle N_R(t+2) = N_A(t) \vee N_B(t)$\\
     \end{tabular}
+    \parbox{0.9\textwidth}{%
+    \captionof{figure}{Two common logic circuits using McCullochs neurons
+    where the arrows and circles indicate excitatory and inhibitory
+    connections respectively.}}
 \end{center}
-Where the arrows and circles indicate excitatory and inhibitory connections
-respectively.
 While this model provided insight into the mechanisms by which neurons operate,
 the structure was static, and incapable of learning.
 
@@ -118,9 +118,27 @@ In order for a neural network to learn, it must undergo some form of
 optimisation process.
 For the perceptron, this process was one of positive and negative reinforcement.
 
-\TODO{Need better tangent}
-Another optimisation method that later became the norm was that of gradient
-descent, which originated from control theory.
+In the field of control theory, an optimisation method known as gradient descent
+was developed by \cite{Kelley:1960:Gradient}, in which a given function of the
+system is either maximised or minimised.
+This is achieved by taking partial derivatives of the function with respect to
+each parameter, which gives an approximation of how the function value will
+change as the parameter changes.
+By evaluating the partial derivatives, multiplying them by a constant, and
+adding them to their respective parameters, the parameter values can be updated.
+Using these new parameter values, one can expect to improve the function value.
+This can be written as
+\begin{align*}
+    w_i' &= w_i + \eta\Rpdiff{f}{w_i}(\Rvec{x}),
+\end{align*}
+where $f(\Rvec{x})$ is the function to be optimised, $w_i$ is a parameter of
+$f$, $w_i'$ is the updated parameter, and $\eta$ is ascent/descent parameter.
+Positive $\eta$ values will maximise the function value, where as negative
+values will minimise it.
+The magnitude of $\eta$ determines the rate at which the method will attempt
+change the parameters: if the value is too large, the method will overshoot the
+optimal values; if the value is too small, the method will be too slow to
+converge.
 
 \TODO{Subsection: Backpropagation}
 

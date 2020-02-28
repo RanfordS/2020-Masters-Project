@@ -18,8 +18,8 @@ its input exceeds a threshold.
 
 Signals are received by the neuron via connections to dendrites and soma.
 If the threshold is met, electrical signals are sent along the axon to the
-terminal, where it is connect to more neurons or to a controllable cell such as
-a neuromuscular junction.
+terminal, where it is connected to other neurons, or to a controllable cell such
+as a neuromuscular junction.
 
 \TODO{Section: Biological Neurons}
 
@@ -31,10 +31,10 @@ One such story was that of a mythical automaton called Talos, who circled an
 island's shores to protect it from pirates and other invaders.
 
 By the $19^\text{th}$ century, other notions of artificial intelligence were
-explored by fiction in stories, such as Mary Shelley's ``Frankenstein'', and
+explored by fiction in stories such as Mary Shelley's ``Frankenstein'', and
 Karel \v{C}apek's ``R.U.R.''.
 Some of the fictional writings of the $20^\text{th}$ century further continued
-to explore the concept in novels such as Isaac Asimov's ``I, Robot''.
+exploring the concept in novels such as Isaac Asimov's ``I, Robot''.
 
 Academic research into artificial intelligence began around the 1940's,
 primarily due to findings in neurological research at the time.
@@ -72,13 +72,28 @@ the structure was static, and incapable of learning.
 McCulloch's work was later cited by psychologist \cite{Hebb:1949:Organization},
 who proposed that the structure of biological neural networks was dynamic, and
 that frequently repeated stimuli caused gradual development.
+At the scale of neuron, it was theorised that if one neuron successfully
+excited another that the connection between them would strengthen, hence
+increasing the likelihood that the former would be able to excite the latter
+again in the future.
 His theory was supported by research conducted by himself and others that showed
 that intelligence-test performance in mature patients was often unaffected by
-brain operations that would have prevented development in younger patients.
+brain operations that would have prevented development in younger patients,
+which suggested that learnt stimuli are processed differently to unknown
+stimuli.
 This hypothesis became known as Hebbian learning.
 
-\TODO{Find a copy of ``Simulation of self-organizing systems by digital
-computer'' - B Farley, W Clark}
+Computer simulations applying this theory to a small network were done by
+\cite{Farley:1954:Simulation}.
+The actions of the network were compared to that of a servo system which must
+counteract any displacements so as to maintain a steady position.
+The network was trained using a set of input patterns, which were subject to
+non-linear transformations.
+Similar to the Hebbian theory, when the network produces the correct responses,
+the active connections are strengthened.
+Although the results were of little neurophysiological significance, the results
+were of great use for demonstrating computational simulations, which were
+considerably slower at the time.
 
 \TODO{Section: Artificial Intelligence}
 
@@ -93,6 +108,15 @@ The perceptron was built as a dedicated machine that consisted of a number of
 photovoltaic, analogous to a retina, that feed into an ``association area''.
 This association area contains a number of cells that each calculate a weighted
 sum of the receptor values and output a signal if it exceeds a threshold.
+Expressed mathematically, the output of a given association cell is given by
+\begin{align*}
+    A_i &= \begin{cases}
+        1, & \sum_j w_{i,j}I_j\\
+        0, & \text{otherwise}
+    \end{cases},
+\end{align*}
+where $I_j$ is the value from the $j^\text{th}$ photovoltaic cell, and $w_{i,j}$
+is the weight there of.
 These value weights were implemented using variable resistance wires that the
 perceptron could adjust automatically.
 The outputs from the association area are then connected to response cells,
@@ -100,9 +124,10 @@ which operate in a similar fashion to the association cells.
 The activation of these response cells are the outputs of the perceptron, and
 indicated the classification of the input.
 
-The methods by which the perceptron adjusted it weights were based on which
-cells were active, and whether the correct output was produced.
-By doing this, the system undergoes a process analogous to Hebbian learning.
+Similar to \cite{Farley:1954:Simulation}, the method by which the perceptron
+adjusted it weights was also based on which cells were active, and whether the
+correct output was produced; except that the perceptron was also able to
+``penalise'' weights when an incorrect result was outputted.
 
 This machine was initially trained to reliably identify three different shapes:
 a square, a circle, and a triangle; and did so with a better than chance

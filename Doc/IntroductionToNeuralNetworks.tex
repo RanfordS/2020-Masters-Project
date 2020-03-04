@@ -112,12 +112,13 @@ sum of the receptor values and output a signal if it exceeds a threshold.
 Expressed mathematically, the output of a given association cell is given by
 \begin{align*}
     A_i &= \begin{cases}
-        1, & \sum_j w_{i,j}x_j\\
+        1, & \sum_j w_{i,j}x_j > \theta\\
         0, & \text{otherwise}
     \end{cases},
 \end{align*}
-where $x_j$ is the value from the $j^\text{th}$ photovoltaic cell, and $w_{i,j}$
-is the weight there of.
+where $x_j$ is the value from the $j^\text{th}$ photovoltaic cell, $w_{i,j}$
+is the weight of the connection between association cell $i$ and photovoltaic
+cell $j$, and $\theta$ is the threshold.
 These value weights were implemented using variable resistance wires that the
 perceptron could adjust automatically.
 The outputs from the association area are then connected to response cells,
@@ -129,12 +130,46 @@ Similar to \cite{Farley:1954:Simulation}, the method by which the perceptron
 adjusted it weights was also based on which cells were active, and whether the
 correct output was produced; except that the perceptron was also able to
 ``penalise'' weights when an incorrect result was outputted.
+\TODO{Include summary from McClelland}.
 
 This machine was initially trained to reliably identify three different shapes:
 a square, a circle, and a triangle; and did so with a better than chance
 probability.
 When attempting to use the perceptron for more complicated tasks, such as
 character recognition, it failed to produce better than chance results.
+
+After a decade of unsuccessful real world application attempts, a book titled
+``\citetitle{Minsky:1969:Perceptrons}'' by \cite{Minsky:1969:Perceptrons}, was
+released.
+The book provided a rigorous mathematical analysis of the model, the results
+showed that single layered, simple linear perceptron networks could not
+calculate XOR predicates.
+A 2017 reissue of the book contained a foreword by L\'eon Bottou, who wrote
+``Their rigorous work and brilliant technique does not make the perceptron look
+very good...''
+
+Following the book's release, perceptron research effectively halted for 15
+years until the first successful uses of multilayer networks by
+\cite{McClelland:1986:Parallel}, it also served as a departure from the neuron
+outputs being boolean values.
+The output of the units within these networks were defined by
+\begin{align*}
+    \Rvec{a}(t+1) &= \Rvec{F}(\Rvec{a}(t),\Rvec{net}_1(t),\Rvec{net}_2(t),...),
+\end{align*}
+where $\Rvec{net}_i$ is the $i^\text{th}$ propagation rule applied to the
+inputs, $\Rvec{F}$ is the activation function, and $\Rvec{a}(t)$ is the
+activation of the units at time step $t$.
+The model usually uses a simplified version which can be summarised as
+\begin{align*}
+    a_i &= F\left(\sum_j w_{i,j}o_j\right),
+\end{align*}
+where $o_j$ is the output of unit $j$.
+Hebbian learning could be performed the network by using iterative methods,
+the most simple of which was given by
+\begin{align*}
+    \Delta w_{i,j} &= \eta a_i o_j,
+\end{align*}
+where $\eta$ is the learning rate, which is a constant.
 
 \TODO{Subsection: Perceptrons}
 
@@ -165,6 +200,8 @@ The magnitude of $\eta$ determines the rate at which the method will attempt
 change the parameters: if the value is too large, the method will overshoot the
 optimal values; if the value is too small, the method will be too slow to
 converge.
+
+Vanishing gradient problem
 
 \TODO{Subsection: Backpropagation}
 

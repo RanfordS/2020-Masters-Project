@@ -30,7 +30,7 @@ to mythical stories from ancient Greece.
 One such story was that of a mythical automaton called Talos, who circled an
 island's shores to protect it from pirates and other invaders.
 
-By the $19^\text{th}$ century, other notions of artificial intelligence were
+In the $19^\text{th}$ century, other notions of artificial intelligence were
 explored by fiction in stories such as Mary Shelley's ``Frankenstein'', and
 Karel \v{C}apek's ``R.U.R.''.
 Some of the fictional writings of the $20^\text{th}$ century further continued
@@ -73,7 +73,7 @@ McCulloch's work was later cited by psychologist \cite{Hebb:1949:Organization},
 who proposed that the structure of biological neural networks was dynamic, and
 that frequently repeated stimuli caused gradual development.
 At the scale of neuron, it was theorised that if one neuron successfully
-excited another that the connection between them would strengthen, hence
+excited another, the connection between them would strengthen, hence
 increasing the likelihood that the former would be able to excite the latter
 again in the future.
 His theory was supported by research conducted by himself and others that showed
@@ -130,7 +130,6 @@ Similar to \cite{Farley:1954:Simulation}, the method by which the perceptron
 adjusted it weights was also based on which cells were active, and whether the
 correct output was produced; except that the perceptron was also able to
 ``penalise'' weights when an incorrect result was outputted.
-\TODO{Include summary from McClelland}.
 
 This machine was initially trained to reliably identify three different shapes:
 a square, a circle, and a triangle; and did so with a better than chance
@@ -150,8 +149,11 @@ very good...''
 
 Following the book's release, perceptron research effectively halted for 15
 years until the first successful uses of multilayer networks by
-\cite{McClelland:1986:Parallel}, it also served as a departure from the neuron
-outputs being boolean values.
+\cite{McClelland:1986:Parallel}, which also served as a departure from the
+neuron outputs being boolean values.
+The multilayered structure of this new model allowed it to calculate the XOR
+predicates that the single layer perceptrons could not.
+
 The output of the units within these networks were defined by
 \begin{align*}
     \Rvec{a}(t+1) &= \Rvec{F}(\Rvec{a}(t),\Rvec{net}_1(t),\Rvec{net}_2(t),...),
@@ -167,7 +169,7 @@ where $o_j$ is the output of unit $j$.
 Hebbian learning could be performed the network by using iterative methods,
 the most simple of which was given by
 \begin{align*}
-    \Delta w_{i,j} &= \eta a_i o_j,
+    \Delta w_{i,j} &= \eta\,a_i o_j,
 \end{align*}
 where $\eta$ is the learning rate, which is a constant.
 
@@ -201,11 +203,40 @@ change the parameters: if the value is too large, the method will overshoot the
 optimal values; if the value is too small, the method will be too slow to
 converge.
 
-Vanishing gradient problem
+When this method was applied to neural networks, researchers sometimes
+encountered an issue now known as the vanishing gradient problem.
+A computer program will typically calculate the gradient via repeat applications
+of chain rule; if there are many small terms, the gradient will tend to zero,
+and the learning rate of the network will be minimal.
+
+One of the methods that overcame this problem was developed by
+\cite{Schmidhuber:1992:Compression}, where each layer of the network was
+pre-trained to predict the next input from previous inputs.
+Once each layer had been pre-trained, the network was then fine tuned using
+backpropagation.
+The method also provided a way of calculating which inputs were least expected,
+so that more training time could be devoted to learning them.
+
+Since then, computational power has significantly increased, and the slow
+convergence caused by the vanishing gradient problem is less significant.
+Further more, backpropagation and a simple variant the model outlined by
+\cite{McClelland:1986:Parallel}, have become the standard for neural networks.
+Namely
+\begin{align*}
+    x_i &= \phi\left(b_i + \sum_j w_{i,j} x_i\right),\\
+\end{align*}
+where $x_i$ is the output of neuron $i$, $w_{i,j}$ is the weight of connection
+from $j$ to $j$, $b_i$ is the input bias of $i$, and $\phi$ is the activation
+function.
 
 \TODO{Subsection: Backpropagation}
 
-\section{Types of Neurons}
+\section{Types of Artificial Neurons}
+
+The preceding discussion has been focused on densely connected neural
+networks, where each neuron in a layer is connected to every neuron in the
+previous, but it is important to note, that many other neural network
+architectures are used together, and maybe more suitable under certain contexts.
 
 \TODO{Section: Types of Neurons}
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.7.28)  10 MAR 2020 20:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.7.28)  11 MAR 2020 10:24
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1795,9 +1795,15 @@ Package TODO Warning: "Subsection: Perceptrons" on input line 176.
 Package TODO Warning: "Subsection: Backpropagation" on input line 232.
 
 
-Package TODO Warning: "Section: Types of Neurons" on input line 241.
+Package TODO Warning: "Section: Types of Neurons" on input line 242.
 
-) (./IntroductionToPython.tex [10]
+[10] (./DiagramCNN.tex)
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 256.
+See the caption package documentation for explanation.
+
+) (./IntroductionToPython.tex [11]
 Chapter 2.
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 10.
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
@@ -1820,7 +1826,7 @@ input line 23.
 
 Package TODO Warning: "Section: XOR Gate" on input line 27.
 
-) (./IntroductionToTensorflow.tex [11
+) (./IntroductionToTensorflow.tex [12
 
 ]
 Chapter 3.
@@ -1836,7 +1842,7 @@ Package TODO Warning: "Section: XOR" on input line 12.
 
 Package TODO Warning: "Section: Boston Housing with Keras" on input line 16.
 
-) (./DeepLearning.tex [12
+) (./DeepLearning.tex [13
 
 ]
 Chapter 4.
@@ -1862,13 +1868,13 @@ Package TODO Warning: "Section: Unsupervised Learning" on input line 23.
 
 Package TODO Warning: "Section: Autoencoding" on input line 27.
 
-[13
+[14
 
 ]
 
 Package TODO Warning: "Section: Reinforcement Learning" on input line 31.
 
-) [14]
+) [15]
 Chapter 5.
 
 Package HIDE Warning: Hidden text in 5.0.0 on input line 21.
@@ -1877,12 +1883,12 @@ Package HIDE Warning: Hidden text in 5.0.0 on input line 21.
 Package TODO Warning: "Decide parent chapter for CNN, RNN, and LSTM sections" o
 n input line 22.
 
-[15
+[16
 
 ]
 runsystem(rm "NeuralNetworksWithPythonAndTensorflow.out.pyg")...executed.
 
- [16
+ [17
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 32.
@@ -1892,18 +1898,18 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 32.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 32.
 Package rerunfilecheck Info: File `NeuralNetworksWithPythonAndTensorflow.out' h
 as not changed.
-(rerunfilecheck)             Checksum: 67368A4248970D7170CAC67BD2A6054D;1723.
+(rerunfilecheck)             Checksum: 4AD7124F971DB289727D419D36FA70B2;1749.
 Package logreq Info: Writing requests to 'NeuralNetworksWithPythonAndTensorflow
 .run.xml'.
 \openout1 = `NeuralNetworksWithPythonAndTensorflow.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 40525 strings out of 494953
- 910046 string characters out of 6180977
+ 40643 strings out of 494953
+ 911917 string characters out of 6180977
  1546637 words of memory out of 5000000
- 43029 multiletter control sequences out of 15000+600000
- 12929 words of font info for 48 fonts, out of 8000000 for 9000
+ 43138 multiletter control sequences out of 15000+600000
+ 15555 words of font info for 59 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  64i,16n,84p,841b,1012s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
@@ -1914,15 +1920,16 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on NeuralNetworksWithPythonAndTensorflow.pdf (17 pages, 289413 b
+c/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on NeuralNetworksWithPythonAndTensorflow.pdf (18 pages, 300498 b
 ytes).
 PDF statistics:
- 326 PDF objects out of 1000 (max. 8388607)
- 287 compressed objects within 3 object streams
- 58 named destinations out of 1000 (max. 500000)
+ 335 PDF objects out of 1000 (max. 8388607)
+ 294 compressed objects within 3 object streams
+ 60 named destinations out of 1000 (max. 500000)
  239 words of extra memory for PDF output out of 10000 (max. 10000000)
 

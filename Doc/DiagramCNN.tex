@@ -1,0 +1,26 @@
+\begin{tikzpicture}
+    [   neuron/.style=
+        {   draw
+        ,   circle
+        ,   inner sep=2pt
+        ,   node font=\small\ttfamily
+        }
+    ,   baseline=0pt
+    ,   >={Stealth[scale=1.2]}
+    ]
+    \foreach\x in {0,...,3}
+    {   \pgfmathtruncatemacro{\xp}{10*\x-15}
+        \node[neuron] (X\x) at (2mm*\xp, 0mm) {$x_\x$};
+    }
+    \foreach\y in {0,...,1}
+    {   \pgfmathtruncatemacro{\yp}{10*\y-5}
+        \node[neuron] (Y\y) at (4mm*\yp, -20mm) {$y_\y$};
+        \pgfmathtruncatemacro{\xmin}{\y}
+        \pgfmathtruncatemacro{\xmax}{\y+2}
+        \foreach\x in {\xmin,...,\xmax}
+        {   \pgfmathtruncatemacro{\w}{\x-\xmin}
+            \draw[->] (X\x) -- node[pos=0.70,inner sep=1pt,fill=white] {$w_\w$} (Y\y);
+        }
+    }
+    %\node[neuron] (A) at ();
+\end{tikzpicture}

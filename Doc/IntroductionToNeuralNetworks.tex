@@ -236,10 +236,27 @@ function.
 The preceding discussion has been focused on densely connected neural
 networks, where each neuron in a layer is connected to every neuron in the
 previous, but it is important to note, that many other neural network
-architectures are used together, and maybe more suitable under certain contexts.
+architectures are often used together, and maybe more suitable under certain
+contexts.
 
 \TODO{Section: Types of Neurons}
 
-\subsection{CNN}
+\subsection{Convolutional Neural Networks}
+
+Often used in image processing, a Convolutional Neural Network (CNN) layer
+contains neurons that sample different regions of the previous layer using the
+same weight scheme.
+The 1D case may be expressed mathematically as
+\begin{align*}
+    y_i &= \phi\left(b + \sum_{j=0}^{S} w_j x_{i+j}\right),
+\end{align*}
+where $S$ is the kernel size.
+\begin{center}
+    \input{DiagramCNN.tex}
+    \captionof{figure}{Example of a 1D CNN.}
+\end{center}
+CNNs have the advantage of encoding spacial information implicitly, which makes
+them well suited for image processing.
+
 \subsection{RNN}
 \subsection{LSTM}

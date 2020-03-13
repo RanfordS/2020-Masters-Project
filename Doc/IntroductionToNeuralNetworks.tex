@@ -243,9 +243,33 @@ contexts.
 
 \subsection{Convolutional Neural Networks}
 
-Often used in image processing, a Convolutional Neural Network (CNN) layer
-contains neurons that sample different regions of the previous layer using the
-same weight scheme.
+Findings in neurophysiology
+\cite{Hubel:1959:Receptive}
+experiments conducted on live cats the measured cell activation for different
+light patterns
+certain cells only respond to stimuli from specific regions of the retina
+neighboring cell have overlapping response regions
+
+this inspired the design of \cite{Fukushima:1980:Neocognitron}
+
+Time delay neural networks \cite{Waibel:1989:Phoneme}
+first convolutional neural network
+used weight sharing and backpropagation
+worked on spectrograms, time and pitch invariant
+
+Applied to handwritten digits by \cite{LeCun:1989:Backpropagation}
+16 by 16 pixel images, each containing one digit
+backpropagation gave better results that previous handcrafted networks
+two convolutional layers, each with 12 images
+% "this next architecture is impossible
+% make no attempt to solve it"
+% specifics of kernel size and stride do not appear the be correct
+two dense layers, first has 30 units, second has 10 and is the output
+
+A Convolutional Neural Network (CNN) layer contains sets of neurons that sample
+regions of the previous layer, with all neurons within a set using the same
+weight scheme.
+
 The 1D case may be expressed mathematically as
 \begin{align*}
     y_i &= \phi\left(b + \sum_{j=0}^{S} w_j x_{i+j}\right),

@@ -243,11 +243,16 @@ contexts.
 
 \subsection{Convolutional Neural Networks}
 
+Densely connected networks did not scale well for image recognition, as the
+number of connections to each node for a high resolution image is too large.
+
 Findings in neurophysiology
 \cite{Hubel:1959:Receptive}
 experiments conducted on live cats the measured cell activation for different
 light patterns
 certain cells only respond to stimuli from specific regions of the retina
+% visual cortex contains neurons that individually respond to small
+% regions of the visual field
 neighboring cell have overlapping response regions
 
 this inspired the design of \cite{Fukushima:1980:Neocognitron}
@@ -257,18 +262,39 @@ first convolutional neural network
 used weight sharing and backpropagation
 worked on spectrograms, time and pitch invariant
 
-Applied to handwritten digits by \cite{LeCun:1989:Backpropagation}
-16 by 16 pixel images, each containing one digit
-backpropagation gave better results that previous handcrafted networks
-two convolutional layers, each with 12 images
-% "this next architecture is impossible
-% make no attempt to solve it"
-% specifics of kernel size and stride do not appear the be correct
-two dense layers, first has 30 units, second has 10 and is the output
+% Applied to handwritten digits by \cite{LeCun:1989:Backpropagation}
+% 16 by 16 pixel images, each containing one digit
+% backpropagation gave better results that previous handcrafted networks
+% The network took a 16 by 16 pixel image containing one digit as it's input,
+% first layer convolves to create 12, 8 by 8 pixel feature maps
+% second convolves to create 12, 4 by 4 pixel feature maps,
+%   each only references 8 of the 12 previous layers maps
+% third layer fully connected
+% output fully connected
+% tanh activation function
+% each neuron had its own bias
+%\begin{align*}
+%    y_{i,j} = \phi\left(b_{i,j} + \sum_{k=0}^s\sum_{l=0}^s w_{k,l}x_{i+k,j+l}\right)
+%\end{align*}
 
-A Convolutional Neural Network (CNN) layer contains sets of neurons that sample
-regions of the previous layer, with all neurons within a set using the same
-weight scheme.
+Speech recognition with max pooling \cite{Yamaguchi:1990:Neural}
+% input separated into frames, $N$ is vocabulary size
+% event layer, convolves data from each frame twice to produce single output
+% the event layer outputs go through a pooling convolutional layer
+%   that forwards the maximum value
+%   exception: if all values are too low, the kernel size is increased
+% word net, $W_i$, $i=1,...,N$, convolution
+%   5 inputs densely to 5 hidden units to 1 output
+%   trained to fire when training examples belong to group $i$, and not when not
+% super net, $N$ units densely to $N+1$ hidden units to $N+1$ outputs
+%   only one output active for a given input
+%   output $i$ is active when word belongs to category $i$
+%   output $N+1$ is active if the word could not be categorised / was rejected
+% 97.1\% accuracy, 1.9\% rejected, 1.0\% error
+
+%A Convolutional Neural Network (CNN) layer contains sets of neurons that sample
+%regions of the previous layer, with all neurons within a set using the same
+%weight scheme.
 
 The 1D case may be expressed mathematically as
 \begin{align*}

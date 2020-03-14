@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2020.3.11)  13 MAR 2020 12:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2020.3.11)  14 MAR 2020 16:55
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1800,7 +1800,7 @@ Package TODO Warning: "Section: Types of Neurons" on input line 242.
 [10] (./DiagramCNN.tex)
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 261.
+(caption)                particular \caption on input line 306.
 See the caption package documentation for explanation.
 
 ) (./IntroductionToPython.tex [11]
@@ -1885,12 +1885,12 @@ n input line 22.
 
 [16
 
+] [17
+
 ]
 runsystem(rm "NeuralNetworksWithPythonAndTensorflow.out.pyg")...executed.
 
- [17
-
-]
+ [18]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 32.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 32.
  (./NeuralNetworksWithPythonAndTensorflow.aux)
@@ -1905,13 +1905,13 @@ Package logreq Info: Writing requests to 'NeuralNetworksWithPythonAndTensorflow
 
  ) 
 Here is how much of TeX's memory you used:
- 40643 strings out of 494953
- 911917 string characters out of 6180977
- 1546637 words of memory out of 5000000
- 43138 multiletter control sequences out of 15000+600000
+ 40661 strings out of 494953
+ 912326 string characters out of 6180977
+ 1546768 words of memory out of 5000000
+ 43151 multiletter control sequences out of 15000+600000
  15555 words of font info for 59 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 64i,16n,84p,841b,1012s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 64i,16n,84p,841b,1090s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
@@ -1925,11 +1925,11 @@ ts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on NeuralNetworksWithPythonAndTensorflow.pdf (18 pages, 300829 b
+Output written on NeuralNetworksWithPythonAndTensorflow.pdf (19 pages, 303138 b
 ytes).
 PDF statistics:
- 335 PDF objects out of 1000 (max. 8388607)
- 294 compressed objects within 3 object streams
- 60 named destinations out of 1000 (max. 500000)
+ 350 PDF objects out of 1000 (max. 8388607)
+ 307 compressed objects within 4 object streams
+ 65 named destinations out of 1000 (max. 500000)
  239 words of extra memory for PDF output out of 10000 (max. 10000000)
 

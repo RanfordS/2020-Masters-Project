@@ -243,24 +243,62 @@ contexts.
 
 \subsection{Convolutional Neural Networks}
 
-Densely connected networks did not scale well for image recognition, as the
-number of connections to each node for a high resolution image is too large.
+Many of the neural networks that had been employed for image recognition, such
+as the preceptron, suffered from two major issues:
+\begin{enumerate}
+    \item processing high resolution images required each neuron in the first
+        layer to be connected to every input, which caused the number of
+        connections to become too large to process; and,
+    \item most networks could not correctly identify an input if it was shifted.
+\end{enumerate}
+Similar to how biology inspired neural networks, findings in neurophysiology
+inspired the architectures that would overcome these issues.
+\cite{Hubel:1959:Receptive}, discovered that certain cells within a cat's
+visual cortex would only respond to stimuli from specific regions of the retina.
+Another important observation was that neighboring cells had overlapping
+response regions.
 
-Findings in neurophysiology
-\cite{Hubel:1959:Receptive}
-experiments conducted on live cats the measured cell activation for different
-light patterns
-certain cells only respond to stimuli from specific regions of the retina
-% visual cortex contains neurons that individually respond to small
-% regions of the visual field
-neighboring cell have overlapping response regions
+Later research by \cite{Hubel:1962:Receptive}, also distinguished two categories
+of cells termed:
+``simple'', which had distinct excitatory and inhibitory connections, where
+firing was maximised by slits at specific angles that passed through the centre;
+and ``complex'', which could not be mapped out as trivial inhibitory/excitatory
+regions, but were maximised slits at specific angles, regardless of position.
 
-this inspired the design of \cite{Fukushima:1980:Neocognitron}
+These findings inspired \cite{Fukushima:1980:Neocognitron}, to design the
+neocognitron.
+The neocognitron featured alternating layers of ``S-Planes'' and ``C-Planes'',
+which were representations of the simple and complex cells respectively.
+Each plane contains a number of feature maps, each unit within a feature map
+applies a function to a small region of the previous layer.
+S-Plane feature maps connect to all feature maps of the previous layer,
+but C-Plane feature maps only connect to the corresponding feature map.
+\begin{center}
+    \input{DiagramNeocognitron.tex}
+    \captionof{figure}{Representation of the neocognitron's connectivity.}
+\end{center}
+Each layer of the network reduces the size of input image until the final layer
+consists of single unit feature maps.
+The network was originally trained to distinguish 5 digits, numbers 0 to 4,
+using an unsupervised learning method, and was the first to reliably handle
+shifted inputs.
 
-Time delay neural networks \cite{Waibel:1989:Phoneme}
-first convolutional neural network
-used weight sharing and backpropagation
-worked on spectrograms, time and pitch invariant
+% Time delay neural networks \cite{Waibel:1989:Phoneme}
+% first convolutional neural network
+% used weight sharing and backpropagation
+% worked on spectrograms, time and pitch invariant
+% network `invented' well known acoustic-phonetic features and useful abstractions
+% detected three acoustically similar phonemes: /b/, /g/, and /d/ (voiced stops)
+% can compare current inputs with past inputs
+% sigmoid
+% spectral coefficients as inputs
+% convolves 3 time by 16 coefficients into 8 units
+% convolves 5 time by 8 units into 3 units, each unit represents a phoneme
+% sums each unit across time to and takes sigmoid to obtain likely phoneme
+% learnt per-speaker
+% performed better than Hidden Markov Model,
+%   which had been the most popular method for phoneme recognition
+%   average error reduced from 6.3\% to 1.5\%
 
 % Applied to handwritten digits by \cite{LeCun:1989:Backpropagation}
 % 16 by 16 pixel images, each containing one digit
@@ -273,11 +311,8 @@ worked on spectrograms, time and pitch invariant
 % output fully connected
 % tanh activation function
 % each neuron had its own bias
-%\begin{align*}
-%    y_{i,j} = \phi\left(b_{i,j} + \sum_{k=0}^s\sum_{l=0}^s w_{k,l}x_{i+k,j+l}\right)
-%\end{align*}
 
-Speech recognition with max pooling \cite{Yamaguchi:1990:Neural}
+% Speech recognition with max pooling \cite{Yamaguchi:1990:Neural}
 % input separated into frames, $N$ is vocabulary size
 % event layer, convolves data from each frame twice to produce single output
 % the event layer outputs go through a pooling convolutional layer
@@ -292,21 +327,21 @@ Speech recognition with max pooling \cite{Yamaguchi:1990:Neural}
 %   output $N+1$ is active if the word could not be categorised / was rejected
 % 97.1\% accuracy, 1.9\% rejected, 1.0\% error
 
-%A Convolutional Neural Network (CNN) layer contains sets of neurons that sample
-%regions of the previous layer, with all neurons within a set using the same
-%weight scheme.
+% A Convolutional Neural Network (CNN) layer contains sets of neurons that sample
+% regions of the previous layer, with all neurons within a set using the same
+% weight scheme.
 
-The 1D case may be expressed mathematically as
-\begin{align*}
-    y_i &= \phi\left(b + \sum_{j=0}^{S} w_j x_{i+j}\right),
-\end{align*}
-where $S$ is the kernel size.
-\begin{center}
-    \input{DiagramCNN.tex}
-    \captionof{figure}{Example of a 1D CNN.}
-\end{center}
-CNNs have the advantage of encoding spacial information implicitly, which makes
-them well suited for image processing.
+% The 1D case may be expressed mathematically as
+% \begin{align*}
+%     y_i &= \phi\left(b + \sum_{j=0}^{S} w_j x_{i+j}\right),
+% \end{align*}
+% where $S$ is the kernel size.
+% \begin{center}
+%     \input{DiagramCNN.tex}
+%     \captionof{figure}{Example of a 1D CNN.}
+% \end{center}
+% CNNs have the advantage of encoding spacial information implicitly, which makes
+% them well suited for image processing.
 
 \subsection{RNN}
 \subsection{LSTM}

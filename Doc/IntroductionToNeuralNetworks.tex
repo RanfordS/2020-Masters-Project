@@ -265,12 +265,15 @@ firing was maximised by slits at specific angles that passed through the centre;
 and ``complex'', which could not be mapped out as trivial inhibitory/excitatory
 regions, but were maximised slits at specific angles, regardless of position.
 
+
+
 These findings inspired \cite{Fukushima:1980:Neocognitron}, to design the
 neocognitron.
 The neocognitron featured alternating layers of ``S-Planes'' and ``C-Planes'',
 which were representations of the simple and complex cells respectively.
 Each plane contains a number of feature maps, each unit within a feature map
-applies a function to a small region of the previous layer.
+is a function of a small region of the previous layer, a process now commonly
+referred to as convolution.
 S-Plane feature maps connect to all feature maps of the previous layer,
 but C-Plane feature maps only connect to the corresponding feature map.
 \begin{center}
@@ -283,22 +286,31 @@ The network was originally trained to distinguish 5 digits, numbers 0 to 4,
 using an unsupervised learning method, and was the first to reliably handle
 shifted inputs.
 
-% Time delay neural networks \cite{Waibel:1989:Phoneme}
-% first convolutional neural network
-% used weight sharing and backpropagation
-% worked on spectrograms, time and pitch invariant
-% network `invented' well known acoustic-phonetic features and useful abstractions
-% detected three acoustically similar phonemes: /b/, /g/, and /d/ (voiced stops)
-% can compare current inputs with past inputs
-% sigmoid
-% spectral coefficients as inputs
-% convolves 3 time by 16 coefficients into 8 units
-% convolves 5 time by 8 units into 3 units, each unit represents a phoneme
-% sums each unit across time to and takes sigmoid to obtain likely phoneme
-% learnt per-speaker
-% performed better than Hidden Markov Model,
-%   which had been the most popular method for phoneme recognition
-%   average error reduced from 6.3\% to 1.5\%
+
+
+\cite{Waibel:1989:Phoneme}, used concepts from the neocognitron to design the
+time delay neural network, which was originally proposed for phoneme
+recognition.
+The networks were initially trained using backpropagation to detect and
+distinguish between three acoustically similar phonemes (/b/, /d/, and /g/).
+The model consisted of units similar to the neocognitron's S-Planes, where the
+output of a unit is a function of a region from the previous layer.
+The input for the model was a 2D spectrogram of an audio sample, with each
+column representing a set of 16 spectral coefficients for a given time frame.
+
+The first hidden layer contained columns of 8 units, each of which convolved the
+spectral coefficients across 3 time frames, requiring a total of 384 weights.
+Similarly, the second hidden layer contained columns of 3 units, each convolving
+the previous layer across 5 time frames, requiring a total of 120 weights.
+Finally, the output layer contains three units, each of which is a function of
+the previous layer's corresponding row sum.
+The most active unit is the phoneme present in the audio.
+
+Once trained, the network was able to detect the correct phoneme, in real time, 
+under a variety of contexts, with an error of 1.5\%, a significant improvement
+over the 6.3\% error from the most popular method at the time.
+
+
 
 % Applied to handwritten digits by \cite{LeCun:1989:Backpropagation}
 % 16 by 16 pixel images, each containing one digit
@@ -311,6 +323,13 @@ shifted inputs.
 % output fully connected
 % tanh activation function
 % each neuron had its own bias
+Similar techniques were used by \cite{LeCun:1989:Backpropagation}, to classify
+handwritten digits.
+A large number of 16 by 16 pixel images were used to train a network with three
+hidden layers using backpropagation.
+One of the main differences that \TODO{RESUME}
+
+
 
 % Speech recognition with max pooling \cite{Yamaguchi:1990:Neural}
 % input separated into frames, $N$ is vocabulary size

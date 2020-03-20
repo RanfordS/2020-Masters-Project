@@ -76,8 +76,12 @@ the structure was static, and incapable of learning.
 
 
 McCulloch's work was later cited by psychologist \cite{Hebb:1949:Organization},
-who proposed that the structure of biological neural networks was dynamic, and
-that frequently repeated stimuli caused gradual development.
+as important for understanding how logical operations are performed; but
+proposed that the structure of biological neurons was not static, and that
+frequently repeated stimuli caused gradual development.
+%McCulloch's work was later cited by psychologist \cite{Hebb:1949:Organization},
+%who proposed that the structure of biological neural networks was dynamic, and
+%that frequently repeated stimuli caused gradual development.
 At the scale of neuron, it was theorised that if one neuron successfully
 excited another, the connection between them would strengthen, hence
 increasing the likelihood that the former would be able to excite the latter
@@ -382,6 +386,51 @@ result if the difference does not exceed a preset threshold.
 
 \subsection{Recurrent Neural Networks}
 
+% \cite{Jordan:1986:Serial}
+% which describes how sequences of actions might be learned and performed
+%   parallel interactions across time (coarticulation) and
+%   parallel interactions across space (dual-task interference)
+%   two aspects of a common underlying process
+% natural interpretation as a dynamical system, and a continuous time
+% perspective is possible
+% critique of associative chaining
+%   fails to allow different orderings of the same actions
+% buffer critiques
+%   problems accounting for error patterns
+%   interactions between actions should depend on relative position, not absolute
+% other critiques
+%   control elements are different for different orderings of the same actions
+%     ce for B in ABC differs from ce for B in CBA, requires large numbers of
+%     units and performs badly
+%   assume actions are produced in parallel
+%     temporal ordering problems
+%     difficulty with sequences in which there are repeated occurrences of actions
+% distinction between state and output
+% allows both temporal order and parallel influences to be represented in terms
+% of activation
+% if a network has one or more cycles, it is recurrent
+\begin{center}
+    \input{DiagramJordan.tex}
+    \captionof{figure}{Representation of connectivity in Jordan's recurrent
+    neural network.}
+\end{center}
+
+
+
+% \cite{Elman:1990:Finding}
+% notes that linguists treat sentences as if available instantaneously
+% represent time implicitly
+% critiques of parallel
+%   requires buffered input to present all data simultaneously
+%   no evidence of biological shift registers
+%   when should input be processed
+%   suggests that all inputs should be the same length
+%   cannot distinguish between absolute and relative temporal positions
+% proposed systems with memory
+%   ``allow time to be represented by the effect it has on processing''
+
+
+
 % \cite{Schmidhuber:1992:Learning}
 % history compression
 %   $o(t) = f(i(t),h(t))$, $h(t) = g(i(t-1),h(t-1))$
@@ -391,6 +440,7 @@ result if the difference does not exceed a preset threshold.
 %   $f$ and $g$ are functions
 \begin{center}
     \input{DiagramHistoryCompression.tex}
+    \captionof{figure}{Visualisation of history compression.}
 \end{center}
 
 %\subsection{LSTM}

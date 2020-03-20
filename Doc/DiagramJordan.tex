@@ -1,0 +1,29 @@
+\begin{tikzpicture}
+    [   > = {Stealth[scale=1.2]}
+    ,   neuron/.style =
+        {   draw
+        ,   circle
+        ,   inner sep = 0mm
+        ,   outer sep = 0mm
+        ,   minimum size = 7mm
+        }
+    ]
+    \foreach\x in {0,1}
+    {   \node[neuron] (I\x) at (\x*20mm-30mm, 0mm) {I\x};
+        \node[neuron] (S\x) at (\x*20mm+10mm, 0mm) {S\x};
+        \node[neuron] (H\x) at (\x*20mm-10mm,20mm) {H\x};
+        \node[neuron] (O\x) at (\x*20mm-10mm,40mm) {O\x};
+    }
+    \foreach\x in {0,1}
+    {   \foreach\y in {0,1}
+        {   \draw[->] (I\x) to (H\y);
+            \draw[->] (S\x) to (H\y);
+            \draw[->] (H\x) to (O\y);
+        }
+        \draw[<-] (I\x) to ++(0mm,-20mm);
+        \draw[->] (O\x) to ++(0mm, 20mm);
+        \draw[->] (O\x) to[out=0,in=45] (S\x);
+        \draw[->] (S\x) .. controls +( 5mm,-10mm) and +(-5mm,-10mm) .. (S\x);
+    }
+    %\node at (0,0) {origin};
+\end{tikzpicture}

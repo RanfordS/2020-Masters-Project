@@ -1,0 +1,47 @@
+\begin{tikzpicture}
+    [   > = {Stealth[scale=1.2]}
+    ,   func/.style=
+        {   draw
+        ,   circle
+        ,   inner sep = 0mm
+        ,   outer sep = 0mm
+        ,   minimum size = 5mm
+        }
+    ,   bbox/.style=
+        {   draw
+        ,   rectangle
+        ,   inner sep = 5mm
+        }
+    ]
+    % box 0
+    \node (B0) at (-30mm, 0mm) [bbox] {\phantom{\rule{30mm}{20mm}}};
+    \node (F0) at (-30mm,-10mm) [func] {\small$f$};
+    \node (G0) at (-15mm, 0mm) [func] {\small$g$};
+    \node (I0) at (-30mm, 25mm) {$i(0)$};
+    \node (O0) at (-30mm,-25mm) {$o(0)$};
+    \draw[->] (B0.west) to[out=0,in=180] (F0);
+    \draw[->] (B0.west) to (G0);
+    \draw[->] (B0.north) to (F0);
+    \draw[->] (B0.north) to[out=270,in=90] (G0);
+    \draw[->] (I0) to (B0.north);
+    \draw[->] (F0) to (O0);
+    % box 1
+    \node (B1) at (30mm, 0mm) [bbox] {\phantom{\rule{30mm}{20mm}}};
+    \node (F1) at (30mm,-10mm) [func] {\small$f$};
+    \node (G1) at (45mm, 0mm) [func] {\small$g$};
+    \node (I1) at ( 30mm, 25mm) {$i(1)$};
+    \node (O1) at ( 30mm,-25mm) {$o(1)$};
+    \draw[->] (B1.west) to[out=0,in=180] (F1);
+    \draw[->] (B1.west) to (G1);
+    \draw[->] (B1.north) to (F1);
+    \draw[->] (B1.north) to[out=270,in=90] (G1);
+    \draw[->] (I1) to (B1.north);
+    \draw[->] (F1) to (O1);
+    % inter
+    \node[above] (0mm,0mm) {h(1)};
+    \node (H0) at (-70mm,0mm) {h(0)};
+    \node (H2) at ( 70mm,0mm) {h(2)};
+    \draw[->] (G0) to (B1.west);
+    \draw[->] (H0) to (B0.west);
+    \draw[->] (G1) to (H2);
+\end{tikzpicture}

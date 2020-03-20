@@ -23,6 +23,8 @@ as a neuromuscular junction.
 
 \TODO{Section: Biological Neurons}
 
+
+
 \section{Artificial Intelligence}
 
 The idea of artificial beings capable of human intelligence can be traced back
@@ -35,6 +37,8 @@ explored by fiction in stories such as Mary Shelley's ``Frankenstein'', and
 Karel \v{C}apek's ``R.U.R.''.
 Some of the fictional writings of the $20^\text{th}$ century further continued
 exploring the concept in novels such as Isaac Asimov's ``I, Robot''.
+
+
 
 Academic research into artificial intelligence began around the 1940's,
 primarily due to findings in neurological research at the time.
@@ -69,6 +73,8 @@ The versatility of this definition is demonstrated in the following examples.
 While this model provided insight into the mechanisms by which neurons operate,
 the structure was static, and incapable of learning.
 
+
+
 McCulloch's work was later cited by psychologist \cite{Hebb:1949:Organization},
 who proposed that the structure of biological neural networks was dynamic, and
 that frequently repeated stimuli caused gradual development.
@@ -83,6 +89,8 @@ which suggested that learnt stimuli are processed differently to unknown
 stimuli.
 This hypothesis became known as Hebbian learning.
 
+
+
 Computer simulations applying this theory to a small network were done by
 \cite{Farley:1954:Simulation}.
 The actions of the network were compared to that of a servo system which must
@@ -96,6 +104,8 @@ were of great use for demonstrating computational simulations, which were
 considerably slower at the time.
 
 \TODO{Section: Artificial Intelligence}
+
+
 
 \subsection{Perceptrons}
 
@@ -137,6 +147,8 @@ probability.
 When attempting to use the perceptron for more complicated tasks, such as
 character recognition, it failed to produce better than chance results.
 
+
+
 After a decade of unsuccessful real world application attempts, a book titled
 ``\citetitle{Minsky:1969:Perceptrons}'' by \cite{Minsky:1969:Perceptrons}, was
 released.
@@ -146,6 +158,8 @@ calculate XOR predicates.
 A 2017 reissue of the book contained a foreword by L\'eon Bottou, who wrote
 ``Their rigorous work and brilliant technique does not make the perceptron look
 very good...''
+
+
 
 Following the book's release, perceptron research effectively halted for 15
 years until the first successful uses of multilayer networks by
@@ -175,11 +189,15 @@ where $\eta$ is the learning rate, which is a constant.
 
 \TODO{Subsection: Perceptrons}
 
+
+
 \subsection{Backpropagation}
 
 In order for a neural network to learn, it must undergo some form of
 optimisation process.
 For the perceptron, this process was one of positive and negative reinforcement.
+
+
 
 In the field of control theory, an optimisation method known as gradient descent
 was developed by \cite{Kelley:1960:Gradient}, in which a given function of the
@@ -209,6 +227,8 @@ A computer program will typically calculate the gradient via repeat applications
 of chain rule; if there are many small terms, the gradient will tend to zero,
 and the learning rate of the network will be minimal.
 
+
+
 One of the methods that overcame this problem was developed by
 \cite{Schmidhuber:1992:Compression}, where each layer of the network was
 pre-trained to predict the next input from previous inputs.
@@ -223,7 +243,7 @@ Further more, backpropagation and a simple variant the model outlined by
 \cite{McClelland:1986:Parallel}, have become the standard for neural networks.
 Namely
 \begin{align*}
-    x_i &= \phi\left(b_i + \sum_j w_{i,j} x_i\right),\\
+    x_i &= \phi\left(b_i + \sum_j w_{i,j} x_i\right),
 \end{align*}
 where $x_i$ is the output of neuron $i$, $w_{i,j}$ is the weight of connection
 from $j$ to $j$, $b_i$ is the input bias of $i$, and $\phi$ is the activation
@@ -231,7 +251,9 @@ function.
 
 \TODO{Subsection: Backpropagation}
 
-\section{Types of Artificial Neurons}
+
+
+\section{Other Types of Artificial Neural Networks}
 
 The preceding discussion has been focused on densely connected neural
 networks, where each neuron in a layer is connected to every neuron in the
@@ -240,6 +262,8 @@ architectures are often used together, and maybe more suitable under certain
 contexts.
 
 \TODO{Section: Types of Neurons}
+
+
 
 \subsection{Convolutional Neural Networks}
 
@@ -306,61 +330,69 @@ Finally, the output layer contains three units, each of which is a function of
 the previous layer's corresponding row sum.
 The most active unit is the phoneme present in the audio.
 
-Once trained, the network was able to detect the correct phoneme, in real time, 
+Once trained, the network was able to detect the correct phoneme, in real time,
 under a variety of contexts, with an error of 1.5\%, a significant improvement
 over the 6.3\% error from the most popular method at the time.
 
 
 
-% Applied to handwritten digits by \cite{LeCun:1989:Backpropagation}
-% 16 by 16 pixel images, each containing one digit
-% backpropagation gave better results that previous handcrafted networks
-% The network took a 16 by 16 pixel image containing one digit as it's input,
-% first layer convolves to create 12, 8 by 8 pixel feature maps
-% second convolves to create 12, 4 by 4 pixel feature maps,
-%   each only references 8 of the 12 previous layers maps
-% third layer fully connected
-% output fully connected
-% tanh activation function
-% each neuron had its own bias
 Similar techniques were used by \cite{LeCun:1989:Backpropagation}, to classify
 handwritten digits.
-A large number of 16 by 16 pixel images were used to train a network with three
-hidden layers using backpropagation.
-One of the main differences that \TODO{RESUME}
+A large number of 16 by 16 pixel images were used to train the network using
+backpropagation.
+The network consisted of two convolutional layers, and two dense layers.
+Although the all of the units in a feature map shared the same weights, each
+had a unique, adjustable bias.
+Once trained, the network correctly classified 99.86\% of the training data, and
+95\% of the test data.
 
 
 
-% Speech recognition with max pooling \cite{Yamaguchi:1990:Neural}
-% input separated into frames, $N$ is vocabulary size
-% event layer, convolves data from each frame twice to produce single output
-% the event layer outputs go through a pooling convolutional layer
-%   that forwards the maximum value
-%   exception: if all values are too low, the kernel size is increased
-% word net, $W_i$, $i=1,...,N$, convolution
-%   5 inputs densely to 5 hidden units to 1 output
-%   trained to fire when training examples belong to group $i$, and not when not
-% super net, $N$ units densely to $N+1$ hidden units to $N+1$ outputs
-%   only one output active for a given input
-%   output $i$ is active when word belongs to category $i$
-%   output $N+1$ is active if the word could not be categorised / was rejected
-% 97.1\% accuracy, 1.9\% rejected, 1.0\% error
+This technique of combining convolutional and dense dense layers was also used
+by \cite{Yamaguchi:1990:Neural}, for speech recognition.
+Similar to \citeauthor{Waibel:1989:Phoneme}, the network takes a 2D spectrogram
+as it's input and predicts which word was spoken.
 
-% A Convolutional Neural Network (CNN) layer contains sets of neurons that sample
-% regions of the previous layer, with all neurons within a set using the same
-% weight scheme.
+The first layer, referred to as the event-net, convolves the input spectrogram
+using a two layer subnetwork, which consists of a hidden partially connected
+layer, and a fully connected single unit output layer.
+Backpropagation is used to train each subnetwork of the event-net to only fire
+when a word of the corresponding category is inputted.
 
-% The 1D case may be expressed mathematically as
-% \begin{align*}
-%     y_i &= \phi\left(b + \sum_{j=0}^{S} w_j x_{i+j}\right),
-% \end{align*}
-% where $S$ is the kernel size.
-% \begin{center}
-%     \input{DiagramCNN.tex}
-%     \captionof{figure}{Example of a 1D CNN.}
-% \end{center}
-% CNNs have the advantage of encoding spacial information implicitly, which makes
-% them well suited for image processing.
+The second layer, referred to as the time-alignment procedure, performs an
+operation now known as max pooling, where each unit of the layer is the largest
+value from the response region. If all the values are similar, use the one from
+the middle of the search range; if all of the values are very low, the response
+region size is increased
 
-\subsection{RNN}
-\subsection{LSTM}
+The third layer, referred to as the word-net, is another convolutional layer
+using subnetwork, consisting of a fully connected layer, and a full connected
+single unit output layer.
+Backpropagation is used again in the same manner as in the event-net.
+
+The forth layer, referred to as the super-net, is another convolutional
+subnetwork that takes $N$ inputs and densely connects to $N+1$ outputs.
+Each output corresponds to a word, except the last which denotes a rejected
+result.
+
+Finally, a decision algorithm compares the two highest outputs and rejects the
+result if the difference does not exceed a preset threshold.
+
+
+
+\subsection{Recurrent Neural Networks}
+
+% \cite{Schmidhuber:1992:Learning}
+% history compression
+%   $o(t) = f(i(t),h(t))$, $h(t) = g(i(t-1),h(t-1))$
+%   $o$ is output/prediction
+%   $i$ is input
+%   $h$ is hidden/internal state
+%   $f$ and $g$ are functions
+\begin{center}
+    \input{DiagramHistoryCompression.tex}
+\end{center}
+
+%\subsection{LSTM}
+
+

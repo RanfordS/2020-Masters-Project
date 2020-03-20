@@ -1,4 +1,6 @@
 \begin{tikzpicture}%[x=1pt,y=1pt]
+    [   > = {Stealth[scale=1.2]}
+    ]
     \setlength{\rs}{1.5pt}
     % Nucleus
     \fill (0\rs,0\rs) circle (2\rs);
@@ -62,25 +64,25 @@
             \draw[thick] (86\rs,-4\rs) -- (89\rs,-4\rs);
     % Labels
     % Soma
-    \draw[latex'-] (65:9\rs) -- (65:36\rs);
+    \draw[<-] (65:9\rs) -- (65:36\rs);
     \node[anchor=south west,inner sep=1\rs] at (65:36\rs) {Soma};
     % Nucleus
-    \draw[latex'-] (-65:3\rs) -- (-65:36\rs);
+    \draw[<-] (-65:3\rs) -- (-65:36\rs);
     \node[anchor=north west,inner sep=1\rs] at (-65:36\rs) {Nucleus};
     % Dendrite
     %\draw[latex'-] (225:25\rs) -- (225:36\rs);
-    \draw[latex'-] (-17.7\rs,-25.7\rs) -- (-30\rs,-38\rs);
+    \draw[<-] (-17.7\rs,-25.7\rs) -- (-30\rs,-38\rs);
     \node[anchor=north east,inner sep=1\rs] at (-30\rs,-38\rs) {Dendrite};
     % Axon
     \draw[decorate,decoration={brace,raise=5\rs,amplitude=4\rs}] (12\rs,0\rs) -- (80\rs,0\rs);
     \node[anchor=south,inner sep=1\rs] at (46\rs,9\rs) {Axon};
     % Axon Terminal
-    \draw[latex'-] (87\rs,8\rs) -- (95\rs,16\rs);
+    \draw[<-] (87\rs,8\rs) -- (95\rs,16\rs);
     \node[anchor=south west,inner sep=1\rs] at (95\rs,16\rs) {Axon Terminal};
     % Schwann Cell
-    \draw[latex'-] (75.5\rs,-1.5\rs) -- (84\rs,-10\rs);
+    \draw[<-] (75.5\rs,-1.5\rs) -- (84\rs,-10\rs);
     \node[anchor=north west,inner sep=1\rs] at (84\rs,-10\rs) {Schwann Cell};
     % Myelin Sheath
-    \draw[latex'-] (50\rs,-4\rs) -- (66\rs,-20\rs);
+    \draw[<-] (50\rs,-4\rs) -- (66\rs,-20\rs);
     \node[anchor=north west,inner sep=1\rs] at (66\rs,-20\rs) {Myelin Sheath};
 \end{tikzpicture}

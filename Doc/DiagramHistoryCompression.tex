@@ -15,27 +15,27 @@
     ]
     % box 0
     \node (B0) at (-30mm, 0mm) [bbox] {\phantom{\rule{30mm}{20mm}}};
-    \node (F0) at (-30mm,-10mm) [func] {\small$f$};
+    \node (F0) at (-30mm, 10mm) [func] {\small$f$};
     \node (G0) at (-15mm, 0mm) [func] {\small$g$};
-    \node (I0) at (-30mm, 25mm) {$i(0)$};
-    \node (O0) at (-30mm,-25mm) {$o(0)$};
+    \node (I0) at (-30mm,-25mm) {$i(0)$};
+    \node (O0) at (-30mm, 25mm) {$o(0)$};
     \draw[->] (B0.west) to[out=0,in=180] (F0);
     \draw[->] (B0.west) to (G0);
-    \draw[->] (B0.north) to (F0);
-    \draw[->] (B0.north) to[out=270,in=90] (G0);
-    \draw[->] (I0) to (B0.north);
+    \draw[->] (B0.south) to (F0);
+    \draw[->] (B0.south) to[out=90,in=270] (G0);
+    \draw[->] (I0) to (B0.south);
     \draw[->] (F0) to (O0);
     % box 1
     \node (B1) at (30mm, 0mm) [bbox] {\phantom{\rule{30mm}{20mm}}};
-    \node (F1) at (30mm,-10mm) [func] {\small$f$};
+    \node (F1) at (30mm, 10mm) [func] {\small$f$};
     \node (G1) at (45mm, 0mm) [func] {\small$g$};
-    \node (I1) at ( 30mm, 25mm) {$i(1)$};
-    \node (O1) at ( 30mm,-25mm) {$o(1)$};
+    \node (I1) at ( 30mm,-25mm) {$i(1)$};
+    \node (O1) at ( 30mm, 25mm) {$o(1)$};
     \draw[->] (B1.west) to[out=0,in=180] (F1);
     \draw[->] (B1.west) to (G1);
-    \draw[->] (B1.north) to (F1);
-    \draw[->] (B1.north) to[out=270,in=90] (G1);
-    \draw[->] (I1) to (B1.north);
+    \draw[->] (B1.south) to (F1);
+    \draw[->] (B1.south) to[out=90,in=270] (G1);
+    \draw[->] (I1) to (B1.south);
     \draw[->] (F1) to (O1);
     % inter
     \node[above] (0mm,0mm) {h(1)};

@@ -66,7 +66,7 @@ The versatility of this definition is demonstrated in the following examples.
         $\displaystyle N_R(t+2) = N_A(t) \vee N_B(t)$\\
     \end{tabular}
     \parbox{0.9\textwidth}{%
-    \captionof{figure}{Two common logic circuits using McCullochs neurons
+    \captionof{figure}{Two common logic circuits using McCulloch's neurons
     where the arrows and circles indicate excitatory and inhibitory
     connections respectively.}}
 \end{center}
@@ -386,6 +386,13 @@ result if the difference does not exceed a preset threshold.
 
 \subsection{Recurrent Neural Networks}
 
+So far, the progression of time has been implemented as being another spacial
+dimension.
+Although this methodology proved effective for phoneme recognition tasks, it did
+not work for other, more advanced temporal tasks.
+
+
+
 % \cite{Jordan:1986:Serial}
 % which describes how sequences of actions might be learned and performed
 %   parallel interactions across time (coarticulation) and
@@ -409,11 +416,47 @@ result if the difference does not exceed a preset threshold.
 % allows both temporal order and parallel influences to be represented in terms
 % of activation
 % if a network has one or more cycles, it is recurrent
+%
+% trained
+\cite{Jordan:1986:Serial}, noted that representing time as a spacial dimension
+required the network inputs to be stored in a buffer.
+This buffer storage method was susceptible to a number of problems, including:
+\begin{itemize}
+    \item inability to account for input errors,
+    \item lack of distinction between relative positions,
+    \item difficulty with repeated actions, and
+    \item difficulty processing different orderings of the same actions.
+\end{itemize}
+He proposed an alternative architecture, where the network takes the temporal
+input in serial, whilst modifying its internal state.
+This internal state is implemented by introducing cycles and delays into the
+network.
+Any network containing one or more cycles is described as being recurrent.
+
+He proposed an alternative architecture, where the input layer contains two
+groups of units:
+input units, providing data from the current time frame;
+and state units, providing compressed data from all previous time frames.
+A hidden layer connects fully to all units from both groups in the input layer.
+The output layer connects fully to the hidden layer.
+The state units are connected
 \begin{center}
     \input{DiagramJordan.tex}
-    \captionof{figure}{Representation of connectivity in Jordan's recurrent
-    neural network.}
+    \captionof{figure}{Example of Jordan's recurrent neural network.}
 \end{center}
+% each hidden layer unit takes all input and state units as its input
+% each state unit takes all output units and all state units as its input
+
+
+% \cite{Robinson:1987:Utility}
+% based on control theory
+% letter to word conversion
+%   26 input, one for each letter
+%   34 hidden
+%   34 state
+%    8 output, one for each word
+%   learnt to output word at the start of the first letter of next word
+% might not include
 
 
 
@@ -428,6 +471,14 @@ result if the difference does not exceed a preset threshold.
 %   cannot distinguish between absolute and relative temporal positions
 % proposed systems with memory
 %   ``allow time to be represented by the effect it has on processing''
+\begin{center}
+    \input{DiagramElman.tex}
+    \captionof{figure}{Example of Elman's recurrent neural network.}
+\end{center}
+% each hidden unit has a corresponding state unit
+% each state unit takes the corresponding hidden unit as its input
+% each hidden unit takes the corresponding state unit and the previous layer as
+% its input
 
 
 

@@ -393,31 +393,6 @@ not work for other, more advanced temporal tasks.
 
 
 
-% \cite{Jordan:1986:Serial}
-% which describes how sequences of actions might be learned and performed
-%   parallel interactions across time (coarticulation) and
-%   parallel interactions across space (dual-task interference)
-%   two aspects of a common underlying process
-% natural interpretation as a dynamical system, and a continuous time
-% perspective is possible
-% critique of associative chaining
-%   fails to allow different orderings of the same actions
-% buffer critiques
-%   problems accounting for error patterns
-%   interactions between actions should depend on relative position, not absolute
-% other critiques
-%   control elements are different for different orderings of the same actions
-%     ce for B in ABC differs from ce for B in CBA, requires large numbers of
-%     units and performs badly
-%   assume actions are produced in parallel
-%     temporal ordering problems
-%     difficulty with sequences in which there are repeated occurrences of actions
-% distinction between state and output
-% allows both temporal order and parallel influences to be represented in terms
-% of activation
-% if a network has one or more cycles, it is recurrent
-%
-% trained
 \cite{Jordan:1986:Serial}, noted that representing time as a spacial dimension
 required the network inputs to be stored in a buffer.
 This buffer storage method was susceptible to a number of problems, including:
@@ -433,19 +408,26 @@ This internal state is implemented by introducing cycles and delays into the
 network.
 Any network containing one or more cycles is described as being recurrent.
 
-He proposed an alternative architecture, where the input layer contains two
-groups of units:
+Such a network was initially trained to measure 8 phonetic features across time.
+The input layer contained two groups of units:
 input units, providing data from the current time frame;
 and state units, providing compressed data from all previous time frames.
 A hidden layer connects fully to all units from both groups in the input layer.
 The output layer connects fully to the hidden layer.
-The state units are connected
+The state units are connected to the output units and to themselves.
 \begin{center}
     \input{DiagramJordan.tex}
     \captionof{figure}{Example of Jordan's recurrent neural network.}
 \end{center}
-% each hidden layer unit takes all input and state units as its input
-% each state unit takes all output units and all state units as its input
+During training, the network was exposed to one utterance at a time, and trained
+to output the corresponding measures for each time frame.
+For some combinations phonemes and features, any value is acceptable, these were
+marked as ``don't-care'', and did not affect the error.
+Due to the recurrent nature of the network, weight values were only updated
+every 4 time steps.
+The network learnt to process utterances and produce feature graphs that could
+be used to identify the correct phonemes.
+
 
 
 % \cite{Robinson:1987:Utility}
@@ -460,25 +442,28 @@ The state units are connected
 
 
 
-% \cite{Elman:1990:Finding}
-% notes that linguists treat sentences as if available instantaneously
-% represent time implicitly
-% critiques of parallel
-%   requires buffered input to present all data simultaneously
-%   no evidence of biological shift registers
-%   when should input be processed
-%   suggests that all inputs should be the same length
-%   cannot distinguish between absolute and relative temporal positions
-% proposed systems with memory
-%   ``allow time to be represented by the effect it has on processing''
+\cite{Elman:1990:Finding}, expanded Jordan's critiques of buffer-based
+techniques by noting that there was no evidence of any biological equivalent.
+He proposed that the state units should correspond to the hidden layer instead.
+For each unit in the hidden layer, there is a corresponding state unit, which
+holds the previous value of the hidden unit.
+Units in the hidden layer is connected to the corresponding state unit, and
+fully to the previous layer.
 \begin{center}
     \input{DiagramElman.tex}
     \captionof{figure}{Example of Elman's recurrent neural network.}
 \end{center}
-% each hidden unit has a corresponding state unit
-% each state unit takes the corresponding hidden unit as its input
-% each hidden unit takes the corresponding state unit and the previous layer as
-% its input
+The network structure was initially used to predict sequential bit patterns.
+In one such experiment, a number of random sentences were generated using a
+small lexicon, and were presented to a network one character at a time without
+breaks.
+Each character was presented to the network as a 5-bit number, via 5 input
+units.
+The network processes this input using 20 hidden units each with a respective
+state unit, and outputs a prediction of the next letter via 5 output units.
+
+Once trained, the network struggled to predict the first letter of each random
+selected word, but was able to accurately predict the letters that followed.
 
 
 
@@ -489,11 +474,27 @@ The state units are connected
 %   $i$ is input
 %   $h$ is hidden/internal state
 %   $f$ and $g$ are functions
-\begin{center}
-    \input{DiagramHistoryCompression.tex}
-    \captionof{figure}{Visualisation of history compression.}
-\end{center}
+%\begin{center}
+%    \input{DiagramHistoryCompression.tex}
+%    \captionof{figure}{Visualisation of history compression.}
+%\end{center}
 
-%\subsection{LSTM}
+
+
+% \cite{Hochreiter:1997:Long}
+% error signals ``flowing backwards in time'' tend to either blow up or vanish
+% recurrent network architecture
+% appropriate gradient-based learning algorithm
+% constant error flow through internal states of special units
+% achieved using gates that control when the value can be changed or read
+% prevents the net's attempts at storing long time lag memories from perturbing
+% activations representing easily learnable short time lag memories
+% variant of RTRL for learning
+% Learnt long-lag-time tasks
+
+
+
+
+
 
 

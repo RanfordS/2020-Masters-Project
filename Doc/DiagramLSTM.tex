@@ -1,0 +1,87 @@
+\begin{tikzpicture}
+    [   > = {Stealth}%[scale=1.2]}
+    ,   neuron/.style =
+        {   draw
+        ,   circle
+        ,   fill = white
+        ,   inner sep = 2pt
+        ,   outer sep = 0mm
+        }
+    ,   route/.style =
+        {   draw
+        ,   circle
+        ,   fill = black
+        ,   inner sep = 0mm
+        ,   outer sep = 0mm
+        ,   minimum size = 3pt
+        }
+    ,   phant/.style =
+        {   inner sep = 0mm
+        ,   outer sep = 0mm
+        ,   minimum size = 0mm
+        }
+    ]
+    \foreach\n in {0,1}
+    {   \pgfmathtruncatemacro{\x}{70*\n-35}
+        \draw (1mm*\x-20mm,-25mm) rectangle (1mm*\x+20mm,25mm);
+        \node[phant] (L\n) at (1mm*\x-25mm,30mm) {};
+        \node[phant] (R\n) at (1mm*\x+25mm,30mm) {};
+
+        \node[neuron] (I\n) at (1mm*\x-10mm,-25mm) {\tiny$+$};
+        \node[neuron] (F\n) at (1mm*\x-10mm,-17mm) {\tiny$f$};
+        \draw[->] (I\n) to (F\n);
+        \draw[<-] (I\n) to ++(0mm,-10mm);
+
+        \node[route] (O\n) at (1mm*\x-10mm,25mm) {};
+        \node[neuron] (G\n) at (1mm*\x-10mm,14mm) {\tiny$g$};
+        \node[neuron] (OM\n) at (1mm*\x-10mm,20mm) {.};
+        \draw[->] (G\n) to (OM\n);
+        \draw[->] (OM\n) to (O\n);
+
+        \node[neuron] (IG\n) at (1mm*\x+20mm,-10mm) {\tiny$+$};
+        \node[neuron] (IF\n) at (1mm*\x+13mm,-10mm) {\tiny$\sigma$};
+        \node[neuron] (IM\n) at (1mm*\x-10mm,-10mm) {.};
+        \draw[->] (IG\n) to (IF\n);
+        \draw[->] (F\n) to (IM\n);
+        \draw[->] (IF\n) to (IM\n);
+
+        \node[neuron] (FG\n) at (1mm*\x+20mm,0mm) {\tiny$+$};
+        \node[neuron] (FF\n) at (1mm*\x+13mm,0mm) {\tiny$\sigma$};
+        \draw[->] (FG\n) to (FF\n);
+
+        \node[neuron] (OG\n) at (1mm*\x+20mm,10mm) {\tiny$+$};
+        \node[neuron] (OF\n) at (1mm*\x+13mm,10mm) {\tiny$\sigma$};
+        \draw[->] (OG\n) to (OF\n);
+        \draw[->] (OF\n) to[out=135,in=0] (OM\n);
+
+        \node[neuron] (M\n) at (1mm*\x-10mm,0mm) {\tiny$+$};
+        \node[neuron] (MM\n) at (1mm*\x+6mm,0mm) {.};
+        \draw[->] (FF\n) to (MM\n);
+        \draw[->] (M\n) to[out=45,in=135] (MM\n);
+        \draw[->] (MM\n) to[out=225,in=315] (M\n);
+        \draw[->] (IM\n) to (M\n);
+        \draw[->] (M\n) to (G\n);
+
+        \draw[-] (O\n) to[out=45,in=135] (R\n);
+        \draw[->] (R\n) to[out=315,in=45] (IG\n);
+        \draw[->] (R\n) to[out=315,in=45] (FG\n);
+        \draw[->] (R\n) to[out=315,in=45] (OG\n);
+
+        \draw[->] (O\n) .. controls +(-25mm,20mm) and +(-25mm,-20mm)  .. (I\n);
+        \draw[->] (1mm*\x+30mm,-35mm) to[out=90,in=325] (IG\n);
+        \draw[->] (1mm*\x+30mm,-35mm) to[out=90,in=325] (FG\n);
+        \draw[->] (1mm*\x+30mm,-35mm) to[out=90,in=325] (OG\n);
+        %peep holes
+        \draw[->] (M\n) to[out=-67.5,in=135] (IG\n);
+        \draw[->] (M\n) to[out=45,in=135] (FG\n);
+        \draw[->] (M\n) to[out=45,in=135] (OG\n);
+    }
+    %\draw[-] (O1) to[out=135,in=45] (L1);
+    %\draw[->] (L1) to[out=225,in=45] (IG0);
+    %\draw[->] (L1) to[out=225,in=45] (FG0);
+    %\draw[->] (L1) to[out=225,in=45] (OG0);
+    \draw[-] (O0) to[out=45,in=135] (R1);
+    \draw[->] (O1) to[out=135,in=45] (IG0);
+    \draw[->] (O1) to[out=135,in=45] (FG0);
+    \draw[->] (O1) to[out=135,in=45] (OG0);
+\end{tikzpicture}

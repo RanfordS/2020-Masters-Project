@@ -474,26 +474,47 @@ selected word, but was able to accurately predict the letters that followed.
 %   $i$ is input
 %   $h$ is hidden/internal state
 %   $f$ and $g$ are functions
-%\begin{center}
-%    \input{DiagramHistoryCompression.tex}
-%    \captionof{figure}{Visualisation of history compression.}
-%\end{center}
+\begin{center}
+    \input{DiagramHistoryCompression.tex}
+    \captionof{figure}{Visualisation of history compression.}
+\end{center}
 
 
 
 % \cite{Hochreiter:1997:Long}
+% standard RNNs fail to learn in the presence of
+% time lags greater than 5 - 10 discrete time steps
 % error signals ``flowing backwards in time'' tend to either blow up or vanish
 % recurrent network architecture
 % appropriate gradient-based learning algorithm
 % constant error flow through internal states of special units
+% (constant error carousel) prevent vanishing/exploding gradient through unit
 % achieved using gates that control when the value can be changed or read
 % prevents the net's attempts at storing long time lag memories from perturbing
 % activations representing easily learnable short time lag memories
 % variant of RTRL for learning
 % Learnt long-lag-time tasks
+% When gates are closed (activation around zero), irrelevant inputs and noise
+% do not enter the cell, and the cell state does not perturb the remainder of
+% the network
+% gates are calculated using weighted sums of layer inputs and ouputs
 
 
 
+% \cite{Gers:1999:Learning}
+% LSTM fails to learn to correctly process certain very long or continual time
+% series that are not a priori segmented into appropriate training subsequences
+% with clearly defined beginnings and ends
+% continual input stream eventually may cause the internal values of the cells
+% to grow without bound, even if the repetitive nature of the problem suggests
+% they should be reset occasionally
+% introduced forget gate
+% formulation allows for the network to learn to never forget inputs, hence new
+% model is an expansion of the previous and can solve any problem that the
+% previous could
+\begin{center}
+    \input{DiagramLSTM.tex}
+\end{center}
 
 
 

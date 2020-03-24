@@ -1,6 +1,6 @@
 \chapter{Introduction to Neural Networks}
 
-\TODO{Chapter: Introduction}
+%\TODO{Chapter: Introduction}
 
 \section{Biological Neurons}
 
@@ -21,7 +21,7 @@ If the threshold is met, electrical signals are sent along the axon to the
 terminal, where it is connected to other neurons, or to a controllable cell such
 as a neuromuscular junction.
 
-\TODO{Section: Biological Neurons}
+%\TODO{Section: Biological Neurons}
 
 
 
@@ -77,11 +77,8 @@ the structure was static, and incapable of learning.
 
 McCulloch's work was later cited by psychologist \cite{Hebb:1949:Organization},
 as important for understanding how logical operations are performed; but
-proposed that the structure of biological neurons was not static, and that
-frequently repeated stimuli caused gradual development.
-%McCulloch's work was later cited by psychologist \cite{Hebb:1949:Organization},
-%who proposed that the structure of biological neural networks was dynamic, and
-%that frequently repeated stimuli caused gradual development.
+proposed that the structure of biological neurons was dynamic, not static, and
+that frequently repeated stimuli caused gradual development.
 At the scale of neuron, it was theorised that if one neuron successfully
 excited another, the connection between them would strengthen, hence
 increasing the likelihood that the former would be able to excite the latter
@@ -107,7 +104,7 @@ Although the results were of little neurophysiological significance, the results
 were of great use for demonstrating computational simulations, which were
 considerably slower at the time.
 
-\TODO{Section: Artificial Intelligence}
+%\TODO{Section: Artificial Intelligence}
 
 
 
@@ -191,7 +188,7 @@ the most simple of which was given by
 \end{align*}
 where $\eta$ is the learning rate, which is a constant.
 
-\TODO{Subsection: Perceptrons}
+%\TODO{Subsection: Perceptrons}
 
 
 
@@ -253,7 +250,7 @@ where $x_i$ is the output of neuron $i$, $w_{i,j}$ is the weight of connection
 from $j$ to $j$, $b_i$ is the input bias of $i$, and $\phi$ is the activation
 function.
 
-\TODO{Subsection: Backpropagation}
+%\TODO{Subsection: Backpropagation}
 
 
 
@@ -265,7 +262,7 @@ previous, but it is important to note, that many other neural network
 architectures are often used together, and maybe more suitable under certain
 contexts.
 
-\TODO{Section: Types of Neurons}
+%\TODO{Section: Types of Neurons}
 
 
 
@@ -462,7 +459,7 @@ units.
 The network processes this input using 20 hidden units each with a respective
 state unit, and outputs a prediction of the next letter via 5 output units.
 
-Once trained, the network struggled to predict the first letter of each random
+Once trained, the network struggled to predict the first letter of each randomly
 selected word, but was able to accurately predict the letters that followed.
 
 
@@ -474,34 +471,56 @@ selected word, but was able to accurately predict the letters that followed.
 %   $i$ is input
 %   $h$ is hidden/internal state
 %   $f$ and $g$ are functions
-\begin{center}
-    \input{DiagramHistoryCompression.tex}
-    \captionof{figure}{Visualisation of history compression.}
-\end{center}
+%\cite{Schmidhuber:1992:Learning} introduced the principle of history
+%compression.
+%A discrete time
+%adaptive method for removing redundant information from sequences
+%\begin{center}
+%    \input{DiagramHistoryCompression.tex}
+%    \captionof{figure}{Visualisation of history compression.}
+%\end{center}
 
 
 
-% \cite{Hochreiter:1997:Long}
-% standard RNNs fail to learn in the presence of
-% time lags greater than 5 - 10 discrete time steps
-% error signals ``flowing backwards in time'' tend to either blow up or vanish
+The recurrent neural networks previously described performed well for problems
+with short time delays, but failed to perform tasks involving more than 10
+discrete time steps.
+The reason for this is the vanishing/exploding gradient problem.
+Because errors backpropagate through the recurrent connections across multiple
+time steps, the errors either tend towards zero or infinity.
+
+A solution to this problem was proposed by \cite{Hochreiter:1997:Long}, where
+the error term of the memory unit could be guaranteed to be a fixed constant.
+This was achieved by using multiplicative gates to control the input and output
+of the memory cell, resulting in a ``constant error carousel''.
+
+Each cell took a weighted sum of the inputs and own previous state; and applied
+a nonlinear function $g$ to obtain the net input signal, which connects to a
+single, self-connected state unit.
+A nonlinear function $h$ is applied to the value of the state unit to obtain
+the output signal.
+Gate units were controlled by taking a weighted sum of the layers inputs and
+outputs, applying a nonlinear function, and multiplying by the relevant signal.
+These gates prevented the network from perturbing its state, and prevents the
+cell state from perturbing the reset of the network, allowing it to learn
+long-lag-time tasks,
+This new neural architecture was termed ``Long Short-Term Memory'' (LSTM).
 % recurrent network architecture
 % appropriate gradient-based learning algorithm
-% constant error flow through internal states of special units
-% (constant error carousel) prevent vanishing/exploding gradient through unit
-% achieved using gates that control when the value can be changed or read
-% prevents the net's attempts at storing long time lag memories from perturbing
-% activations representing easily learnable short time lag memories
 % variant of RTRL for learning
-% Learnt long-lag-time tasks
-% When gates are closed (activation around zero), irrelevant inputs and noise
-% do not enter the cell, and the cell state does not perturb the remainder of
-% the network
-% gates are calculated using weighted sums of layer inputs and ouputs
 
 
 
-% \cite{Gers:1999:Learning}
+Although LSTM networks could learn long-lag-time tasks, they could not learn
+certain, very long inputs that contain multiple sub-sequences.
+This was because continual input streams would cause the cell state to grow
+without bound, even in cases where the inputs suggest that the state should be
+occasionally reset.
+This problem was solved by \cite{Gers:1999:Learning}, by introducing a third
+gate to the LSTM, which controlled the cell's internal recurrent connection.
+
+It should be noted that an LSTM cell can learn to never forget, hence recovering
+the previous model.
 % LSTM fails to learn to correctly process certain very long or continual time
 % series that are not a priori segmented into appropriate training subsequences
 % with clearly defined beginnings and ends
@@ -512,10 +531,26 @@ selected word, but was able to accurately predict the letters that followed.
 % formulation allows for the network to learn to never forget inputs, hence new
 % model is an expansion of the previous and can solve any problem that the
 % previous could
+
+
+
+A further expansion of the model by \cite{Gers:2000:Recurrent}, added
+``peephole'' connections between the internal state unit and the gates, allowing
+the gates to access the state, even when the output gate was closed.
+Additionally, the output function, $h$, was removed, as there was no empirical
+evidence to suggest it was required.
+
+These peephole connections allowed the model to perform count and timing tasks,
+such as producing nonlinear, precisely timed spikes.
 \begin{center}
     \input{DiagramLSTM.tex}
+    \parbox{0.9\textwidth}{%
+    \captionof{figure}{Visualisation of two LSTM units, where $\sigma$,
+    $f$, and $g$ are function units;
+    $+$ is a weighted summation unit; and $\cdot$ is multiply unit.}}
 \end{center}
-
+% during learning no error signals are propagated back from gates
+% via peephole connections
 
 
 

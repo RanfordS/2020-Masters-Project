@@ -1,5 +1,5 @@
 \begin{tikzpicture}
-    [   > = {Stealth}%[scale=1.2]}
+    [   > = {Stealth}
     ,   neuron/.style =
         {   draw
         ,   circle
@@ -28,15 +28,16 @@
         \node[phant] (R\n) at (1mm*\x+25mm,30mm) {};
 
         \node[neuron] (I\n) at (1mm*\x-10mm,-25mm) {\tiny$+$};
-        \node[neuron] (F\n) at (1mm*\x-10mm,-17mm) {\tiny$f$};
+        \node[neuron] (F\n) at (1mm*\x-10mm,-17mm) {\tiny$g$};
         \draw[->] (I\n) to (F\n);
         \draw[<-] (I\n) to ++(0mm,-10mm);
 
         \node[route] (O\n) at (1mm*\x-10mm,25mm) {};
-        \node[neuron] (G\n) at (1mm*\x-10mm,14mm) {\tiny$g$};
+        \node[neuron] (G\n) at (1mm*\x-10mm,14mm) {\tiny$h$};
         \node[neuron] (OM\n) at (1mm*\x-10mm,20mm) {.};
         \draw[->] (G\n) to (OM\n);
         \draw[->] (OM\n) to (O\n);
+        \draw[->] (O\n) to ++(0mm,10mm);
 
         \node[neuron] (IG\n) at (1mm*\x+20mm,-10mm) {\tiny$+$};
         \node[neuron] (IF\n) at (1mm*\x+13mm,-10mm) {\tiny$\sigma$};
@@ -71,7 +72,7 @@
         \draw[->] (1mm*\x+30mm,-35mm) to[out=90,in=325] (IG\n);
         \draw[->] (1mm*\x+30mm,-35mm) to[out=90,in=325] (FG\n);
         \draw[->] (1mm*\x+30mm,-35mm) to[out=90,in=325] (OG\n);
-        %peep holes
+        %peep hole connectionss
         \draw[->] (M\n) to[out=-67.5,in=135] (IG\n);
         \draw[->] (M\n) to[out=45,in=135] (FG\n);
         \draw[->] (M\n) to[out=45,in=135] (OG\n);
@@ -84,4 +85,12 @@
     \draw[->] (O1) to[out=135,in=45] (IG0);
     \draw[->] (O1) to[out=135,in=45] (FG0);
     \draw[->] (O1) to[out=135,in=45] (OG0);
+    \node[anchor=west] (IL) at ($(IG1)+(15mm,0mm)$) {\tiny In gate};
+    \node[anchor=west] (FL) at ($(FG1)+(15mm,0mm)$) {\tiny Forget gate};
+    \node[anchor=west] (OL) at ($(OG1)+(15mm,0mm)$) {\tiny Out gate};
+    \draw[densely dotted] (IL) to (IG1);
+    \draw[densely dotted] (FL) to (FG1);
+    \draw[densely dotted] (OL) to (OG1);
+    \draw[densely dotted] (-55mm,-41mm) rectangle (75mm,-35mm);
+    \node at (10mm,-38mm) {\tiny Previous layer};
 \end{tikzpicture}

@@ -41,27 +41,31 @@ train_y = (train_y - mean)/std
 ## Initialise weights with random values
 w = np.array ([0.1*np.random.uniform () for i in inputs])
 
+## Activation function
+def activ (X, i, w):
+    return np.tanh (np.dot (X[i,:], w))
+
 ## Initial error value
-y1 = np.tanh (np.array([np.dot (train_X[i,:], w) for i in range (num_train)]))
-e1 = train_y - y1
-mse_start = e1.var ()
+y_1 = np.array ([activ (train_X, i, w) for i in range (num_train)])
+err_1 = train_y - y_1
+mse_start = err_1.var ()
 
 ## Main loop
 W = [w]
 k = 0
 for _ in range (num_epochs):
     for n in range (num_train):
-        yk = np.tanh (np.dot (train_X[n,:], w))
-        err = yk - train_y[n]
-        g = train_X[n,:] * ((1 - yk**2)*err)
+        y_k = activ (train_X, n, w)
+        err = y_k - train_y[n]
+        g = train_X[n,:] * ((1 - y_k**2)*err)
         w = w - eta*g
         W.append (w)
         k += 1
 
 ## Final error value
-y2 = np.tanh (np.array([np.dot (train_X[i,:], w) for i in range (num_train)]))
-e2 = train_y - y2
-mse_end = e2.var()
+y_2 = np.array ([activ (train_X, i, w) for i in range (num_train)])
+err_2 = train_y - y_2
+mse_end = err_2.var()
 
 ## Display results
 # weights
@@ -77,7 +81,7 @@ W = np.array (W)
 K = range (k+1)
 for i in range (num_inputs):
     plt.plot (K, W[:,i].tolist(), label="$w_{{{0}}}$".format (i))
-
+# save plot and display
 plt.legend ()
 if plot_filename:
     plt.savefig (plot_filename)

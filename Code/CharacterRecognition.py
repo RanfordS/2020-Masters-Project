@@ -24,7 +24,7 @@ x_train = x_train/255.0
 x_test  = x_test /255.0
 
 ## Custom activation
-def act_threshhold (x):
+def act_threshold (x):
     condition = tf.less (x, tf.constant (0.0))
     #return tf.where (condition, tf.constant (0.0), x)# + tf.constant (1.0))
     #return tf.where (condition, tf.constant (0.0), x*x)
@@ -34,7 +34,7 @@ def act_threshhold (x):
     #return tf.where (condition, tf.constant (0.0), tf.constant (1.0))
     #return tf.where (condition, tf.constant (0.0), tf.constant (1.0) - tf.math.exp (-x))
     #return tf.where (condition, tf.constant (0.0), tf.math.exp (x))
-    return tf.where (condition, tf.constant (0.0), x - x*tf.math.exp (x))
+    return tf.where (condition, tf.constant (0.0), x - x*tf.math.exp (-x))
     #return tf.math.exp (x)
     #return tf.where (condition, tf.constant (0.0), tf.math.acos (x))
     #return tf.where (condition, x*x, x)
@@ -43,7 +43,7 @@ def act_threshhold (x):
 ## Create model
 model = tf.keras.models.Sequential (
 [   layers.Flatten (input_shape=sample_shape)
-,   layers.Dense (128, activation=act_threshhold)#'relu')#act_threshhold)
+,   layers.Dense (128, activation='relu')#'relu' or act_threshhold
 ,   layers.Dense (10, activation="softmax")
 ])
 model.compile (optimizer='adam',
@@ -62,7 +62,7 @@ result = model.fit (x_train, y_train,
 plt.plot (range (num_epochs), result.history['loss'], label='loss')
 plt.plot (range (num_epochs), result.history['val_loss'], label='validation')
 plt.legend ()
-plt.show ()               
+plt.show ()
 
 predictions = model.predict (x_test)
 

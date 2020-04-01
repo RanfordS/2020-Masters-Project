@@ -7,7 +7,7 @@ from tensorflow import keras
 ##### Settings #####
 
 ## Parameters
-num_epochs = 2000
+num_epochs = 10000
 max_num_hidden = 3
 # base eta value
 eta = 0.05
@@ -52,6 +52,7 @@ eta /= num_samples
 
 ## Test various hidden node counts
 for num_hidden in range (1, max_num_hidden + 1):
+    print ("Hidden nodes: {}".format (num_hidden))
 
     ## Initialise weights
     np.random.seed (123456)
@@ -79,7 +80,10 @@ for num_hidden in range (1, max_num_hidden + 1):
     ## Plot
     plt.plot (range (num_epochs), mse, label="Hidden Neurons = {0}".format (num_hidden))
 
+# save plot and display
 plt.legend ()
 if plot_filename:
     plt.savefig (plot_filename)
 plt.show ()
+
+##### EOF #####

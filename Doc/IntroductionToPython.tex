@@ -55,7 +55,7 @@ used them to predict the value of the house.
 
 Training was performed using backpropagation, defined by the equation
 \begin{align*}
-    \Delta w_i &= -\eta\Rpdiff{\text{err}^2}{w_i},\\
+    \Delta w_i &= \eta\Rpdiff{\text{err}^2}{w_i},\\
     \text{err} &= y_p - y_t,
 \end{align*}
 where $y_p$ is the network prediction, and $y_t$ is the target value.
@@ -82,24 +82,68 @@ By chain rule,
 The factor of 2 can be absorbed by the $\eta$ term, and $\Delta w_i$ can be
 written in vector notation, giving
 \begin{align*}
-    \Delta \mathbf{w} &= -\eta\cdot\mathbf{x}\cdot (1-y_k^2)\cdot \text{err}.
+    \Delta \mathbf{w} &= \eta\cdot\mathbf{x}\cdot (1-y_k^2)\cdot \text{err}.
 \end{align*}
 Weights were updated after each sample using
 \begin{align*}
-    \mathbf{w}' &= \mathbf{w} + \Delta\mathbf{w},
+    \mathbf{w}' &= \mathbf{w} - \Delta\mathbf{w},
 \end{align*}
 where $\mathbf{w}'$ is the new set of weights.
 
 The network was initialised using random weights, and was trained using the full
-dataset, over ten epochs.
-
+dataset.
 \begin{center}
     \includegraphics[width=0.7\textwidth]{../Code/BostonHousingResult.pdf}
     \captionof{figure}{Graph of network weights against iteration number.}
 \end{center}
+After 10 epochs, the mean square error had reduced from 0.1637 to 0.0507.
+Note that the weight value lines appear to be jagged, this was a side effect of
+updating the value after each individual presentation; a problem which can be
+mitigated by batching $\Delta\mathbf{w}$ terms from multiple presentations.
+
 
 
 \subsection{Multilayer Boston Housing Data}
+
+The same task was repeated using the full set of attributes.
+To accommodate this, a larger network with 13 input neurons, 1 output neuron,
+and $n$ hidden neurons; which was expressed by the equation
+\begin{align*}
+    h_i &= \tanh\left(b_i + \sum_{j=0}^{13} w_{i,j}x_j\right),\\
+    y &= b + \sum_{i=1}^{n} w_i h_i.
+\end{align*}
+Similar to the single layer example, a constant neuron was added to the input
+and hidden layer to implement the bias, giving
+\begin{align*}
+    \mathbf{h} &= \tanh(W\mathbf{x}),\\
+    \mathbf{h}' &= \begin{pmatrix} \mathbf{h} \\ 1 \end{pmatrix},\\
+    y &= \mathbf{w}\cdot\mathbf{h}',
+\end{align*}
+where $\tanh$ acts component-wise on the input.
+
+All of the inputs were batched together into a single matrix $X$, where each
+column was a data point, giving
+\begin{align*}
+    \Phi &= \tanh(W\cdot X),\\
+    \Psi &= \begin{pmatrix} \Phi \\ \mathbf{1} \end{pmatrix},\\
+    \mathbf{y} &= \mathbf{w}\cdot\Psi,
+\end{align*}
+where $\mathbf{y}$ is a row vector of results.
+The error gradients for the output neurons were given by
+\begin{align*}
+    \mathbf{e} &= \mathbf{y} - \mathbf{y}_t,\\
+    \mathbf{g}_O &= \mathbf{e}\cdot\Psi^T,
+\end{align*}
+where $\mathbf{e}$ is a col;
+and for the hidden neurons by
+\begin{align*}
+    E &= \hat{\mathbf{w}}^T\cdot\mathbf{e},\\
+    G_H &= ((1 - \Phi\odot\Phi)\odot E) \cdot X^T,
+\end{align*}
+where $\odot$ is the component-wise product, and $\hat{\mathbf{w}}$ is the
+weight vector without the bias term.
+Note that $\hat{\mathbf{w}}^T$ and $\mathbf{e}$ are column and row vectors
+respectively, and that their product is a matrix.
 
 \subsection{Logical XOR}
 

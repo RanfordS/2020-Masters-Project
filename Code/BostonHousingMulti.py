@@ -7,7 +7,7 @@ from tensorflow import keras
 ##### Settings #####
 
 ## Parameters
-num_epochs = 10000
+num_epochs = 1000
 max_num_hidden = 3
 # base eta value
 eta = 0.05
@@ -59,22 +59,43 @@ for num_hidden in range (1, max_num_hidden + 1):
     w_hidden = 0.1*UniformRandomMatrix (num_inputs, num_hidden)
     w_output = 0.1*UniformRandomMatrix (num_hidden+1, 1)
 
+    first = True
     ## Iterate
     mse = []
     for _ in range (num_epochs):
         # outputs
-        phi = np.append (bias, np.tanh (train_X*w_hidden), axis=1)
+        phi = np.append (np.tanh (train_X*w_hidden), bias, axis=1)
         y = phi * w_output
         err = y - train_y.transpose ()
         # gradients
         g_output = phi.transpose() * err
-        phi_range = np.array (phi [:, range (1, num_hidden+1)])
-        w_output_range = w_output [range (1, num_hidden+1), 0].transpose()
+        phi_range = np.array (phi[:, range(num_hidden)])
+        w_output_range = w_output [range (num_hidden), 0].transpose ()
         err_term = np.array (err*w_output_range)
         g_hidden = train_X.transpose() * np.matrix((1 - phi_range**2)*err_term)
+        if first:
+            first = False
+            print ("w_hidden ", w_hidden.shape)
+            print ("w_output ", w_output.shape)
+            print ()
+            print ("phi      ", phi.shape)
+            print ("y        ", y.shape)
+            print ("err      ", err.shape)
+            print ("g_output ", g_output.shape)
+            print ()
+            print ("err      ", err.shape)
+            print ("phi_range", phi_range.shape)
+            print ("(1-p^2)*e", ((1-phi_range**2)*err_term).shape)
+            print ("out_range", w_output_range.shape)
+            print ("err_term ", err_term.shape)
+            print ("g_hidden ", g_hidden.shape)
+            print ("X^T      ", train_X.transpose().shape)
+            print ("g_hidden ", g_hidden.shape)
+            print ()
+
         # descent
         w_output -= eta * g_output
-        w_hidden -= eta * g_hidden
+        w_hidden -= eta * g_hidden#.transpose ()
         mse.append (err.var ())
 
     ## Plot

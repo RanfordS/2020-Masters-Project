@@ -1,0 +1,142 @@
+\section{Derivation of Multi-layer Neural Network Equation}
+$I$ is the number of inputs per sample,
+$N$ is the number of samples,
+$H$ is the number of hidden neurons.
+\begin{align*}
+    h_i &= \tanh(s_i),\\
+    s_i &= b_i + \sum_{j=0}^{I} w_{i,j} x_j\\
+    y &= b + \sum_{i=0}^{H} w_i h_i.
+\end{align*}
+Vectorise:
+\begin{align*}
+    s_i &=
+        \begin{pmatrix}
+            w_{i,1} & \cdots & w_{i,I} & b_i
+        \end{pmatrix}
+        \cdot
+        \begin{pmatrix}
+            x_1 \\ \vdots \\ x_I \\ 1
+        \end{pmatrix},
+    &
+    y &=
+        \begin{pmatrix}
+            w_1 & \cdots & w_H & b
+        \end{pmatrix}
+        \cdot
+        \begin{pmatrix}
+            h_1 \\ \vdots \\ h_H \\ 1
+        \end{pmatrix}.
+\end{align*}
+\begin{align*}
+    \mathbf{s} &= \begin{pmatrix} s_1 \\ \vdots \\ s_H \end{pmatrix}
+    =
+    \begin{pmatrix}
+        w_{1,1} & \cdots & w_{1,I} & b_1\\
+        \vdots  & \ddots & \vdots  & \vdots\\
+        w_{H,1} & \cdots & w_{H,I} & b_H
+    \end{pmatrix}
+    \cdot
+    \begin{pmatrix}
+        x_1 \\ \vdots \\ x_I \\ 1
+    \end{pmatrix}
+    = W\cdot\mathbf{x},
+\end{align*}
+\begin{align*}
+    \mathbf{h} &= \begin{pmatrix} \tanh(\mathbf{s}) \\ 1 \end{pmatrix}, &
+    y &= \mathbf{w}\cdot\mathbf{h}.
+\end{align*}
+Batch:
+\begin{align*}
+    S &=
+        \begin{pmatrix}
+            \mathbf{s}^{(1)} & \cdots & \mathbf{s}^{(N)}
+        \end{pmatrix}
+    = W\cdot
+        \begin{pmatrix}
+            \mathbf{x}^{(1)} & \cdots & \mathbf{x}^{(N)}
+        \end{pmatrix},
+\end{align*}
+\begin{align*}
+    \Phi &= \tanh(S), &
+    \Psi &= \begin{pmatrix}
+        \Phi \\ \mathbf{1}
+    \end{pmatrix},
+\end{align*}
+\begin{align*}
+    \mathbf{y} &=
+        \begin{pmatrix}
+            y^{(1)} & \cdots & y^{(N)}
+        \end{pmatrix}
+    = \mathbf{w}\cdot\Psi.
+\end{align*}
+Backpropagation:
+\begin{align*}
+    d &= y - y_t,\\
+    e &= \frac{1}{2}d^2,
+\end{align*}
+\begin{align*}
+    \Rpdiff{s_i}{w_{i,j}} &= x_j, &
+    \Rpdiff{h_i}{s_i} &= 1 - h_i^2,\\
+    \Rpdiff{y}{w_i} &= h_i, &
+    \Rpdiff{y}{h_i} &= w_i,\\
+    \Rpdiff{e}{y} &= d.
+\end{align*}
+\begin{align*}
+    \Rpdiff{e}{w_i}
+    &= \Rpdiff{e}{y}\Rpdiff{y}{w_i}
+    = dh_i,\\
+    \Rpdiff{e}{w_{i,j}}
+    &= \Rpdiff{e}{y}\Rpdiff{y}{h_i}\Rpdiff{h_i}{s_i}\Rpdiff{s_i}{w_{i,j}}
+    = d w_i (1 - h_i^2) x_j.
+\end{align*}
+Batch:
+\begin{align*}
+    \mathbf{d}
+    &= \mathbf{y} - \mathbf{y}_t,\\
+    \Rpdiff{e}{w_i}
+    &= \sum_{k}^{N} d^{(k)} h_i^{(k)}\\
+    &= \begin{pmatrix}
+        d^{(1)} & \cdots & d^{(N)}
+    \end{pmatrix}
+    \cdot
+    \begin{pmatrix}
+        h_i^{(1)} & \cdots & h_i^{(N)}
+    \end{pmatrix}\\
+    &= \mathbf{d}\cdot\mathbf{h}_i.
+    \\
+    \Rpdiff{e}{w_{i,j}}
+    &= \sum_{k}^{N} d^{(k)}w_i\left(1-\left(h_i^{(k)}\right)^2\right)x_j^{(k)}\\
+    &= (\mathbf{1} - \mathbf{h}_i\odot\mathbf{h}_i)\odot(w_i\mathbf{d})
+    \cdot \mathbf{x}_j.\\
+\end{align*}
+Vectorise:
+\begin{align*}
+    \Rpdiff{e}{\mathbf{w}}
+    &= \mathbf{d}\cdot
+    \begin{pmatrix}
+        \mathbf{h}_1 \\\vdots\\ \mathbf{h}_{H+1}
+    \end{pmatrix}
+    = \mathbf{d}\cdot\Psi^T.
+    \\
+    \Rpdiff{e}{W} &=
+    \begin{pmatrix}
+        \mathbf{a}_1 \\\vdots\\ \mathbf{a}_{I+1}
+    \end{pmatrix}
+    = \left(1 - \begin{pmatrix}
+            \mathbf{h}_1 \\\vdots\\ \mathbf{h}_{H}
+        \end{pmatrix}\odot\begin{pmatrix}
+            \mathbf{h}_1 \\\vdots\\ \mathbf{h}_{H}
+        \end{pmatrix}
+    \right)
+    \odot
+    \begin{pmatrix}
+        w_1\mathbf{d} \\\vdots\\ w_{H}\mathbf{d}
+    \end{pmatrix}
+    \cdot
+    \begin{pmatrix}
+        \mathbf{x}_1^T & \cdots & \mathbf{x}_{I+1}^T
+    \end{pmatrix}\\
+    &=
+    (1 - \Phi\odot\Phi)\odot(\hat{\mathbf{w}}\cdot\mathbf{d})
+    \cdot X^T,\\
+\end{align*}

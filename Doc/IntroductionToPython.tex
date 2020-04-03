@@ -55,34 +55,32 @@ used them to predict the value of the house.
 
 Training was performed using backpropagation, defined by the equation
 \begin{align*}
-    \Delta w_i &= \eta\Rpdiff{\text{err}^2}{w_i},\\
-    \text{err} &= y_p - y_t,
+    \Delta w_i &= \eta\Rpdiff{e}{w_i},\\
+    d &= y - y_t,\\
+    e &= \frac{1}{2}d^2,
 \end{align*}
-where $y_p$ is the network prediction, and $y_t$ is the target value.
+where $e$ is the network error, $y$ is the network prediction, and $y_t$ is the
+target value.
 By definition,
 \begin{align*}
-    y_p &= \tanh(\text{net}),\\
+    y &= \tanh(\text{net}),\\
     \text{net} &= \sum w_ix_i.
 \end{align*}
 By chain rule,
 \begin{align*}
-    \Rpdiff{\text{err}}{w_i} &=
-    \Rpdiff{\text{net}}{w_i} \cdot
-    \Rpdiff{y_p}{\text{net}} \cdot
-    \Rpdiff{\text{err}^2}{y_p}.\\
+    \Rpdiff{e}{w_i} &=
+    \Rpdiff{e}{y} \cdot \Rpdiff{y}{\text{net}} \cdot \Rpdiff{\text{net}}{w_i}.
     %
     \Rpdiff{net}{w_i} &= x_i,\\
-    \Rpdiff{y_p}{net} &= 1 - \tanh^2(net) = 1 - y_p^2,\\
-    \Rpdiff{\text{err}^2}{y_p} &= \Rpdiff{(y_p - y_t)^2}{y_p}
-    = 2(y_p - y_t) = 2\text{err},\\
+    \Rpdiff{y}{net} &= 1 - \tanh^2(net) = 1 - y^2,\\
+    \Rpdiff{e}{y} &= \frac{1}{2}\Rpdiff{(y - y_t)^2}{y} = y - y_t = d,\\
     %
-    \therefore\Rpdiff{\text{err}^2}{w_i} &=
-    x_i \cdot (1 - y_k^2) \cdot 2\cdot\text{err}.
+    \therefore\Rpdiff{e}{w_i} &=
+    x_i \cdot (1 - y^2) \cdot d.
 \end{align*}
-The factor of 2 can be absorbed by the $\eta$ term, and $\Delta w_i$ can be
-written in vector notation, giving
+$\Delta w_i$ can be written in vector notation, giving
 \begin{align*}
-    \Delta \mathbf{w} &= \eta\cdot\mathbf{x}\cdot (1-y_k^2)\cdot \text{err}.
+    \Delta \mathbf{w} &= \eta\cdot\mathbf{x}\cdot (1-y^2)\cdot d.
 \end{align*}
 Weights were updated after each sample using
 \begin{align*}
@@ -131,14 +129,15 @@ column was a data point, giving
 where $\mathbf{y}$ is a row vector of results.
 The error gradients for the output neurons were given by
 \begin{align*}
-    \mathbf{e} &= \mathbf{y} - \mathbf{y}_t,\\
-    \mathbf{g}_O &= \mathbf{e}\cdot\Psi^T,
+    \mathbf{d} &= \mathbf{y} - \mathbf{y}_t,\\
+    e &= \frac{1}{2}\left|\mathbf{d}\right|^2,\\
+    \mathbf{g}_O &= \Rpdiff{e}{\mathbf{w}} = \mathbf{d}\cdot\Psi^T,
 \end{align*}
 where $\mathbf{e}$ is a col;
 and for the hidden neurons by
 \begin{align*}
-    E &= \hat{\mathbf{w}}^T\cdot\mathbf{e},\\
-    G_H &= ((1 - \Phi\odot\Phi)\odot E) \cdot X^T,
+    D &= \hat{\mathbf{w}}^T\cdot\mathbf{d},\\
+    G_H &= ((1 - \Phi\odot\Phi)\odot D) \cdot X^T,
 \end{align*}
 where $\odot$ is the component-wise product, and $\hat{\mathbf{w}}$ is the
 weight vector without the bias term.

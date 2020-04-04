@@ -1,22 +1,20 @@
 ## Imports
 import numpy as np
 import matplotlib.pyplot as plt
-# import keras so that we can access the Boston housing data
-from tensorflow import keras
 
 ##### Settings #####
 
 ## Parameters
-num_epochs = 1000
+num_epochs = 1500
 max_num_hidden = 3
 # base eta value
-eta = 0.05
+eta = 0.2
 
 ## Plot settings
 plt.rc ('text', usetex=True)
 plt.rc ('font', family='serif')
 # set to false to disable figure save
-plot_filename = "BostonHousingMultiResult.pdf"
+plot_filename = "XORResult.pdf"
 
 ##### End of Settings #####
 
@@ -26,31 +24,17 @@ def UniformRandomMatrix (rows, cols):
     return np.matrix (res)
 
 ## Load the data
-dataset = keras.datasets.boston_housing
-(train_X, train_y), (_,_) = dataset.load_data (test_split = 0)
-train_X = np.matrix (train_X)
-train_y = np.matrix (train_y).transpose()
-(num_samples, num_inputs) = train_X.shape
-# add bias
-bias = np.ones (num_samples)
-bias = np.matrix (bias)
-X = np.append (train_X.transpose(), bias, axis=0)
+X = np.matrix ([[0,1,0,1],
+                [0,0,1,1]])
+yt= np.matrix ([[0,1,1,0]])
 
-print (train_X.shape)
+(num_inputs, num_samples) = X.shape
 
-## Normalize data
-for i in range (num_inputs):
-    row = X[i,:]
-    X[i,:] = (row - row.mean()) / row.std()
-miny = train_y.min ()
-maxy = train_y.max ()
-mean = (maxy + miny)/2
-std  = (maxy - miny)/2
-train_y = (train_y.transpose() - mean)/std
-# adjust for bias column
+bias = np.matrix (np.ones (num_samples))
+X = np.append (X, bias, axis=0)
 num_inputs += 1
-# adjust for sample size
-eta /= num_samples
+
+
 
 ## Test various hidden node counts
 for num_hidden in range (1, max_num_hidden + 1):
@@ -70,7 +54,7 @@ for num_hidden in range (1, max_num_hidden + 1):
         Psi = np.append (Phi, bias, axis=0)
         y = w*Psi
         # err1
-        e = y - train_y
+        e = y - yt
         g_out = e*Psi.transpose()
         # err2
         w_hat = w[0, range (num_hidden)]

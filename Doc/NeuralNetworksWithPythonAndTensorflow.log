@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2020.3.11)  3 APR 2020 18:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2020.3.11)  4 APR 2020 17:23
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1844,8 +1844,28 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 95.
 See the caption package documentation for explanation.
 
-[19] [20 <../Code/BostonHousingResult.pdf>]) (./IntroductionToTensorflow.tex
-[21] [22]
+[19] [20 <../Code/BostonHousingResult.pdf>]
+<../Code/BostonHousingMultiResult.pdf, id=368, 462.52798pt x 346.89601pt>
+File: ../Code/BostonHousingMultiResult.pdf Graphic file (type pdf)
+
+<use ../Code/BostonHousingMultiResult.pdf>
+Package pdftex.def Info: ../Code/BostonHousingMultiResult.pdf used on input lin
+e 148.
+(pdftex.def)             Requested size: 317.07614pt x 237.81818pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 151.
+See the caption package documentation for explanation.
+
+[21] [22 <../Code/BostonHousingMultiResult.pdf>]
+<../Code/XORResult.pdf, id=388, 462.52798pt x 346.89601pt>
+File: ../Code/XORResult.pdf Graphic file (type pdf)
+
+<use ../Code/XORResult.pdf>
+Package pdftex.def Info: ../Code/XORResult.pdf used on input line 191.
+(pdftex.def)             Requested size: 317.07614pt x 237.81818pt.
+) (./IntroductionToTensorflow.tex [23 <../Code/XORResult.pdf>]
 Chapter 3.
 
 Package TODO Warning: "Chapter: Introduction To TensorFlow" on input line 4.
@@ -1859,7 +1879,7 @@ Package TODO Warning: "Section: XOR" on input line 12.
 
 Package TODO Warning: "Section: Boston Housing with Keras" on input line 16.
 
-) (./DeepLearning.tex [23
+) (./DeepLearning.tex [24
 
 ]
 Chapter 4.
@@ -1885,13 +1905,13 @@ Package TODO Warning: "Section: Unsupervised Learning" on input line 23.
 
 Package TODO Warning: "Section: Autoencoding" on input line 27.
 
-[24
+[25
 
 ]
 
 Package TODO Warning: "Section: Reinforcement Learning" on input line 31.
 
-) [25]
+) [26]
 Chapter 5.
 
 Package HIDE Warning: Hidden text in 5.0.0 on input line 47.
@@ -1900,36 +1920,39 @@ Package HIDE Warning: Hidden text in 5.0.0 on input line 47.
 Package TODO Warning: "Decide parent chapter for CNN, RNN, and LSTM sections" o
 n input line 48.
 
-[26
+[27
 
-] [27
+] [28
 
 
-] (./AppendBHMDerivation.tex [28]) [29] [30
+] (./AppendBHMDerivation.tex
+Appendix A.
+[29
+
+]) [30] [31
 
 ]
 runsystem(rm "NeuralNetworksWithPythonAndTensorflow.out.pyg")...executed.
 
- [31]
+ [32]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 64.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 64.
-
-(./NeuralNetworksWithPythonAndTensorflow.aux)
+ (./NeuralNetworksWithPythonAndTensorflow.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 64.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 64.
 Package rerunfilecheck Info: File `NeuralNetworksWithPythonAndTensorflow.out' h
 as not changed.
-(rerunfilecheck)             Checksum: D23FA12FFECE4902C339154FDBE49281;2305.
+(rerunfilecheck)             Checksum: B4FF191FBDECFDC4DA1706626BE65069;2295.
 Package logreq Info: Writing requests to 'NeuralNetworksWithPythonAndTensorflow
 .run.xml'.
 \openout1 = `NeuralNetworksWithPythonAndTensorflow.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 41217 strings out of 494953
- 921401 string characters out of 6180977
- 1554983 words of memory out of 5000000
- 43658 multiletter control sequences out of 15000+600000
+ 41232 strings out of 494953
+ 921751 string characters out of 6180977
+ 1555059 words of memory out of 5000000
+ 43667 multiletter control sequences out of 15000+600000
  14051 words of font info for 53 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  64i,16n,84p,841b,1090s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1950,11 +1973,11 @@ fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on NeuralNetworksWithPythonAndTensorflow.pdf (32 pages, 525855 b
+Output written on NeuralNetworksWithPythonAndTensorflow.pdf (33 pages, 535967 b
 ytes).
 PDF statistics:
- 500 PDF objects out of 1000 (max. 8388607)
- 438 compressed objects within 5 object streams
- 98 named destinations out of 1000 (max. 500000)
- 300 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 526 PDF objects out of 1000 (max. 8388607)
+ 461 compressed objects within 5 object streams
+ 102 named destinations out of 1000 (max. 500000)
+ 310 words of extra memory for PDF output out of 10000 (max. 10000000)
 

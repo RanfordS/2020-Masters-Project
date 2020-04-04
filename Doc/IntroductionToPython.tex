@@ -131,9 +131,8 @@ The error gradients for the output neurons were given by
 \begin{align*}
     \mathbf{d} &= \mathbf{y} - \mathbf{y}_t,\\
     e &= \frac{1}{2}\left|\mathbf{d}\right|^2,\\
-    \mathbf{g}_O &= \Rpdiff{e}{\mathbf{w}} = \mathbf{d}\cdot\Psi^T,
+    \mathbf{g}_O &= \Rpdiff{e}{\mathbf{w}} = \mathbf{d}\cdot\Psi^T;
 \end{align*}
-where $\mathbf{e}$ is a col;
 and for the hidden neurons by
 \begin{align*}
     D &= \hat{\mathbf{w}}^T\cdot\mathbf{d},\\
@@ -143,8 +142,54 @@ where $\odot$ is the component-wise product, and $\hat{\mathbf{w}}$ is the
 weight vector without the bias term.
 Note that $\hat{\mathbf{w}}^T$ and $\mathbf{e}$ are column and row vectors
 respectively, and that their product is a matrix.
+See Appendix \ref{app:BHMDeriv} for full derivation.
+
+\begin{center}
+    \includegraphics[width=0.7\textwidth]{../Code/BostonHousingMultiResult.pdf}
+    \parbox{0.9\textwidth}{%
+    \captionof{figure}{Graph of network error against iteration number for
+    various numbers of hidden neurons.}}
+\end{center}
+The network was trained multiple times with varying numbers of hidden neurons.
+In each case, the network successfully reduced it's error to roughly the same
+level:
+for 1 neuron, from 0.1670 to 0.0380;
+for 2 neurons, from 0.1799 to 0.0390; and
+for 3 neurons, from 0.1757 to 0.0396.
+The difference between the results was negligible, which suggested that one
+hidden neuron was sufficient for learning the data.
+
+When compared with the single layer network from the previous section, the
+single neuron, multilayer network performed better (0.0507 vs 0.0380) for two
+reasons:
+\begin{enumerate}
+    \item it had access to all 13 attributes, instead of the 3 attributes that
+        had been manually selected; and
+    \item the additional layer enabled it to apply a linear transformation to
+        the activation.
+\end{enumerate}
+
+
 
 \subsection{Logical XOR}
+
+Using the same, multilayer network architecture, a network was trained to
+perform the logical exclusive-or operation.
+
+\begin{align*}
+    X &= \begin{pmatrix}
+        0 & 1 & 0 & 1 \\
+        0 & 0 & 1 & 1 \\
+        1 & 1 & 1 & 1
+    \end{pmatrix},\\
+    \mathbf{y} &= \begin{pmatrix}
+        0 & 1 & 1 & 0
+    \end{pmatrix}.
+\end{align*}
+
+\begin{center}
+    \includegraphics[width=0.7\textwidth]{../Code/XORResult.pdf}
+\end{center}
 
 \section{Using TensorFlow and Keras}
 

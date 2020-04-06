@@ -17,7 +17,7 @@ inputs = (5,8,12,1)
 plt.rc ('text', usetex=True)
 plt.rc ('font', family='serif')
 # set to false to diable figure save
-plot_filename = "BostonHousingResult.pdf"
+plot_filename = "BostonHousingResult.pgf"
 
 ##### End of settings #####
 

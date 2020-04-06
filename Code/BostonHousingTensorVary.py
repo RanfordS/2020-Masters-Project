@@ -9,13 +9,11 @@ layers = tf.keras.layers
 
 ## Parameters
 num_epochs = 5000
-num_hidden = 5
-normalise = True
+num_hidden = 2
 
 ## Plot settings
 plt.rc ('text', usetex=True)
 plt.rc ('font', family='serif')
-plot_filename = "BostonHousingTensor.pgf"
 
 ##### End of Settings #####
 
@@ -27,21 +25,20 @@ num_samples = x_train.shape[0]
 num_inputs  = x_train.shape[1]
 
 ## Normalize data
-if normalise:
-    x_full = np.append (x_train, x_test, axis=0)
-    y_full = np.append (y_train, y_test, axis=0)
-    for i in range (num_inputs):
-        x_col  = x_full[:,i]
-        x_mean = x_col.mean ()
-        x_std  = x_col.std  ()
-        x_train[:,i] = (x_train[:,i] - x_mean)/x_std
-        x_test [:,i] = (x_test [:,i] - x_mean)/x_std
-    y_max = max (y_full)
-    y_min = min (y_full)
-    y_mean = (y_max + y_min)/2
-    y_std  = (y_max - y_min)/2
-    y_train = (y_train - y_mean)/y_std
-    y_test  = (y_test  - y_mean)/y_std
+x_full = np.append (x_train, x_test, axis=0)
+y_full = np.append (y_train, y_test, axis=0)
+for i in range (num_inputs):
+    x_col  = x_full[:,i]
+    x_mean = x_col.mean ()
+    x_std  = x_col.std  ()
+    x_train[:,i] = (x_train[:,i] - x_mean)/x_std
+    x_test [:,i] = (x_test [:,i] - x_mean)/x_std
+y_max = max (y_full)
+y_min = min (y_full)
+y_mean = (y_max + y_min)/2
+y_std  = (y_max - y_min)/2
+y_train = (y_train - y_mean)/y_std
+y_test  = (y_test  - y_mean)/y_std
 
 ## Create model
 model = tf.keras.models.Sequential (
@@ -69,7 +66,5 @@ model.evaluate (x_test, y_test, verbose=2)
 plt.plot (range (num_epochs), result.history['loss'], label='loss')
 plt.plot (range (num_epochs), result.history['val_loss'], label='validation')
 plt.legend ()
-if plot_filename:
-    plt.savefig (plot_filename)
 plt.show ()
 

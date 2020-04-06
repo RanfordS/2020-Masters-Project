@@ -91,7 +91,7 @@ where $\mathbf{w}'$ is the new set of weights.
 The network was initialised using random weights, and was trained using the full
 dataset.
 \begin{center}
-    \includegraphics[width=0.7\textwidth]{../Code/BostonHousingResult.pdf}
+    \import{../Code/}{BostonHousingResult.pgf}
     \captionof{figure}{Graph of network weights against iteration number.}
 \end{center}
 After 10 epochs, the mean square error had reduced from 0.1637 to 0.0507.
@@ -145,12 +145,13 @@ respectively, and that their product is a matrix.
 See Appendix \ref{app:BHMDeriv} for full derivation.
 
 \begin{center}
-    \includegraphics[width=0.7\textwidth]{../Code/BostonHousingMultiResult.pdf}
+    \import{../Code/}{BostonHousingMultiResult.pgf}
     \parbox{0.9\textwidth}{%
     \captionof{figure}{Graph of network error against iteration number for
-    various numbers of hidden neurons.}}
+    various numbers of hidden neurons using the Boston housing data.}}
 \end{center}
 The network was trained multiple times with varying numbers of hidden neurons.
+The same random seed value was used for all trials.
 In each case, the network successfully reduced it's error to roughly the same
 level:
 for 1 neuron, from 0.1670 to 0.0380;
@@ -168,34 +169,99 @@ reasons:
     \item the additional layer enabled it to apply a linear transformation to
         the activation.
 \end{enumerate}
+Additionally, the use of batched inputs resulted in a smoother descent, as the
+total gradient is descended; instead of multiple, often opposing gradients.
 
 
 
 \subsection{Logical XOR}
 
 Using the same, multilayer network architecture, a network was trained to
-perform the logical exclusive-or operation.
-
+perform the logical exclusive-or (XOR) operation.
+The input matrix $X$ contained all four combinations of binary inputs, and the
+target outputs in $\mathbf{y}_t$.
 \begin{align*}
     X &= \begin{pmatrix}
         0 & 1 & 0 & 1 \\
         0 & 0 & 1 & 1 \\
         1 & 1 & 1 & 1
     \end{pmatrix},\\
-    \mathbf{y} &= \begin{pmatrix}
+    \mathbf{y}_t &= \begin{pmatrix}
         0 & 1 & 1 & 0
     \end{pmatrix}.
 \end{align*}
-
+Given that the problem is mathematically well defined, a successfully trained
+network should reduce the error to near zero.
+Training the network for varying numbers of hidden neurons gave the following
+results.
 \begin{center}
-    \includegraphics[width=0.7\textwidth]{../Code/XORResult.pdf}
+    \import{../Code/}{XORResult.pgf}
+    \parbox{0.9\textwidth}{%
+    \captionof{figure}{Graph of network error against iteration number for
+    various numbers of hidden neurons using the XOR data.}}
 \end{center}
+The final mean square errors for one, two, and three hidden neurons were 0.1713,
+$2.04\times10^{-5}$, and $9.65\times10^{-6}$ respectively.
+These results showed that a single, nonlinear neuron is not sufficient for
+learning the XOR problem, as proven by \cite{Minsky:1969:Perceptrons}, and is
+only capable of solving three of the four inputs at a time.
+Two nonlinear neurons is sufficient for solving the problem.
+
+It is important to note that the learning rates were much more susceptible to
+the initial weights than that of the Boston housing data.
+Under certain initial conditions, the network displayed long periods of
+negligible change before significant learning occurred, the longest of which
+that had been observed lasted over 800 iterations.
+Error spiking was observed across the majority of initial conditions for both
+two and three hidden neurons.
+
+
 
 \section{Using TensorFlow and Keras}
 
-\subsection{Boston Housing Data}
+Creating efficient neural networks by hand was difficult, repetitive, and prone
+to mistakes; and making simple modifications, such as changing the activation
+function, could prove tricky for larger networks.
+Thankfully, python packages that automate large portions of the process are
+available, namely TensorFlow.
 
-\subsection{Logical XOR}
+Once installed, TensorFlow can be imported into python.
+TensorFlow contains a module called Keras, which provides a number of objects
+and constructors that make the process much simpler.
+The XOR network, for instance, can be constructed with a few lines of code.
+\begin{minted}[
+    frame=lines,
+    framesep=2mm,
+    mathescape,
+    linenos
+    ]{python}
+import tensorflow as tf
+layers = tf.keras.layers
+# Create a model
+model = tf.keras.models.Sequential()
+# Add a dense hidden layer with the built in $\tanh$ activation function
+model.add(layers.Dense(3, input_dim=2, activation='tanh')
+# Add the output layer with linear activation
+model.add(layers.Dense(1))
+# Finalise the model and specify the loss function
+model.compile(loss='mean_squared_error')
+\end{minted}
+TensorFlow provides multiple ways of constructing models, and a wide variety of
+options to configure layers, models, and optimisers, as well as custom
+definitions.
+
+TensorFlow also supports multithreading and GPU acceleration.
+
+
+
+\subsection{Boston Housing}
+
+The Boston housing example was repeated using TensorFlow, with two hidden
+layers, each with five neurons.
+
+
+
+
 
 \subsection{Linear Regression}
 

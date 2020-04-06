@@ -11,6 +11,8 @@ num_epochs = 100
 ## Plot settings
 plt.rc ('text', usetex=True)
 plt.rc ('font', family='serif')
+#Does not work
+plot_filename = False#"CharacterRecognitionResults.pgf"
 
 ## Load data
 char_set = tf.keras.datasets.mnist
@@ -77,4 +79,6 @@ for i in range (25):
     y_pred = np.argmax (predictions[i])
     y_cert = max (predictions[i])
     plt.xlabel ("NN:{0} ({1:.2f}), Is:{2}".format (y_pred, y_cert, y_test[i]))
+if plot_filename:
+    plt.savefig (plot_filename)
 plt.show ()

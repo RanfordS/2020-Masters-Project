@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 ##### Settings #####
 
 ## Parameters
-num_epochs = 1500
+num_epochs = 300
 max_num_hidden = 3
 # base eta value
 eta = 0.2
@@ -13,8 +13,8 @@ eta = 0.2
 ## Plot settings
 plt.rc ('text', usetex=True)
 plt.rc ('font', family='serif')
-# set to false to disable figure save
-plot_filename = "XORResult.pdf"
+# set to False to disable figure save
+plot_filename = "XORResult.pgf"
 
 ##### End of Settings #####
 
@@ -42,12 +42,13 @@ for num_hidden in range (1, max_num_hidden + 1):
 
     ## Initialise weights
     np.random.seed (123456)
-    W = 0.1*UniformRandomMatrix (num_hidden, num_inputs)
-    w = 0.1*UniformRandomMatrix (1, num_hidden+1)
+    W = UniformRandomMatrix (num_hidden, num_inputs)
+    w = UniformRandomMatrix (1, num_hidden+1)
 
     first = True
     ## Iterate
     mse = []
+    pred = yt
     for _ in range (num_epochs):
         # output
         Phi = np.tanh (W*X)
@@ -68,11 +69,13 @@ for num_hidden in range (1, max_num_hidden + 1):
         w -= eta*g_out
         W -= eta*G_hidden
         mse.append (e.var())
+        pred = y
 
     ## Plot
     plt.plot (range (num_epochs), mse, label="Hidden Neurons = {0}".format (num_hidden))
     print ("initial error", mse[0])
     print ("final error", mse[-1])
+    print ("final prediction", pred)
 
 # save plot and display
 plt.legend ()

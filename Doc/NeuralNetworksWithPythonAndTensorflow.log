@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2020.3.11)  4 APR 2020 17:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2020.3.11)  6 APR 2020 14:26
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1714,7 +1714,7 @@ LaTeX Info: Redefining \nameref on input line 29.
 \openout9 = `NeuralNetworksWithPythonAndTensorflow.out'.
 
  (./TitlePage.tex
-<MMU_Logo_Colour.pdf, id=143, 1420.30624pt x 1607.00375pt>
+<MMU_Logo_Colour.pdf, id=139, 1420.30624pt x 1607.00375pt>
 File: MMU_Logo_Colour.pdf Graphic file (type pdf)
 
 <use MMU_Logo_Colour.pdf>
@@ -1736,7 +1736,7 @@ l.1 \chapter
             *{Declaration} [1
 
 ]
-<Signiture.jpg, id=165, 1194.4625pt x 331.2375pt>
+<Signiture.jpg, id=161, 1194.4625pt x 331.2375pt>
 File: Signiture.jpg Graphic file (type jpg)
  <use Signiture.jpg>
 Package pdftex.def Info: Signiture.jpg used on input line 7.
@@ -1831,41 +1831,48 @@ k-age was used to per-form ma-trix op-er-a-tions, and the \OT1/cmtt/m/n/10.95 m
 atplotlib.pyplot
  []
 
-[18] <../Code/BostonHousingResult.pdf, id=334, 462.52798pt x 346.89601pt>
-File: ../Code/BostonHousingResult.pdf Graphic file (type pdf)
-
-<use ../Code/BostonHousingResult.pdf>
-Package pdftex.def Info: ../Code/BostonHousingResult.pdf used on input line 94.
-
-(pdftex.def)             Requested size: 317.07614pt x 237.81818pt.
-
+[18] (../Code/BostonHousingResult.pgf)
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 95.
 See the caption package documentation for explanation.
 
-[19] [20 <../Code/BostonHousingResult.pdf>]
-<../Code/BostonHousingMultiResult.pdf, id=368, 462.52798pt x 346.89601pt>
-File: ../Code/BostonHousingMultiResult.pdf Graphic file (type pdf)
 
-<use ../Code/BostonHousingMultiResult.pdf>
-Package pdftex.def Info: ../Code/BostonHousingMultiResult.pdf used on input lin
-e 148.
-(pdftex.def)             Requested size: 317.07614pt x 237.81818pt.
+Overfull \hbox (9.55966pt too wide) in paragraph at lines 8992--95
+ [] 
+ []
 
+[19] [20] (../Code/BostonHousingMultiResult.pgf)
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 151.
 See the caption package documentation for explanation.
 
-[21] [22 <../Code/BostonHousingMultiResult.pdf>]
-<../Code/XORResult.pdf, id=388, 462.52798pt x 346.89601pt>
-File: ../Code/XORResult.pdf Graphic file (type pdf)
 
-<use ../Code/XORResult.pdf>
-Package pdftex.def Info: ../Code/XORResult.pdf used on input line 191.
-(pdftex.def)             Requested size: 317.07614pt x 237.81818pt.
-) (./IntroductionToTensorflow.tex [23 <../Code/XORResult.pdf>]
+Overfull \hbox (9.55966pt too wide) in paragraph at lines 754--152
+ [] 
+ []
+
+[21] [22] (../Code/XORResult.pgf)
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 201.
+See the caption package documentation for explanation.
+
+
+Overfull \hbox (9.55966pt too wide) in paragraph at lines 1026--202
+ [] 
+ []
+
+[23]
+\openout6 = `NeuralNetworksWithPythonAndTensorflow.pyg'.
+
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P m
+athescape=True -o "NeuralNetworksWithPythonAndTensorflow.out.pyg" "NeuralNetwor
+ksWithPythonAndTensorflow.pyg" )...executed.
+
+ (./NeuralNetworksWithPythonAndTensorflow.out.pyg) [24])
+(./IntroductionToTensorflow.tex [25]
 Chapter 3.
 
 Package TODO Warning: "Chapter: Introduction To TensorFlow" on input line 4.
@@ -1879,7 +1886,7 @@ Package TODO Warning: "Section: XOR" on input line 12.
 
 Package TODO Warning: "Section: Boston Housing with Keras" on input line 16.
 
-) (./DeepLearning.tex [24
+) (./DeepLearning.tex [26
 
 ]
 Chapter 4.
@@ -1905,13 +1912,13 @@ Package TODO Warning: "Section: Unsupervised Learning" on input line 23.
 
 Package TODO Warning: "Section: Autoencoding" on input line 27.
 
-[25
+[27
 
 ]
 
 Package TODO Warning: "Section: Reinforcement Learning" on input line 31.
 
-) [26]
+) [28]
 Chapter 5.
 
 Package HIDE Warning: Hidden text in 5.0.0 on input line 47.
@@ -1920,42 +1927,175 @@ Package HIDE Warning: Hidden text in 5.0.0 on input line 47.
 Package TODO Warning: "Decide parent chapter for CNN, RNN, and LSTM sections" o
 n input line 48.
 
-[27
+[29
 
-] [28
+] [30
 
 
 ] (./AppendBHMDerivation.tex
 Appendix A.
-[29
+[31
 
-]) [30] [31
+]) (../Code/CharacterRecognitionResults.pgf
+
+Package pgf Warning: File "CharacterRecognitionResults-img0.png" not found when
+ defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:"
+ on input line 64.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img1.png" not found when
+ defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:"
+ on input line 137.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img2.png" not found when
+ defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:"
+ on input line 210.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img3.png" not found when
+ defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:"
+ on input line 283.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img4.png" not found when
+ defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:"
+ on input line 356.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img5.png" not found when
+ defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:"
+ on input line 429.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img6.png" not found when
+ defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:"
+ on input line 502.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img7.png" not found when
+ defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:"
+ on input line 575.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img8.png" not found when
+ defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:"
+ on input line 648.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img9.png" not found when
+ defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:"
+ on input line 721.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img10.png" not found whe
+n defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:
+" on input line 794.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img11.png" not found whe
+n defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:
+" on input line 867.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img12.png" not found whe
+n defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:
+" on input line 940.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img13.png" not found whe
+n defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:
+" on input line 1013.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img14.png" not found whe
+n defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:
+" on input line 1086.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img15.png" not found whe
+n defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:
+" on input line 1159.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img16.png" not found whe
+n defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:
+" on input line 1232.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img17.png" not found whe
+n defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:
+" on input line 1305.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img18.png" not found whe
+n defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:
+" on input line 1378.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img19.png" not found whe
+n defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:
+" on input line 1451.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img20.png" not found whe
+n defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:
+" on input line 1524.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img21.png" not found whe
+n defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:
+" on input line 1597.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img22.png" not found whe
+n defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:
+" on input line 1670.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img23.png" not found whe
+n defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:
+" on input line 1743.
+
+
+Package pgf Warning: File "CharacterRecognitionResults-img24.png" not found whe
+n defining image "pgflastimage". Tried all extensions in ".pdf:.jpg:.jpeg:.png:
+" on input line 1816.
+
+)
+Overfull \hbox (9.55966pt too wide) in paragraph at lines 1868--60
+ [] 
+ []
+
+[32] [33] [34
 
 ]
+runsystem(rm "NeuralNetworksWithPythonAndTensorflow.pyg")...executed.
+
 runsystem(rm "NeuralNetworksWithPythonAndTensorflow.out.pyg")...executed.
 
- [32]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 64.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 64.
+ [35]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 65.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 65.
  (./NeuralNetworksWithPythonAndTensorflow.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 64.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 64.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 65.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 65.
 Package rerunfilecheck Info: File `NeuralNetworksWithPythonAndTensorflow.out' h
 as not changed.
-(rerunfilecheck)             Checksum: B4FF191FBDECFDC4DA1706626BE65069;2295.
+(rerunfilecheck)             Checksum: 56A8582FFE5F371440637100CC099818;2225.
 Package logreq Info: Writing requests to 'NeuralNetworksWithPythonAndTensorflow
 .run.xml'.
 \openout1 = `NeuralNetworksWithPythonAndTensorflow.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 41232 strings out of 494953
- 921751 string characters out of 6180977
- 1555059 words of memory out of 5000000
- 43667 multiletter control sequences out of 15000+600000
- 14051 words of font info for 53 fonts, out of 8000000 for 9000
+ 41304 strings out of 494953
+ 923730 string characters out of 6180977
+ 1703953 words of memory out of 5000000
+ 43671 multiletter control sequences out of 15000+600000
+ 15723 words of font info for 60 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 64i,16n,84p,841b,1090s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 64i,16n,84p,841b,1092s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
@@ -1973,11 +2113,11 @@ fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on NeuralNetworksWithPythonAndTensorflow.pdf (33 pages, 535967 b
+Output written on NeuralNetworksWithPythonAndTensorflow.pdf (36 pages, 483166 b
 ytes).
 PDF statistics:
- 526 PDF objects out of 1000 (max. 8388607)
- 461 compressed objects within 5 object streams
- 102 named destinations out of 1000 (max. 500000)
- 310 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 501 PDF objects out of 1000 (max. 8388607)
+ 436 compressed objects within 5 object streams
+ 105 named destinations out of 1000 (max. 500000)
+ 287 words of extra memory for PDF output out of 10000 (max. 10000000)
 

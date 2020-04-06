@@ -7,7 +7,7 @@ from tensorflow import keras
 ##### Settings #####
 
 ## Parameters
-num_epochs = 1000
+num_epochs = 500
 max_num_hidden = 3
 # base eta value
 eta = 0.05
@@ -16,7 +16,7 @@ eta = 0.05
 plt.rc ('text', usetex=True)
 plt.rc ('font', family='serif')
 # set to false to disable figure save
-plot_filename = "BostonHousingMultiResult.pdf"
+plot_filename = "BostonHousingMultiResult.pgf"
 
 ##### End of Settings #####
 

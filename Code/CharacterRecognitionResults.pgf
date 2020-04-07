@@ -213,7 +213,7 @@
 \definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=3.280000in,y=3.531203in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:1 (0.96), Is:1}%
+\pgftext[x=3.280000in,y=3.531203in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:1 (0.94), Is:1}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetrectcap%
@@ -359,7 +359,7 @@
 \definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=5.332414in,y=3.531203in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:4 (0.93), Is:4}%
+\pgftext[x=5.332414in,y=3.531203in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:4 (0.90), Is:4}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetrectcap%
@@ -432,7 +432,7 @@
 \definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=1.227586in,y=2.766513in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:1 (0.97), Is:1}%
+\pgftext[x=1.227586in,y=2.766513in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:1 (0.98), Is:1}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetrectcap%
@@ -505,7 +505,7 @@
 \definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=2.253793in,y=2.766513in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:4 (0.94), Is:4}%
+\pgftext[x=2.253793in,y=2.766513in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:4 (0.96), Is:4}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetrectcap%
@@ -724,7 +724,7 @@
 \definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=5.332414in,y=2.766513in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:9 (0.95), Is:9}%
+\pgftext[x=5.332414in,y=2.766513in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:9 (0.89), Is:9}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetrectcap%
@@ -797,7 +797,7 @@
 \definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=1.227586in,y=2.001824in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:0 (0.98), Is:0}%
+\pgftext[x=1.227586in,y=2.001824in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:0 (0.97), Is:0}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetrectcap%
@@ -870,7 +870,7 @@
 \definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=2.253793in,y=2.001824in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:6 (0.80), Is:6}%
+\pgftext[x=2.253793in,y=2.001824in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:6 (0.65), Is:6}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetrectcap%
@@ -943,7 +943,7 @@
 \definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=3.280000in,y=2.001824in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:9 (0.93), Is:9}%
+\pgftext[x=3.280000in,y=2.001824in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:9 (0.94), Is:9}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetrectcap%
@@ -1016,7 +1016,7 @@
 \definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=4.306207in,y=2.001824in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:0 (0.99), Is:0}%
+\pgftext[x=4.306207in,y=2.001824in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:0 (1.00), Is:0}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetrectcap%
@@ -1089,7 +1089,7 @@
 \definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=5.332414in,y=2.001824in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:1 (1.00), Is:1}%
+\pgftext[x=5.332414in,y=2.001824in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:1 (0.99), Is:1}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetrectcap%
@@ -1162,7 +1162,7 @@
 \definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=1.227586in,y=1.237134in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:5 (0.89), Is:5}%
+\pgftext[x=1.227586in,y=1.237134in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:5 (0.90), Is:5}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetrectcap%
@@ -1235,7 +1235,7 @@
 \definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=2.253793in,y=1.237134in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:9 (0.94), Is:9}%
+\pgftext[x=2.253793in,y=1.237134in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:9 (0.89), Is:9}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetrectcap%
@@ -1381,7 +1381,7 @@
 \definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=4.306207in,y=1.237134in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:3 (0.66), Is:3}%
+\pgftext[x=4.306207in,y=1.237134in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:3 (0.64), Is:3}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetrectcap%
@@ -1454,7 +1454,7 @@
 \definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=5.332414in,y=1.237134in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:4 (0.98), Is:4}%
+\pgftext[x=5.332414in,y=1.237134in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:4 (0.97), Is:4}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetrectcap%
@@ -1527,7 +1527,7 @@
 \definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=1.227586in,y=0.472444in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:9 (0.91), Is:9}%
+\pgftext[x=1.227586in,y=0.472444in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:9 (0.92), Is:9}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetrectcap%
@@ -1600,7 +1600,7 @@
 \definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=2.253793in,y=0.472444in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:6 (0.98), Is:6}%
+\pgftext[x=2.253793in,y=0.472444in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:6 (0.97), Is:6}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetrectcap%
@@ -1673,7 +1673,7 @@
 \definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=3.280000in,y=0.472444in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:6 (0.79), Is:6}%
+\pgftext[x=3.280000in,y=0.472444in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:6 (0.69), Is:6}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetrectcap%
@@ -1746,7 +1746,7 @@
 \definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=4.306207in,y=0.472444in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:5 (0.98), Is:5}%
+\pgftext[x=4.306207in,y=0.472444in,,top]{\color{textcolor}\rmfamily\fontsize{10.000000}{12.000000}\selectfont NN:5 (0.96), Is:5}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetrectcap%

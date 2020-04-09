@@ -27,13 +27,25 @@
     ,   4/4/4/0.90/4
     }
     {   \pgfmathtruncatemacro{\indx}{5*\posy+\posx}
-        \node[draw] (N\indx) at (3*\posx,-3.5*\posy)
+        \node[draw] (N\indx) at (3*\posx,-3.8*\posy)
         {\includegraphics[width=1.5cm]{CRResults/img\indx}};
-        \node (T\indx) at (N\indx.north) [anchor=south]
-            {\scriptsize Was: \actu};
-        \node (D\indx) at (N\indx.south) [anchor=north]
-            {\scriptsize Predicted: \pred};
-        \node at (D\indx.south) [anchor=north,outer sep=0pt,inner sep=0pt]
-            {\scriptsize (\cert)};
+        %\node (T\indx) at (N\indx.north) [anchor=south]
+        %    {\scriptsize Was: \actu};
+        %\node (D\indx) at (N\indx.south) [anchor=north]
+        %    {\scriptsize Predicted: \pred};
+        %\node at (D\indx.south) [anchor=north,outer sep=0pt,inner sep=0pt]
+        %    {\scriptsize (\cert)};
+        \node (P\indx) at (N\indx.north) [anchor=south]
+        {\scriptsize Predicted: \pred};
+        \node (A\indx) at (P\indx.north) [anchor=south,outer sep=0,inner sep=0]
+        {\scriptsize Was: \actu};
+        \node (S\indx) at (N\indx.south) [anchor=north]
+        {\scriptsize \ifnum \actu=\pred
+                Correct
+            \else
+                \underline{\textbf{Incorrect}}
+            \fi};
+        \node (C\indx) at (S\indx.south) [anchor=north,outer sep=0,inner sep=0]
+        {\scriptsize Certainty: \cert};
     }
 \end{tikzpicture}

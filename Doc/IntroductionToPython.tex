@@ -250,18 +250,64 @@ TensorFlow provides multiple ways of constructing models, and a wide variety of
 options to configure layers, models, and optimisers, as well as custom
 definitions.
 
-TensorFlow also supports multithreading and GPU acceleration.
+TensorFlow also supports multithreading and GPU acceleration, making it
+especially suitable for large networks and training sets.
 
 
 
 \subsection{Boston Housing}
 
 The Boston housing example was repeated using TensorFlow, with two hidden
-layers, each with five neurons.
+layers, each with five neurons using the $\tanh$ activation function, and a
+linear output layer, to see if adding additional layers and neurons would
+improve the results.
+The data was also split into two groups, training and validation, the latter of
+which was not used for training the network.
+For a well-fitting network, the loss values for both groups should be similar,
+and the ratio between them provided a rough measure of over-fitting.
 
+The network was trained over 2000 epochs using the stochastic gradient descent
+optimiser, obtaining an final training loss of 0.0424, and validation loss of
+0.0464.
+The ratio between the loss values is $\sim1.09$, this value is close to 1,
+suggesting that the network was not over-fitting.
 
+The network was trained again using the ``Adam'' optimiser, which uses
+estimations of both first and second-order moments \citep{Kingma:2014:Adam}.
+\begin{center}
+    \import{../Code/}{BostonHousingTensorResults.pgf}
+    \parbox{0.9\textwidth}{%
+    \captionof{figure}{Graph of network error for training and validation
+    against iteration number with ``Adam'' optimiser.}}
+\end{center}
 
+%2000 epochs
 
+%SGD [5,5]
+%initial loss 0.228166446089744570
+%  final loss 0.042430859059095380
+%initial vali 0.214338675141334530
+%  final vali 0.046398963779211044
+% vali / loss 1.093519311
+
+%SGD [3,3]
+%initial loss 0.285416126251220700
+%  final loss 0.033157549798488620
+%initial vali 0.329692572355270400
+%  final vali 0.045487113296985626
+% vali / loss
+
+%SGD [3]
+%initial loss 0.494845181703567500
+%  final loss 0.041440241038799286
+%initial vali 0.568243682384491000
+%  final vali 0.048694450408220290
+
+%Adams [5,5]
+%initial loss 0.425099462270736700
+%  final loss 0.014745806343853474
+%initial vali 0.409027785062789900
+%  final vali 0.044336102902889250
 
 \subsection{Linear Regression}
 

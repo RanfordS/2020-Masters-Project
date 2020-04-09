@@ -8,14 +8,14 @@ layers = tf.keras.layers
 ##### Settings #####
 
 ## Parameters
-num_epochs = 5000
+num_epochs = 2000
 num_hidden = 5
 normalise = True
 
 ## Plot settings
 plt.rc ('text', usetex=True)
 plt.rc ('font', family='serif')
-plot_filename = "BostonHousingTensor.pgf"
+plot_filename = False#"BostonHousingTensorResults.pgf"
 
 ##### End of Settings #####
 
@@ -49,7 +49,7 @@ model = tf.keras.models.Sequential (
 ,   layers.Dense (num_hidden, activation='tanh')
 ,   layers.Dense (1, activation='linear')
 ])
-model.compile (optimizer='adam',
+model.compile (optimizer='SGD',#'Adam',
                loss='mean_squared_error',
                metrics=[])
 
@@ -65,9 +65,15 @@ result = model.fit (x_train, y_train,
 ## Evaluate
 model.evaluate (x_test, y_test, verbose=2)
 
+print ("Initial loss:", result.history['loss'][0])
+print ("Final loss:", result.history['loss'][-1])
+
+print ("Initial validation loss:", result.history['val_loss'][0])
+print ("Final validation loss:", result.history['val_loss'][-1])
+
 ## Plot
-plt.plot (range (num_epochs), result.history['loss'], label='loss')
-plt.plot (range (num_epochs), result.history['val_loss'], label='validation')
+plt.plot (range (num_epochs), result.history['loss'], label='Loss')
+plt.plot (range (num_epochs), result.history['val_loss'], label='Validation')
 plt.legend ()
 if plot_filename:
     plt.savefig (plot_filename)

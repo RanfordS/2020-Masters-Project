@@ -40,31 +40,36 @@ y_std  = (y_max - y_min)/2
 y_train = (y_train - y_mean)/y_std
 y_test  = (y_test  - y_mean)/y_std
 
-## Create model
-model = tf.keras.models.Sequential (
-[   layers.Dense (num_hidden, input_dim=num_inputs, activation='tanh')
-,   layers.Dense (num_hidden, activation='tanh')
-,   layers.Dense (1, activation='linear')
-])
-model.compile (optimizer='adam',
-               loss='mean_squared_error',
-               metrics=[])
+for i in range (1,6):
+    for j in range (1,6):
+        print ("doing [{0},{1}]".format (i,j))
+        ## Create model
+        model = tf.keras.models.Sequential (
+        [   layers.Dense (i, input_dim=num_inputs, activation='tanh')
+        ,   layers.Dense (j, activation='tanh')
+        ,   layers.Dense (1, activation='linear')
+        ])
+        model.compile (optimizer='adam',
+                       loss='mean_squared_error',
+                       metrics=[])
 
-## Train
-result = model.fit (x_train, y_train,
-                    epochs=num_epochs,
-                    batch_size=num_samples,
-                    use_multiprocessing=True,
-                    workers=12,
-                    verbose=0,
-                    validation_data=(x_test, y_test))
+        ## Train
+        result = model.fit (x_train, y_train,
+                            epochs=num_epochs,
+                            batch_size=num_samples,
+                            use_multiprocessing=True,
+                            workers=12,
+                            verbose=0,
+                            validation_data=(x_test, y_test))
 
-## Evaluate
-model.evaluate (x_test, y_test, verbose=2)
+        ## Evaluate
+        model.evaluate (x_test, y_test, verbose=2)
 
-## Plot
-plt.plot (range (num_epochs), result.history['loss'], label='loss')
-plt.plot (range (num_epochs), result.history['val_loss'], label='validation')
+        ## Plot
+        #plt.plot (range (num_epochs), result.history['loss'],
+        #        label='loss [{0},{1}]'.format (i,j))
+        plt.plot (range (num_epochs), result.history['val_loss'],
+                label='validation [{0},{1}]'.format (i,j))
 plt.legend ()
 plt.show ()
 

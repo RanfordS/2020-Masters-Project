@@ -8,7 +8,7 @@ layers = tf.keras.layers
 ##### Settings #####
 
 ## Parameters
-num_epochs = 5000
+num_epochs = 1000
 num_hidden = 2
 
 ## Plot settings
@@ -40,36 +40,38 @@ y_std  = (y_max - y_min)/2
 y_train = (y_train - y_mean)/y_std
 y_test  = (y_test  - y_mean)/y_std
 
-for i in range (1,6):
-    for j in range (1,6):
-        print ("doing [{0},{1}]".format (i,j))
-        ## Create model
-        model = tf.keras.models.Sequential (
-        [   layers.Dense (i, input_dim=num_inputs, activation='tanh')
-        ,   layers.Dense (j, activation='tanh')
-        ,   layers.Dense (1, activation='linear')
-        ])
-        model.compile (optimizer='adam',
-                       loss='mean_squared_error',
-                       metrics=[])
+for opt in ['SGD','Adam','RMSprop','FTRL','NAdam','Adamax','Adagrad','Adadelta']:
+    tf.random.set_seed (123456)
+    ## Create model
+    model = tf.keras.models.Sequential (
+    [   layers.Dense (5, input_dim=num_inputs, activation='tanh')
+    ,   layers.Dense (5, activation='tanh')
+    ,   layers.Dense (1, activation='linear')
+    ])
+    model.compile (optimizer=opt,
+                    loss='mean_squared_error',
+                    metrics=[])
 
-        ## Train
-        result = model.fit (x_train, y_train,
-                            epochs=num_epochs,
-                            batch_size=num_samples,
-                            use_multiprocessing=True,
-                            workers=12,
-                            verbose=0,
-                            validation_data=(x_test, y_test))
+    ## Train
+    result = model.fit (x_train, y_train,
+                        epochs=num_epochs,
+                        batch_size=num_samples,
+                        use_multiprocessing=True,
+                        workers=12,
+                        verbose=0,
+                        validation_data=(x_test, y_test))
 
-        ## Evaluate
-        model.evaluate (x_test, y_test, verbose=2)
+    ## Evaluate
+    print ("\n~@> Results {0}\n".format (opt))
+    model.evaluate (x_test, y_test, verbose=2)
+    print ("loss", result.history['loss'][-1])
+    print ("val_loss", result.history['val_loss'][-1])
 
-        ## Plot
-        #plt.plot (range (num_epochs), result.history['loss'],
-        #        label='loss [{0},{1}]'.format (i,j))
-        plt.plot (range (num_epochs), result.history['val_loss'],
-                label='validation [{0},{1}]'.format (i,j))
+    ## Plot
+    #plt.plot (range (num_epochs), result.history['loss'],
+    #        label='loss {0}'.format (opt))
+    plt.plot (range (num_epochs), result.history['val_loss'],
+            label='{0}'.format (opt))
 plt.legend ()
 plt.show ()
 

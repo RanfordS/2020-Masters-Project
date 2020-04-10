@@ -69,7 +69,7 @@ By definition,
 By chain rule,
 \begin{align*}
     \Rpdiff{e}{w_i} &=
-    \Rpdiff{e}{y} \cdot \Rpdiff{y}{\text{net}} \cdot \Rpdiff{\text{net}}{w_i}.
+    \Rpdiff{e}{y} \cdot \Rpdiff{y}{\text{net}} \cdot \Rpdiff{\text{net}}{w_i}.\\
     %
     \Rpdiff{net}{w_i} &= x_i,\\
     \Rpdiff{y}{net} &= 1 - \tanh^2(net) = 1 - y^2,\\
@@ -272,8 +272,9 @@ optimiser, obtaining an final training loss of 0.0424, and validation loss of
 The ratio between the loss values is $\sim1.09$, this value is close to 1,
 suggesting that the network was not over-fitting.
 
-The network was trained again using the ``Adam'' optimiser, which uses
-estimations of both first and second-order moments \citep{Kingma:2014:Adam}.
+The network was trained again using the ``Adam'' optimiser
+\citep{Kingma:2014:Adam}, which uses estimations of both first and second-order
+moments, and consistently outperforms the stochastic gradient descent method.
 \begin{center}
     \import{../Code/}{BostonHousingTensorResults.pgf}
     \parbox{0.9\textwidth}{%

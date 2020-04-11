@@ -103,4 +103,12 @@
 
 \newlength{\rs}
 
-
+\newcommand{\rfig}[3][0pt]{%
+    \refstepcounter{figure}
+    \begin{center}
+        #2
+        \vspace{#1}\\
+        \parbox{0.8\textwidth}{\centering\singlespacing Figure \thefigure: #3}
+    \end{center}
+    \vspace{1em}
+}

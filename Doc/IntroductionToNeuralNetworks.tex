@@ -10,12 +10,9 @@ These neurons can transmit and receive electrical signals to one another via
 synaptic connections, which maybe either excitatory or inhibitory.
 Any given neuron will be either active or inactive depending on whether or not
 its input exceeds a threshold.
-
-\begin{center}
-    \input{DiagramNeuron.tex}
-    \captionof{figure}{Diagram of a biological neuron.}
-\end{center}
-
+\rfig{\input{DiagramNeuron.tex}}{%
+    Diagram of a biological neuron.
+}
 Signals are received by the neuron via connections to dendrites and soma.
 If the threshold is met, electrical signals are sent along the axon to the
 terminal, where it is connected to other neurons, or to a controllable cell such
@@ -57,19 +54,18 @@ time step respectively.
 The result is such that the neuron will only be active if at least one
 excitatory connection is active and all inhibitory connections are inactive.
 The versatility of this definition is demonstrated in the following examples.
-\begin{center}
+\rfig{%
     \begin{tabular}{ccc}
         SR Flip-flop & & AND Gate\\
         \input{DiagramMcculSRFlipFlop.tex} & & \input{DiagramMcculAND.tex}\\
         $\displaystyle N_M(t+1) = (N_S(t) \vee N_M(t)) \wedge\neg N_R(t)$ &
         &
         $\displaystyle N_R(t+2) = N_A(t) \vee N_B(t)$\\
-    \end{tabular}
-    \parbox{0.9\textwidth}{%
-    \captionof{figure}{Two common logic circuits using McCulloch's neurons
+    \end{tabular}}{%
+    Two common logic circuits using McCulloch's neurons
     where the arrows and circles indicate excitatory and inhibitory
-    connections respectively.}}
-\end{center}
+    connections respectively.
+}
 While this model provided insight into the mechanisms by which neurons operate,
 the structure was static, and incapable of learning.
 
@@ -302,10 +298,9 @@ is a function of a small region of the previous layer, a process now commonly
 referred to as convolution.
 S-Plane feature maps connect to all feature maps of the previous layer,
 but C-Plane feature maps only connect to the corresponding feature map.
-\begin{center}
-    \input{DiagramNeocognitron.tex}
-    \captionof{figure}{Representation of the neocognitron's connectivity.}
-\end{center}
+\rfig{\input{DiagramNeocognitron.tex}}{%
+    Representation of the neocognitron's connectivity.
+}
 Each layer of the network reduces the size of input image until the final layer
 consists of single unit feature maps.
 The network was originally trained to distinguish 5 digits, numbers 0 to 4,
@@ -413,10 +408,9 @@ and state units, providing compressed data from all previous time frames.
 A hidden layer connects fully to all units from both groups in the input layer.
 The output layer connects fully to the hidden layer.
 The state units are connected to the output units and to themselves.
-\begin{center}
-    \input{DiagramJordan.tex}
-    \captionof{figure}{Example of Jordan's recurrent neural network.}
-\end{center}
+\rfig{\input{DiagramJordan.tex}}{%
+    Example of Jordan's recurrent neural network.
+}
 During training, the network was exposed to one utterance at a time, and trained
 to output the corresponding measures for each time frame.
 For some combinations phonemes and features, any value is acceptable, these were
@@ -447,10 +441,9 @@ For each unit in the hidden layer, there is a corresponding state unit, which
 holds the previous value of the hidden unit.
 Units in the hidden layer is connected to the corresponding state unit, and
 fully to the previous layer.
-\begin{center}
-    \input{DiagramElman.tex}
-    \captionof{figure}{Example of Elman's recurrent neural network.}
-\end{center}
+\rfig{\input{DiagramElman.tex}}{%
+    Example of Elman's recurrent neural network.
+}
 The network structure was initially used to predict sequential bit patterns.
 In one such experiment, a number of random sentences were generated using a
 small lexicon, and were presented to a network one character at a time without
@@ -520,8 +513,8 @@ occasionally reset.
 This problem was solved by \cite{Gers:1999:Learning}, by introducing a third
 gate to the LSTM, which controlled the cell's internal recurrent connection.
 
-It should be noted that an LSTM cell can learn to never forget, hence recovering
-the previous model.
+It should be noted that an LSTM cell can ``learn to never forget'', hence
+recovering the previous model.
 % LSTM fails to learn to correctly process certain very long or continual time
 % series that are not a priori segmented into appropriate training subsequences
 % with clearly defined beginnings and ends
@@ -543,13 +536,14 @@ evidence to suggest it was required.
 
 These peephole connections allowed the model to perform count and timing tasks,
 such as producing nonlinear, precisely timed spikes.
-\begin{center}
-    \input{DiagramLSTM.tex}
-    \parbox{0.9\textwidth}{%
-    \captionof{figure}{Visualisation of two LSTM units, where $\sigma$,
+A full diagram is given in Figure \ref{INN:LSTM}
+
+\newpage
+\rfig{\input{DiagramLSTM.tex}}{%
+    Visualisation of two LSTM units, where $\sigma$,
     $g$, and $h$ are function units;
-    $+$ is a weighted summation unit; and $\cdot$ is multiply unit.}}
-\end{center}
+    $+$ is a weighted summation unit; and $\cdot$ is multiply unit.
+}\label{INN:LSTM}
 % during learning no error signals are propagated back from gates
 % via peephole connections
 

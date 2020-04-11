@@ -15,7 +15,8 @@ normalise = True
 ## Plot settings
 plt.rc ('text', usetex=True)
 plt.rc ('font', family='serif')
-plot_filename = False#"BostonHousingTensorResults.pgf"
+plot_filename = "BostonHousingTensorResultsSGD.pgf"
+tf.random.set_seed (12)
 
 ##### End of Settings #####
 

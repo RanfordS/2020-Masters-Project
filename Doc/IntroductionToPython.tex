@@ -90,10 +90,9 @@ where $\mathbf{w}'$ is the new set of weights.
 
 The network was initialised using random weights, and was trained using the full
 dataset.
-\begin{center}
-    \import{../Code/}{BostonHousingResult.pgf}
-    \captionof{figure}{Graph of network weights against iteration number.}
-\end{center}
+\rfig[-9ex]{\import{../Code/}{BostonHousingResult.pgf}}{%
+    Graph of network weights against iteration number.
+}
 After 10 epochs, the mean square error had reduced from 0.1637 to 0.0507.
 Note that the weight value lines appear to be jagged, this was a side effect of
 updating the value after each individual presentation; a problem which can be
@@ -143,13 +142,10 @@ weight vector without the bias term.
 Note that $\hat{\mathbf{w}}^T$ and $\mathbf{e}$ are column and row vectors
 respectively, and that their product is a matrix.
 See Appendix \ref{app:BHMDeriv} for full derivation.
-
-\begin{center}
-    \import{../Code/}{BostonHousingMultiResult.pgf}
-    \parbox{0.9\textwidth}{%
-    \captionof{figure}{Graph of network error against iteration number for
-    various numbers of hidden neurons using the Boston housing data.}}
-\end{center}
+\rfig[-9ex]{\import{../Code/}{BostonHousingMultiResult.pgf}}{%
+    Graph of network error against iteration number for
+    various numbers of hidden neurons using the Boston housing data.
+}
 The network was trained multiple times with varying numbers of hidden neurons.
 The same random seed value was used for all trials.
 In each case, the network successfully reduced it's error to roughly the same
@@ -194,12 +190,11 @@ Given that the problem is mathematically well defined, a successfully trained
 network should reduce the error to near zero.
 Training the network for varying numbers of hidden neurons gave the following
 results.
-\begin{center}
-    \import{../Code/}{XORResult.pgf}
-    \parbox{0.9\textwidth}{%
-    \captionof{figure}{Graph of network error against iteration number for
-    various numbers of hidden neurons using the XOR data.}}
-\end{center}
+\vspace{-2em}
+\rfig[-9ex]{\import{../Code/}{XORResult.pgf}}{%
+    Graph of network error against iteration number for
+    various numbers of hidden neurons using the XOR data.
+}
 The final mean square errors for one, two, and three hidden neurons were 0.1713,
 $2.04\times10^{-5}$, and $9.65\times10^{-6}$ respectively.
 These results showed that a single, nonlinear neuron is not sufficient for
@@ -267,20 +262,33 @@ For a well-fitting network, the loss values for both groups should be similar,
 and the ratio between them provided a rough measure of over-fitting.
 
 The network was trained over 2000 epochs using the stochastic gradient descent
-optimiser, obtaining an final training loss of 0.0424, and validation loss of
-0.0464.
-The ratio between the loss values is $\sim1.09$, this value is close to 1,
+optimiser, obtaining an final training loss of 0.0421, and validation loss of
+0.0396.
+The ratio between the loss values is $\sim0.94$, this value is close to 1,
 suggesting that the network was not over-fitting.
-
+\vspace{-2em}
+\rfig[-9ex]{\import{../Code/}{BostonHousingTensorResultsSGD.pgf}}{%
+    Graph of training and validation loss against iteration
+    number with ``SGD'' optimiser.
+}
+\newpage
 The network was trained again using the ``Adam'' optimiser
 \citep{Kingma:2014:Adam}, which uses estimations of both first and second-order
 moments, and consistently outperforms the stochastic gradient descent method.
-\begin{center}
-    \import{../Code/}{BostonHousingTensorResults.pgf}
-    \parbox{0.9\textwidth}{%
-    \captionof{figure}{Graph of network error for training and validation
-    against iteration number with ``Adam'' optimiser.}}
-\end{center}
+
+With the Adam optimiser, the final training and validation loss values were
+0.0147 and 0.0443 respectively.
+Although the loss value is smaller than with stochastic gradient descent, the
+loss ratio was $\sim3.01$, which suggests that the network was over-fitting.
+This was further evidenced the loss graph, which show that beyond a certain
+point, the training loss and validation loss diverge, with the validation loss
+increasing.
+As such, the network is expected to be less generalised.
+\vspace{-2em}
+\rfig[-9ex]{\import{../Code/}{BostonHousingTensorResultsAdam.pgf}}{%
+    Graph of training and validation loss against iteration
+    number with ``Adam'' optimiser.
+}
 
 %2000 epochs
 
@@ -312,4 +320,16 @@ moments, and consistently outperforms the stochastic gradient descent method.
 
 \subsection{Linear Regression}
 
+\rfig[-9ex]{\import{../Code/}{LinearRegressionResults.pgf}}{%
+    Graph showing the data points and network's corresponding line of best fit.
+}
+%initial loss 0.62278741598129270000
+%  final loss 0.00022495193115901202
+
 \subsection{Character Recognition}
+
+\rfig{\input{DiagramCRResults.tex}}{%
+    Hand written numbers from the MNIST validation set, the network prediction,
+    and the certainty of the network.
+}
+

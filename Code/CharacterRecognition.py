@@ -6,7 +6,7 @@ import tensorflow as tf
 layers = tf.keras.layers
 
 ## Parameters
-num_epochs = 100
+num_epochs = 200
 
 ## Plot settings
 plt.rc ('text', usetex=True)
@@ -59,6 +59,10 @@ result = model.fit (x_train, y_train,
                     use_multiprocessing=True,
                     workers=12,
                     validation_data=(x_test, y_test))
+print ("initial loss:", result.history['loss'][0])
+print ("initial vali:", result.history['val_loss'][0])
+print ("final loss:  ", result.history['loss'][-1])
+print ("final loss:  ", result.history['val_loss'][-1])
 
 ## Plot
 plt.plot (range (num_epochs), result.history['loss'], label='loss')
@@ -66,9 +70,19 @@ plt.plot (range (num_epochs), result.history['val_loss'], label='validation')
 plt.legend ()
 plt.show ()
 
-predictions = model.predict (x_test)
+pred_train = np.argmax (model.predict (x_train), axis=1)
+pred_test  = np.argmax (model.predict (x_test),  axis=1)
+diff_train = pred_train - y_train
+diff_test  = pred_test  - y_test
+errs_train = np.sum (np.absolute (diff_train))
+errs_test  = np.sum (np.absolute (diff_test))
+print ("training size:    ", x_train.shape[0])
+print ("training errors:  ", errs_train)
+print ("validation size:  ", x_test.shape[0])
+print ("validation errors:", errs_test)
 
 ## Show elements with predictions
+predictions = model.predict (x_test)
 plt.figure ()
 for i in range (25):
     plt.subplot (5, 5, i+1)

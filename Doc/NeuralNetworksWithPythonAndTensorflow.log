@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2020.3.11)  14 APR 2020 17:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2020.3.11)  15 APR 2020 13:20
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1797,17 +1797,17 @@ k-age was used to per-form ma-trix op-er-a-tions, and the \OT1/cmtt/m/n/10.95 m
 atplotlib.pyplot
  []
 
-[19] (../Code/BostonHousingResult.pgf)
+[19] (../Code/BostonHousing/ResultPythonSingle.pgf)
 Overfull \hbox (9.55966pt too wide) in paragraph at lines 8992--95
  [] 
  []
 
-[20] [21] (../Code/BostonHousingMultiResult.pgf)
+[20] [21] (../Code/BostonHousing/ResultPythonMulti.pgf)
 Overfull \hbox (9.55966pt too wide) in paragraph at lines 754--148
  [] 
  []
 
-[22] [23] (../Code/XORResult.pgf)
+[22] [23] (../Code/XOR/ResultPython.pgf)
 Overfull \hbox (9.55966pt too wide) in paragraph at lines 1026--197
  [] 
  []
@@ -1820,17 +1820,17 @@ athescape=True -o "NeuralNetworksWithPythonAndTensorflow.out.pyg" "NeuralNetwor
 ksWithPythonAndTensorflow.pyg" )...executed.
 
  (./NeuralNetworksWithPythonAndTensorflow.out.pyg) [25]
-(../Code/BostonHousingTensorResultsSGD.pgf)
+(../Code/BostonHousing/ResultTensorSGD.pgf)
 Overfull \hbox (9.55966pt too wide) in paragraph at lines 626--273
  [] 
  []
 
-[26] (../Code/BostonHousingTensorResultsAdam.pgf)
+[26] (../Code/BostonHousing/ResultTensorAdam.pgf)
 Overfull \hbox (9.55966pt too wide) in paragraph at lines 639--291
  [] 
  []
 
-(../Code/LinearRegressionResults.pgf)
+(../Code/Regression/ResultLinear.pgf)
 Overfull \hbox (3.77902pt too wide) in paragraph at lines 940--325
  [] 
  []
@@ -2079,9 +2079,9 @@ Package logreq Info: Writing requests to 'NeuralNetworksWithPythonAndTensorflow
 
  ) 
 Here is how much of TeX's memory you used:
- 42159 strings out of 494953
- 934563 string characters out of 6180977
- 1706795 words of memory out of 5000000
+ 42161 strings out of 494953
+ 934618 string characters out of 6180977
+ 1706904 words of memory out of 5000000
  44533 multiletter control sequences out of 15000+600000
  16333 words of font info for 62 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -2105,7 +2105,7 @@ f-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/amsfonts/symbols/msam10.pfb>
-Output written on NeuralNetworksWithPythonAndTensorflow.pdf (39 pages, 533849 b
+Output written on NeuralNetworksWithPythonAndTensorflow.pdf (39 pages, 533909 b
 ytes).
 PDF statistics:
  584 PDF objects out of 1000 (max. 8388607)

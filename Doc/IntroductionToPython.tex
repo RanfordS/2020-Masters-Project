@@ -90,7 +90,7 @@ where $\mathbf{w}'$ is the new set of weights.
 
 The network was initialised using random weights, and was trained using the full
 dataset.
-\rfig[-9ex]{\import{../Code/}{BostonHousingResult.pgf}}{%
+\rfig[-9ex]{\import{../Code/BostonHousing/}{ResultPythonSingle.pgf}}{%
     Graph of network weights against iteration number.
 }
 After 10 epochs, the mean square error had reduced from 0.1637 to 0.0507.
@@ -142,7 +142,7 @@ weight vector without the bias term.
 Note that $\hat{\mathbf{w}}^T$ and $\mathbf{e}$ are column and row vectors
 respectively, and that their product is a matrix.
 See Appendix \ref{app:BHMDeriv} for full derivation.
-\rfig[-9ex]{\import{../Code/}{BostonHousingMultiResult.pgf}}{%
+\rfig[-9ex]{\import{../Code/BostonHousing/}{ResultPythonMulti.pgf}}{%
     Graph of network error against iteration number for
     various numbers of hidden neurons using the Boston housing data.
 }
@@ -191,7 +191,7 @@ network should reduce the error to near zero.
 Training the network for varying numbers of hidden neurons gave the following
 results.
 \vspace{-2em}
-\rfig[-9ex]{\import{../Code/}{XORResult.pgf}}{%
+\rfig[-9ex]{\import{../Code/XOR/}{ResultPython.pgf}}{%
     Graph of network error against iteration number for
     various numbers of hidden neurons using the XOR data.
 }
@@ -267,7 +267,7 @@ optimiser, obtaining an final training loss of 0.0421, and validation loss of
 The ratio between the loss values is $\sim0.94$, this value is close to 1,
 suggesting that the network was not over-fitting.
 \vspace{-2em}
-\rfig[-9ex]{\import{../Code/}{BostonHousingTensorResultsSGD.pgf}}{%
+\rfig[-9ex]{\import{../Code/BostonHousing/}{ResultTensorSGD.pgf}}{%
     Graph of training and validation loss against iteration
     number with ``SGD'' optimiser.
 }
@@ -285,7 +285,7 @@ point, the training loss and validation loss diverge, with the validation loss
 increasing.
 As such, the network is expected to be less generalised.
 \vspace{-2em}
-\rfig[-9ex]{\import{../Code/}{BostonHousingTensorResultsAdam.pgf}}{%
+\rfig[-9ex]{\import{../Code/BostonHousing/}{ResultTensorAdam.pgf}}{%
     Graph of training and validation loss against iteration
     number with ``Adam'' optimiser.
 }
@@ -320,7 +320,7 @@ As such, the network is expected to be less generalised.
 
 \subsection{Linear Regression}
 
-\rfig[-9ex]{\import{../Code/}{LinearRegressionResults.pgf}}{%
+\rfig[-9ex]{\import{../Code/Regression/}{ResultLinear.pgf}}{%
     Graph showing the data points and network's corresponding line of best fit.
 }
 %initial loss 0.62278741598129270000

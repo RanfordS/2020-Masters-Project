@@ -13,11 +13,14 @@ layers = tf.keras.layers
 num_epochs = 2000
 num_hidden = 5
 normalise = True
+opti = ["SGD","Adam"][1]
 
 ## Plot settings
 plt.rc ('text', usetex=True)
 plt.rc ('font', family='serif')
-plot_filename = "BostonHousingTensorResultsSGD.pgf"
+plot_filename = False#"ResultTensor{}.pgf".format (opti)
+data_filename = "DataTensor{}.csv".format (opti+"{}")
+data_stride = 20
 tf.random.set_seed (12)
 
 ##### End of Settings #####
@@ -52,7 +55,7 @@ model = tf.keras.models.Sequential (
 ,   layers.Dense (num_hidden, activation='tanh')
 ,   layers.Dense (1, activation='linear')
 ])
-model.compile (optimizer='SGD',#'Adam',
+model.compile (optimizer=opti,
                loss='mean_squared_error',
                metrics=[])
 
@@ -75,6 +78,12 @@ print ("Initial validation loss:", result.history['val_loss'][0])
 print ("Final validation loss:", result.history['val_loss'][-1])
 
 ## Plot
+if data_filename:
+    for att in [['loss','Loss'],['val_loss','Vali']]:
+        with open (data_filename.format (att[1]), "w") as f:
+            prop = result.history[att[0]]
+            for i in range (0, num_epochs, data_stride):
+                f.write ("{0:d},{1:f}\n".format (i, prop[i]))
 plt.plot (range (num_epochs), result.history['loss'], label='Loss')
 plt.plot (range (num_epochs), result.history['val_loss'], label='Validation')
 plt.legend ()

@@ -12,6 +12,8 @@ layers = tf.keras.layers
 ## Parameters
 num_epochs = 1000
 num_hidden = 2
+data_filename = "DataTensorVary{}{}.csv"
+data_stride = 2
 
 ## Plot settings
 plt.rc ('text', usetex=True)
@@ -72,6 +74,12 @@ for opt in ['SGD','Adam','RMSprop','FTRL','NAdam','Adamax','Adagrad','Adadelta']
     ## Plot
     #plt.plot (range (num_epochs), result.history['loss'],
     #        label='loss {0}'.format (opt))
+    if data_filename:
+        for att in [['loss','Loss'],['val_loss','Vali']]:
+            with open (data_filename.format (opt, att[1]), "w") as f:
+                prop = result.history[att[0]]
+                for i in range (0, num_epochs, data_stride):
+                    f.write ("{0:d},{1:f}\n".format (i, prop[i]))
     plt.plot (range (num_epochs), result.history['val_loss'],
             label='{0}'.format (opt))
 plt.legend ()

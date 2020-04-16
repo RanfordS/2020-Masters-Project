@@ -14,6 +14,9 @@ num_epochs = 2000
 plt.rc ('text', usetex=True)
 plt.rc ('font', family='serif')
 
+data_filename = "DataTensor{}.csv"
+data_stride = 10
+
 ##### End of Settings #####
 
 ## Data
@@ -23,6 +26,7 @@ yt= np.matrix ([[0,1,1,0]]).transpose()
 
 for num_hidden in [1,2,3]:
     print ("count:", num_hidden)
+    tf.random.set_seed (12345)
     ## Create model
     model = tf.keras.models.Sequential (
     [   layers.Dense (num_hidden,
@@ -41,6 +45,10 @@ for num_hidden in [1,2,3]:
                         batch_size=4)
 
     ## Plot
+    if data_filename:
+        with open (data_filename.format (num_hidden), "w") as f:
+            for i in range (0, num_epochs, data_stride):
+                f.write ("{0:d},{1:f}\n".format (i, result.history['loss'][i]))
     plt.plot (range (num_epochs),
               result.history['loss'],
               label='Num Hidden = {0}'.format(num_hidden))

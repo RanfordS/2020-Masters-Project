@@ -1,4 +1,6 @@
 ## Imports
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import numpy as np
 import matplotlib.pyplot as plt
 # import keras so that we can access the Boston housing data
@@ -18,6 +20,8 @@ plt.rc ('text', usetex=True)
 plt.rc ('font', family='serif')
 # set to false to diable figure save
 plot_filename = "BostonHousingResult.pgf"
+data_filename = "DataPythonSingleW{0:d}.csv"
+data_stride   = 50
 
 ##### End of settings #####
 
@@ -82,6 +86,11 @@ K = range (k+1)
 for i in range (num_inputs):
     plt.plot (K, W[:,i].tolist(), label="$w_{{{0}}}$".format (i))
 # save plot and display
+if data_filename:
+    for i in range (num_inputs):
+        with open (data_filename.format (i) , "w") as f:
+            for j in range (0, num_epochs*num_train, data_stride):
+                f.write ("{0:d},{1:f}\n".format (j, W[j,i]))
 plt.legend ()
 if plot_filename:
     plt.savefig (plot_filename)

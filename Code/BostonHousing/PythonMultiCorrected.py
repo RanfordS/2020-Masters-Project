@@ -1,4 +1,6 @@
 ## Imports
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import numpy as np
 import matplotlib.pyplot as plt
 # import keras so that we can access the Boston housing data
@@ -16,7 +18,9 @@ eta = 0.05
 plt.rc ('text', usetex=True)
 plt.rc ('font', family='serif')
 # set to false to disable figure save
-plot_filename = "BostonHousingMultiResult.pdf"
+plot_filename = False#"ResultPythonMulti.pdf"
+data_filename = "DataPythonMulti{0:d}.csv"
+data_stride = 10
 
 ##### End of Settings #####
 
@@ -89,6 +93,10 @@ for num_hidden in range (1, max_num_hidden + 1):
     plt.plot (range (num_epochs), mse, label="Hidden Neurons = {0}".format (num_hidden))
     print ("initial error", mse[0])
     print ("final error", mse[-1])
+    if data_filename:
+        with open (data_filename.format (num_hidden), "w") as f:
+            for i in range (0, num_epochs, data_stride):
+                f.write ("{0:d},{1:f}\n".format (i, mse[i]))
 
 # save plot and display
 plt.legend ()

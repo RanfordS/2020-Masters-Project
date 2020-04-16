@@ -7,7 +7,7 @@ import tensorflow as tf
 
 num = 100
 lower = 0
-upper = 2*np.pi
+upper = 1
 noise = 0.02
 
 eps = 10000
@@ -19,8 +19,7 @@ ry = y + np.random.uniform (-noise, noise, num)
 
 layers = tf.keras.layers
 model = tf.keras.Sequential (
-[   layers.Dense (4, input_dim=1, activation='tanh')
-,   layers.Dense (1)
+[   layers.Dense (1, input_dim=1)
 ])
 
 model.compile (optimizer="Adam",
@@ -37,6 +36,13 @@ print ("Initial loss:", res.history['loss'][0])
 print ("Final loss:  ", res.history['loss'][-1])
 
 py = model.predict (x)[:,0]
+
+with open ("DataLinearPoints.csv", "w") as f:
+    for i in range (num):
+        f.write ("{0:f},{1:f}\n".format (rx[i], ry[i]))
+with open ("DataLinearPrediction.csv", "w") as f:
+    for i in range (num):
+        f.write ("{0:f},{1:f}\n".format (x[i],  py[i]))
 
 plt.plot (rx, ry, '.')
 plt.plot (x, py)

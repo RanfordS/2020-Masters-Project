@@ -6,7 +6,12 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 layers = tf.keras.layers
 
-num_epochs = 50
+num_epochs = 10
+
+data_filename = "DataConv{}.cvs"
+data_stride = 1
+
+tf.random.set_seed (123456)
 
 ## Load data
 char_set = tf.keras.datasets.mnist
@@ -65,6 +70,12 @@ print ("validation %err:  ", 100*errs_test/x_test.shape[0])
 
 ## Plot
 epoch = range (num_epochs)
+if data_filename:
+    for att in [["loss","Loss"],["val_loss","Vali"]]:
+        with open (data_filename.format (att[1]), "w") as f:
+            prop = result.history[att[0]]
+            for i in range (0, len (prop), data_stride):
+                f.write ("{0:d},{1:f}\n".format (i, prop[i]))
 plt.plot (epoch, result.history['loss'], label='loss')
 plt.plot (epoch, result.history['val_loss'], label='validation')
 plt.legend ()

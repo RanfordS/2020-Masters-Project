@@ -14,7 +14,9 @@ eta = 0.2
 plt.rc ('text', usetex=True)
 plt.rc ('font', family='serif')
 # set to False to disable figure save
-plot_filename = "XORResult.pgf"
+plot_filename = False#"ResultPython.pgf"
+data_filename = "DataPython{}.csv"
+data_stride = 3
 
 ##### End of Settings #####
 
@@ -72,6 +74,10 @@ for num_hidden in range (1, max_num_hidden + 1):
         pred = y
 
     ## Plot
+    if data_filename:
+        with open (data_filename.format (num_hidden), "w") as f:
+            for i in range (0, num_epochs, data_stride):
+                f.write ("{0:d},{1:f}\n".format (i, mse[i]))
     plt.plot (range (num_epochs), mse, label="Hidden Neurons = {0}".format (num_hidden))
     print ("initial error", mse[0])
     print ("final error", mse[-1])

@@ -14,7 +14,11 @@ num_epochs = 200
 plt.rc ('text', usetex=True)
 plt.rc ('font', family='serif')
 #Does not work well
-plot_filename = False#"CharacterRecognitionResults.pgf"
+plot_filename = False#"ResultFlat.pgf"
+data_filename = "DataFlat{}.csv"
+data_stride = 1
+
+tf.random.set_seed (123456)
 
 ## Load data
 char_set = tf.keras.datasets.mnist
@@ -67,6 +71,12 @@ print ("final loss:  ", result.history['loss'][-1])
 print ("final loss:  ", result.history['val_loss'][-1])
 
 ## Plot
+if data_filename:
+    for att in [["loss","Loss"],["val_loss","Vali"]]:
+        with open (data_filename.format (att[1]), "w") as f:
+            prop = result.history[att[0]]
+            for i in range (0, num_epochs, data_stride):
+                f.write ("{0:d},{1:f}\n".format (i, prop[i]))
 plt.plot (range (num_epochs), result.history['loss'], label='loss')
 plt.plot (range (num_epochs), result.history['val_loss'], label='validation')
 plt.legend ()

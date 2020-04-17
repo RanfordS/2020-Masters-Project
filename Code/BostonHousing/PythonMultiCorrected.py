@@ -9,7 +9,7 @@ from tensorflow import keras
 ##### Settings #####
 
 ## Parameters
-num_epochs = 1000
+num_epochs = 500
 max_num_hidden = 3
 # base eta value
 eta = 0.05
@@ -95,7 +95,10 @@ for num_hidden in range (1, max_num_hidden + 1):
     print ("final error", mse[-1])
     if data_filename:
         with open (data_filename.format (num_hidden), "w") as f:
-            for i in range (0, num_epochs, data_stride):
+            I = [i for i in range (0, num_epochs, data_stride)]
+            if I[-1] != num_epochs - 1:
+                I.append (num_epochs - 1)
+            for i in I:
                 f.write ("{0:d},{1:f}\n".format (i, mse[i]))
 
 # save plot and display

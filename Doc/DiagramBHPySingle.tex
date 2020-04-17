@@ -1,0 +1,33 @@
+\begin{tikzpicture}
+    \begin{axis}
+        [   width = 0.8\textwidth
+        ,   xtick = {0,1000,2000,3000,4000,5000}
+        ,   legend pos = south west
+        ,   xlabel = {Iteration}
+        ,   ylabel = {Value}
+        ]
+        \addplot [color = Rblue]   table [col sep = comma]
+        {../Code/BostonHousing/DataPythonSingleW0.csv};
+        \addplot [color = Rorange] table [col sep = comma]
+        {../Code/BostonHousing/DataPythonSingleW1.csv};
+        \addplot [color = Rgreen]  table [col sep = comma]
+        {../Code/BostonHousing/DataPythonSingleW2.csv};
+        \addplot [color = Rred]    table [col sep = comma]
+        {../Code/BostonHousing/DataPythonSingleW3.csv};
+        \legend{$w_0$,$w_1$,$w_2$,$w_3$}
+
+        \addplot
+        [   opacity = 0.2
+        ,   sharp plot
+        ,   update limits = false
+        ]   coordinates {(0,-1) (0,1)};
+        \pgfplotsinvokeforeach{1,...,10}%
+        {   \addplot
+            [   opacity = 0.2
+            ,   sharp plot
+            ,   update limits = false
+            ]   coordinates {(506*#1,-1) (506*#1,1)}
+            node [anchor = south, rotate = 90] at (506*#1,0.05) {\tiny epoch = #1};
+        }
+    \end{axis}
+\end{tikzpicture}

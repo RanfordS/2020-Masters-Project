@@ -13,7 +13,7 @@ layers = tf.keras.layers
 num_epochs = 2000
 num_hidden = 5
 normalise = True
-opti = ["SGD","Adam"][1]
+opti = ["SGD","Adam"][0]
 
 ## Plot settings
 plt.rc ('text', usetex=True)
@@ -79,10 +79,13 @@ print ("Final validation loss:", result.history['val_loss'][-1])
 
 ## Plot
 if data_filename:
+    I = [i for i in range (0, num_epochs, data_stride)]
+    if I[-1] != num_epochs-1:
+        I.append (num_epochs-1)
     for att in [['loss','Loss'],['val_loss','Vali']]:
         with open (data_filename.format (att[1]), "w") as f:
             prop = result.history[att[0]]
-            for i in range (0, num_epochs, data_stride):
+            for i in I:
                 f.write ("{0:d},{1:f}\n".format (i, prop[i]))
 plt.plot (range (num_epochs), result.history['loss'], label='Loss')
 plt.plot (range (num_epochs), result.history['val_loss'], label='Validation')

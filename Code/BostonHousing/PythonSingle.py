@@ -19,9 +19,9 @@ inputs = (5,8,12,1)
 plt.rc ('text', usetex=True)
 plt.rc ('font', family='serif')
 # set to false to diable figure save
-plot_filename = "BostonHousingResult.pgf"
+plot_filename = False#"BostonHousingResult.pgf"
 data_filename = "DataPythonSingleW{0:d}.csv"
-data_stride   = 50
+data_stride   = 10
 
 ##### End of settings #####
 
@@ -87,9 +87,13 @@ for i in range (num_inputs):
     plt.plot (K, W[:,i].tolist(), label="$w_{{{0}}}$".format (i))
 # save plot and display
 if data_filename:
+    N = num_epochs*num_train
+    J = [j for j in range (0, N, data_stride)]
+    if J[-1] != N-1:
+        J.append (N-1)
     for i in range (num_inputs):
         with open (data_filename.format (i) , "w") as f:
-            for j in range (0, num_epochs*num_train, data_stride):
+            for j in J:
                 f.write ("{0:d},{1:f}\n".format (j, W[j,i]))
 plt.legend ()
 if plot_filename:

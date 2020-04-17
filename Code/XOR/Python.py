@@ -16,7 +16,7 @@ plt.rc ('font', family='serif')
 # set to False to disable figure save
 plot_filename = False#"ResultPython.pgf"
 data_filename = "DataPython{}.csv"
-data_stride = 3
+data_stride = 1
 
 ##### End of Settings #####
 
@@ -76,7 +76,10 @@ for num_hidden in range (1, max_num_hidden + 1):
     ## Plot
     if data_filename:
         with open (data_filename.format (num_hidden), "w") as f:
-            for i in range (0, num_epochs, data_stride):
+            I = [i for i in range (0, num_epochs, data_stride)]
+            if I[-1] != num_epochs-1:
+                I.append (num_epochs-1)
+            for i in I:
                 f.write ("{0:d},{1:f}\n".format (i, mse[i]))
     plt.plot (range (num_epochs), mse, label="Hidden Neurons = {0}".format (num_hidden))
     print ("initial error", mse[0])

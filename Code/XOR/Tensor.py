@@ -47,6 +47,9 @@ for num_hidden in [1,2,3]:
     ## Plot
     if data_filename:
         with open (data_filename.format (num_hidden), "w") as f:
+            I = [i for i in range (0, num_epochs, data_stride)]
+            if I[-1] != num_epochs-1:
+                I.append (num_epochs-1)
             for i in range (0, num_epochs, data_stride):
                 f.write ("{0:d},{1:f}\n".format (i, result.history['loss'][i]))
     plt.plot (range (num_epochs),

@@ -13,7 +13,7 @@ noise = 0.02
 eps = 10000
 
 x = np.array ([i/(num-1) for i in range (num)])*(upper-lower) + lower
-y = np.sin (x)
+y = x
 rx = x + np.random.uniform (-noise, noise, num)
 ry = y + np.random.uniform (-noise, noise, num)
 

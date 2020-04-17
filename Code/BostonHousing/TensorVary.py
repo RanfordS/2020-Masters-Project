@@ -75,6 +75,9 @@ for opt in ['SGD','Adam','RMSprop','FTRL','NAdam','Adamax','Adagrad','Adadelta']
     #plt.plot (range (num_epochs), result.history['loss'],
     #        label='loss {0}'.format (opt))
     if data_filename:
+        I = [i for i in range (0, num_epochs, data_stride)]
+        if I[-1] != num_epochs-1:
+            I.append (num_epochs-1)
         for att in [['loss','Loss'],['val_loss','Vali']]:
             with open (data_filename.format (opt, att[1]), "w") as f:
                 prop = result.history[att[0]]

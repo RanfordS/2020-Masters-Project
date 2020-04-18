@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2020.3.11)  17 APR 2020 16:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2020.3.11)  18 APR 2020 17:58
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -757,6 +757,23 @@ File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 \Gin@req@height=\dimen130
 \Gin@req@width=\dimen131
 )
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
 (/usr/share/texlive/texmf-dist/tex/latex/pgfplots/pgfplots.sty
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
 Package: pgfplots 2016/01/06 v1.13 Data Visualization (1.13)
@@ -831,23 +848,7 @@ File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
 tex
 File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
-)) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
-
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
-File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
-)
-Package xcolor Info: Driver file: pdftex.def on input line 225.
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
-Package xcolor Info: Model `RGB' extended on input line 1353.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
-)
+))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
 
@@ -1825,8 +1826,17 @@ PGFPlots: reading {../Code/BostonHousing/DataTensorSGDVali.csv}
 ) [26] (./DiagramBHTFAdam.tex
 PGFPlots: reading {../Code/BostonHousing/DataTensorAdamLoss.csv}
 PGFPlots: reading {../Code/BostonHousing/DataTensorAdamVali.csv}
-)
-(./DiagramRegLinear.tex
+) [27]
+(./DiagramBHTFVary.tex
+PGFPlots: reading {../Code/BostonHousing/DataTensorVarySGDLoss.csv}
+PGFPlots: reading {../Code/BostonHousing/DataTensorVaryAdamLoss.csv}
+PGFPlots: reading {../Code/BostonHousing/DataTensorVaryAdagradLoss.csv}
+PGFPlots: reading {../Code/BostonHousing/DataTensorVaryAdadeltaLoss.csv}
+PGFPlots: reading {../Code/BostonHousing/DataTensorVaryAdamaxLoss.csv}
+PGFPlots: reading {../Code/BostonHousing/DataTensorVaryFTRLLoss.csv}
+PGFPlots: reading {../Code/BostonHousing/DataTensorVaryNAdamLoss.csv}
+PGFPlots: reading {../Code/BostonHousing/DataTensorVaryRMSpropLoss.csv}
+) [28] (./DiagramRegLinear.tex
 \pgf@layerbox@bottom=\box72
 \pgf@layerboxsaved@bottom=\box73
 \pgf@layerbox@top=\box74
@@ -1834,158 +1844,158 @@ PGFPlots: reading {../Code/BostonHousing/DataTensorAdamVali.csv}
 Package pgfplots info on input line 28: Setting layers 'bottom,main,top'...
 PGFPlots: reading {../Code/Regression/DataLinearPoints.csv}
 PGFPlots: reading {../Code/Regression/DataLinearPrediction.csv}
-) [27] (./DiagramCRResults.tex
-<CRResults/img0.png, id=379, 64.24pt x 64.24pt>
+) (./DiagramCRResults.tex
+<CRResults/img0.png, id=405, 64.24pt x 64.24pt>
 File: CRResults/img0.png Graphic file (type png)
  <use CRResults/img0.png>
 Package pdftex.def Info: CRResults/img0.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img1.png, id=381, 64.24pt x 64.24pt>
+<CRResults/img1.png, id=407, 64.24pt x 64.24pt>
 File: CRResults/img1.png Graphic file (type png)
  <use CRResults/img1.png>
 Package pdftex.def Info: CRResults/img1.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img2.png, id=382, 64.24pt x 64.24pt>
+<CRResults/img2.png, id=408, 64.24pt x 64.24pt>
 File: CRResults/img2.png Graphic file (type png)
  <use CRResults/img2.png>
 Package pdftex.def Info: CRResults/img2.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img3.png, id=383, 64.24pt x 64.24pt>
+<CRResults/img3.png, id=409, 64.24pt x 64.24pt>
 File: CRResults/img3.png Graphic file (type png)
  <use CRResults/img3.png>
 Package pdftex.def Info: CRResults/img3.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img4.png, id=384, 64.24pt x 64.24pt>
+<CRResults/img4.png, id=410, 64.24pt x 64.24pt>
 File: CRResults/img4.png Graphic file (type png)
  <use CRResults/img4.png>
 Package pdftex.def Info: CRResults/img4.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img5.png, id=385, 64.24pt x 64.24pt>
+<CRResults/img5.png, id=411, 64.24pt x 64.24pt>
 File: CRResults/img5.png Graphic file (type png)
  <use CRResults/img5.png>
 Package pdftex.def Info: CRResults/img5.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img6.png, id=386, 64.24pt x 64.24pt>
+<CRResults/img6.png, id=412, 64.24pt x 64.24pt>
 File: CRResults/img6.png Graphic file (type png)
  <use CRResults/img6.png>
 Package pdftex.def Info: CRResults/img6.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img7.png, id=387, 64.24pt x 64.24pt>
+<CRResults/img7.png, id=413, 64.24pt x 64.24pt>
 File: CRResults/img7.png Graphic file (type png)
  <use CRResults/img7.png>
 Package pdftex.def Info: CRResults/img7.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img8.png, id=388, 64.24pt x 64.24pt>
+<CRResults/img8.png, id=414, 64.24pt x 64.24pt>
 File: CRResults/img8.png Graphic file (type png)
  <use CRResults/img8.png>
 Package pdftex.def Info: CRResults/img8.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img9.png, id=389, 64.24pt x 64.24pt>
+<CRResults/img9.png, id=415, 64.24pt x 64.24pt>
 File: CRResults/img9.png Graphic file (type png)
  <use CRResults/img9.png>
 Package pdftex.def Info: CRResults/img9.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img10.png, id=390, 64.24pt x 64.24pt>
+<CRResults/img10.png, id=416, 64.24pt x 64.24pt>
 File: CRResults/img10.png Graphic file (type png)
  <use CRResults/img10.png>
 Package pdftex.def Info: CRResults/img10.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img11.png, id=391, 64.24pt x 64.24pt>
+<CRResults/img11.png, id=417, 64.24pt x 64.24pt>
 File: CRResults/img11.png Graphic file (type png)
  <use CRResults/img11.png>
 Package pdftex.def Info: CRResults/img11.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img12.png, id=392, 64.24pt x 64.24pt>
+<CRResults/img12.png, id=418, 64.24pt x 64.24pt>
 File: CRResults/img12.png Graphic file (type png)
  <use CRResults/img12.png>
 Package pdftex.def Info: CRResults/img12.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img13.png, id=393, 64.24pt x 64.24pt>
+<CRResults/img13.png, id=419, 64.24pt x 64.24pt>
 File: CRResults/img13.png Graphic file (type png)
  <use CRResults/img13.png>
 Package pdftex.def Info: CRResults/img13.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img14.png, id=394, 64.24pt x 64.24pt>
+<CRResults/img14.png, id=420, 64.24pt x 64.24pt>
 File: CRResults/img14.png Graphic file (type png)
  <use CRResults/img14.png>
 Package pdftex.def Info: CRResults/img14.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img15.png, id=395, 64.24pt x 64.24pt>
+<CRResults/img15.png, id=421, 64.24pt x 64.24pt>
 File: CRResults/img15.png Graphic file (type png)
  <use CRResults/img15.png>
 Package pdftex.def Info: CRResults/img15.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img16.png, id=396, 64.24pt x 64.24pt>
+<CRResults/img16.png, id=422, 64.24pt x 64.24pt>
 File: CRResults/img16.png Graphic file (type png)
  <use CRResults/img16.png>
 Package pdftex.def Info: CRResults/img16.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img17.png, id=397, 64.24pt x 64.24pt>
+<CRResults/img17.png, id=423, 64.24pt x 64.24pt>
 File: CRResults/img17.png Graphic file (type png)
  <use CRResults/img17.png>
 Package pdftex.def Info: CRResults/img17.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img18.png, id=398, 64.24pt x 64.24pt>
+<CRResults/img18.png, id=424, 64.24pt x 64.24pt>
 File: CRResults/img18.png Graphic file (type png)
  <use CRResults/img18.png>
 Package pdftex.def Info: CRResults/img18.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img19.png, id=399, 64.24pt x 64.24pt>
+<CRResults/img19.png, id=425, 64.24pt x 64.24pt>
 File: CRResults/img19.png Graphic file (type png)
  <use CRResults/img19.png>
 Package pdftex.def Info: CRResults/img19.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img20.png, id=400, 64.24pt x 64.24pt>
+<CRResults/img20.png, id=426, 64.24pt x 64.24pt>
 File: CRResults/img20.png Graphic file (type png)
  <use CRResults/img20.png>
 Package pdftex.def Info: CRResults/img20.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img21.png, id=401, 64.24pt x 64.24pt>
+<CRResults/img21.png, id=427, 64.24pt x 64.24pt>
 File: CRResults/img21.png Graphic file (type png)
  <use CRResults/img21.png>
 Package pdftex.def Info: CRResults/img21.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img22.png, id=402, 64.24pt x 64.24pt>
+<CRResults/img22.png, id=428, 64.24pt x 64.24pt>
 File: CRResults/img22.png Graphic file (type png)
  <use CRResults/img22.png>
 Package pdftex.def Info: CRResults/img22.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img23.png, id=403, 64.24pt x 64.24pt>
+<CRResults/img23.png, id=429, 64.24pt x 64.24pt>
 File: CRResults/img23.png Graphic file (type png)
  <use CRResults/img23.png>
 Package pdftex.def Info: CRResults/img23.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img24.png, id=404, 64.24pt x 64.24pt>
+<CRResults/img24.png, id=430, 64.24pt x 64.24pt>
 File: CRResults/img24.png Graphic file (type png)
  <use CRResults/img24.png>
 Package pdftex.def Info: CRResults/img24.png used on input line 50.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 )
-[28]) (./IntroductionToTensorflow.tex [29 <./CRResults/img0.png> <./CRResults/i
+[29]) (./IntroductionToTensorflow.tex [30 <./CRResults/img0.png> <./CRResults/i
 mg1.png> <./CRResults/img2.png> <./CRResults/img3.png> <./CRResults/img4.png> <
 ./CRResults/img5.png> <./CRResults/img6.png> <./CRResults/img7.png> <./CRResult
 s/img8.png> <./CRResults/img9.png> <./CRResults/img10.png> <./CRResults/img11.p
@@ -2006,7 +2016,7 @@ Package TODO Warning: "Section: XOR" on input line 12.
 
 Package TODO Warning: "Section: Boston Housing with Keras" on input line 16.
 
-) (./DeepLearning.tex [30
+) (./DeepLearning.tex [31
 
 ]
 Chapter 4.
@@ -2032,13 +2042,13 @@ Package TODO Warning: "Section: Unsupervised Learning" on input line 23.
 
 Package TODO Warning: "Section: Autoencoding" on input line 27.
 
-[31
+[32
 
 ]
 
 Package TODO Warning: "Section: Reinforcement Learning" on input line 31.
 
-) [32]
+) [33]
 Chapter 5.
 
 Package HIDE Warning: Hidden text in 5.0.0 on input line 47.
@@ -2047,23 +2057,23 @@ Package HIDE Warning: Hidden text in 5.0.0 on input line 47.
 Package TODO Warning: "Decide parent chapter for CNN, RNN, and LSTM sections" o
 n input line 48.
 
-[33
+[34
 
-] [34
+] [35
 
 
 ] (./AppendBHMDerivation.tex
 Appendix A.
-[35
+[36
 
-]) [36] [37
+]) [37] [38
 
 ]
 runsystem(rm "NeuralNetworksWithPythonAndTensorflow.pyg")...executed.
 
 runsystem(rm "NeuralNetworksWithPythonAndTensorflow.out.pyg")...executed.
 
- [38]
+ [39]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 68.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 68.
  (./NeuralNetworksWithPythonAndTensorflow.aux)
@@ -2071,20 +2081,20 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 68.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 68.
 Package rerunfilecheck Info: File `NeuralNetworksWithPythonAndTensorflow.out' h
 as not changed.
-(rerunfilecheck)             Checksum: 56A8582FFE5F371440637100CC099818;2225.
+(rerunfilecheck)             Checksum: A4C26EC0DA20CFC93B883A1575475088;2249.
 Package logreq Info: Writing requests to 'NeuralNetworksWithPythonAndTensorflow
 .run.xml'.
 \openout1 = `NeuralNetworksWithPythonAndTensorflow.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 42737 strings out of 494953
- 951007 string characters out of 6180977
- 1693176 words of memory out of 5000000
- 45079 multiletter control sequences out of 15000+600000
+ 42822 strings out of 494953
+ 952924 string characters out of 6180977
+ 1828912 words of memory out of 5000000
+ 45130 multiletter control sequences out of 15000+600000
  14051 words of font info for 53 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 65i,17n,90p,841b,2229s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 65i,17n,90p,841b,2225s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texli
@@ -2102,11 +2112,11 @@ e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on NeuralNetworksWithPythonAndTensorflow.pdf (39 pages, 473062 b
+Output written on NeuralNetworksWithPythonAndTensorflow.pdf (40 pages, 512030 b
 ytes).
 PDF statistics:
- 576 PDF objects out of 1000 (max. 8388607)
- 458 compressed objects within 5 object streams
- 113 named destinations out of 1000 (max. 500000)
+ 607 PDF objects out of 1000 (max. 8388607)
+ 488 compressed objects within 5 object streams
+ 128 named destinations out of 1000 (max. 500000)
  412 words of extra memory for PDF output out of 10000 (max. 10000000)
 

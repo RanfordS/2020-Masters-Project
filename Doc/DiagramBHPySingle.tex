@@ -1,7 +1,9 @@
 \begin{tikzpicture}
     \begin{axis}
         [   width = 0.8\textwidth
-        ,   xtick = {0,1000,2000,3000,4000,5000}
+        ,   xtick = {0,1012,2024,3036,4048,5060}
+        ,   xmin = -200
+        ,   xmax = 5260
         ,   legend pos = south west
         ,   xlabel = {Iteration}
         ,   ylabel = {Value}
@@ -27,7 +29,8 @@
             ,   sharp plot
             ,   update limits = false
             ]   coordinates {(506*#1,-1) (506*#1,1)}
-            node [anchor = south, rotate = 90] at (506*#1,0.05) {\tiny epoch = #1};
+            node [anchor = south west, rotate = 90] at (506*#1,0.015)
+            {\tiny Epoch: #1};
         }
     \end{axis}
 \end{tikzpicture}

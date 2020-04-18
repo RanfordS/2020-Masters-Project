@@ -15,6 +15,7 @@
 \usepackage{float}
 \usepackage{array}
 \usepackage{graphicx}
+\usepackage{xcolor}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.13}
 \usepackage{tikz}
@@ -36,7 +37,6 @@
 \usepackage{verbatim}
 %\usepackage{algorithm2e}
 %\usepackage[noend]{algpseudocode}
-\usepackage{xcolor}
 \usepackage[cache=false]{minted}
 \usepackage{listings}
 \lstdefinestyle{lua}{
@@ -114,9 +114,16 @@
     \vspace{1em}
 }
 
-\definecolor{Rred}{HTML}{D03C3C}
-\definecolor{Rgreen}{HTML}{6FCC5A}
-\definecolor{Rblue}{HTML}{5A95CC}
-\definecolor{Rorange}{HTML}{F29B42}
-\definecolor{Rpurple}{HTML}{C03CD0}
+\definecolor{Rred}   {RGB}{191, 63, 63}%BF1F7F
+\definecolor{Rgreen} {RGB}{ 63,191, 63}%1FBF1F
+\definecolor{Rblue}  {RGB}{ 63, 63,255}%1F1FBF
 
+\definecolor{Rpink}  {RGB}{255, 31,127}%FF1F7F
+\definecolor{Rpurple}{RGB}{127, 31,255}%7F1FFF
+\definecolor{Rorange}{RGB}{255,127, 31}%FF7F1F
+\definecolor{Rlime}  {RGB}{127,255, 31}%7FFF1F
+\definecolor{Rocean} {RGB}{ 31,127,255}%1F7FFF
+\definecolor{Raqua}  {RGB}{ 31,255,127}%1FFF7F
+
+%\definecolor{Rmaroon}{RGB}{127, 63, 95}%7F3F5F
+%\definecolor{Rbrown} {RGB}{127, 95, 63}%7F5F3F

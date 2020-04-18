@@ -1,0 +1,28 @@
+\begin{tikzpicture}
+    \begin{axis}
+        [   width = 0.8\textwidth
+        ,   xtick = {0,500,1000,1500,2000}
+        ,   ymin = 0
+        ,   legend pos = north east
+        ,   xlabel = {Epoch}
+        ,   ylabel = {Loss}
+        ]
+        \addplot [color = Rblue]   table [col sep = comma]
+        {../Code/BostonHousing/DataTensorVarySGDLoss.csv};
+        \addplot [color = Rorange] table [col sep = comma]
+        {../Code/BostonHousing/DataTensorVaryAdamLoss.csv};
+        \addplot [color = Rgreen]  table [col sep = comma]
+        {../Code/BostonHousing/DataTensorVaryAdagradLoss.csv};
+        \addplot [color = Rred]    table [col sep = comma]
+        {../Code/BostonHousing/DataTensorVaryAdadeltaLoss.csv};
+        \addplot [color = Rpurple] table [col sep = comma]
+        {../Code/BostonHousing/DataTensorVaryAdamaxLoss.csv};
+        \addplot [color = Rpink]   table [col sep = comma]
+        {../Code/BostonHousing/DataTensorVaryFTRLLoss.csv};
+        \addplot [color = Raqua]   table [col sep = comma]
+        {../Code/BostonHousing/DataTensorVaryNAdamLoss.csv};
+        \addplot [color = Rocean]  table [col sep = comma]
+        {../Code/BostonHousing/DataTensorVaryRMSpropLoss.csv};
+        \legend{SGD,Adam,Adagrad,Adadelta,Adamax,FTRL,NAdam,RMSprop}
+    \end{axis}
+\end{tikzpicture}

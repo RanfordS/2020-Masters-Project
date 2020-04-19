@@ -9,6 +9,7 @@ layers = tf.keras.layers
 
 ## Parameters
 num_epochs = 200
+use_custom = False
 
 ## Plot settings
 plt.rc ('text', usetex=True)
@@ -33,25 +34,40 @@ x_test  = x_test /255.0
 
 ## Custom activation
 def act_threshold (x):
-    condition = tf.less (x, tf.constant (0.0))
-    #return tf.where (condition, tf.constant (0.0), x)# + tf.constant (1.0))
-    #return tf.where (condition, tf.constant (0.0), x*x)
+    c0 = tf.constant (0.0)
+    c1 = tf.constant (1.0)
+    condition = tf.less (x, c0)
+
+    # Heavy Squared: $H(x)x^2$
+    #return tf.where (condition, c0, x*x)
+
+    # Squared: $x^2$
     #return x*x
-    #return tf.where (condition, tf.constant (0.0), tf.math.sqrt (x))
+
+    # Heavy Root: $H(x)\sqrt{x}$
+    #return tf.where (condition, c0, tf.math.sqrt (x))
+
+    # Leaky ReLU: $(0.1 + 0.9H(x))x$
     #return tf.where (condition, tf.constant (0.1)*x, x)
-    #return tf.where (condition, tf.constant (0.0), tf.constant (1.0))
-    #return tf.where (condition, tf.constant (0.0), tf.constant (1.0) - tf.math.exp (-x))
-    #return tf.where (condition, tf.constant (0.0), tf.math.exp (x))
-    return tf.where (condition, tf.constant (0.0), x - x*tf.math.exp (-x))
-    #return tf.math.exp (x)
-    #return tf.where (condition, tf.constant (0.0), tf.math.acos (x))
-    #return tf.where (condition, x*x, x)
-    #return tf.where (condition, tf.constant (0.0), x*x*x)
+
+    # Damppened Heavy: $H(x)(1 - e^{-x})
+    #return tf.where (condition, c0, c1 - tf.math.exp (-x))
+
+    # Heavy Exponential: $H(x)e^x$
+    #return tf.where (condition, c0, tf.math.exp (x))
+
+    # Smoothed ReLU $H(x)(1 - e^{-x})x$
+    return tf.where (condition, c0, x - x*tf.math.exp (-x))
+
+    # Heavy Arccos $\arccos(x)$
+    #return tf.where (condition, c0, tf.math.acos (x))
+
+act = use_custom and act_threshold or 'relu'
 
 ## Create model
 model = tf.keras.models.Sequential (
 [   layers.Flatten (input_shape=sample_shape)
-,   layers.Dense (128, activation='relu')#'relu' or act_threshhold
+,   layers.Dense (128, activation=act)#'relu' or act_threshhold
 ,   layers.Dense (10, activation="softmax")
 ])
 model.compile (optimizer='adam',

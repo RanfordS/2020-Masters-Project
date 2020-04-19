@@ -45,7 +45,7 @@ model.compile (optimizer='adam',
 ## Train
 result = model.fit (x_train, y_train,
                     epochs=num_epochs,
-                    batch_size=600,
+                    batch_size=10,#6000,
                     verbose=1,
                     validation_data=(x_test, y_test))
 

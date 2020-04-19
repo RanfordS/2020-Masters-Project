@@ -267,7 +267,7 @@ The ratio between the loss values is $\sim0.94$, this value is close to 1,
 suggesting that the network was not over-fitting.
 \rfig{\input{DiagramBHTFSGD.tex}}{%
     Graph of training and validation loss against iteration number for the
-    Boston housing data with the \texttt{SGD} optimiser.
+    Boston housing data using SGD.
 }
 \newpage
 The network was trained again using the ``Adam'' optimiser
@@ -284,7 +284,7 @@ increasing.
 As such, the network is expected to be less generalised.
 \rfig{\input{DiagramBHTFAdam.tex}}{%
     Graph of training and validation loss against iteration number for the
-    Boston housing data with the \texttt{Adam} optimiser.
+    Boston housing data using Adam.
 }
 When comparing the two optimisers, Adam trains the network significantly faster
 than SGD.
@@ -322,6 +322,11 @@ TensorFlow provides eight optimisers:
 The optimal choice of optimiser varies with the network and data set size.
 Adaptive rate optimisers, such as Adagrad, perform best with sparse input data;
 but Adam, Adamax, NAdam, and RMSProp are typically the best options.
+See next page for figure.
+
+The overhead of each optimiser is minimal, and is unlikely to affect the time
+taken to train the network.
+
 \rfig{\input{DiagramBHTFVary.tex}}{%
     Graph of training loss against time for the Boston housing data using
     various optimisers.
@@ -355,15 +360,10 @@ but Adam, Adamax, NAdam, and RMSProp are typically the best options.
 %initial vali 0.409027785062789900
 %  final vali 0.044336102902889250
 
-\subsection{Linear Regression}
-
-\rfig{\input{DiagramRegLinear.tex}}{%
-    Graph showing the data points and network's corresponding line of best fit.
-}
-%initial loss 0.62278741598129270000
-%  final loss 0.00022495193115901202
-
 \subsection{Character Recognition}
+
+Categorisation task
+Softmax: normalised exponentials
 
 \rfig{\input{DiagramCRResults.tex}}{%
     Hand written numbers from the MNIST validation set, the network prediction,
@@ -392,4 +392,27 @@ but Adam, Adamax, NAdam, and RMSProp are typically the best options.
 %validation size:   10000
 %validation errors: 493
 %validation %err:   4.93
+
+%own theory of composition
+% functions f and g are compositionally similar if:
+%  for small n:
+%   \sum_{i=1}^{n} A_if(a_ix+b_i) + B = g(x)
+%own theory of versatility
+% function f is versatile if:
+%  \sum_{i}^{\infty} A_if(a_ix+b_i) \approx \delta(\alpha)
+% theory:
+%  all discontinuous functions are versatile
+%desirable properties of activation functions
+% no vanishing/zero-gradient areas
+% versatile
+%  either discontinuous
+%  or bounded
+
+\subsection{Linear Regression}
+
+\rfig{\input{DiagramRegLinear.tex}}{%
+    Graph showing the data points and network's corresponding line of best fit.
+}
+%initial loss 0.62278741598129270000
+%  final loss 0.00022495193115901202
 

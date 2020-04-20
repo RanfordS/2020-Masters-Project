@@ -244,6 +244,13 @@ TensorFlow provides multiple ways of constructing models, and a wide variety of
 options to configure layers, models, and optimisers, as well as custom
 definitions.
 
+Once constructed, the model can be trained using the \texttt{fit} method, which
+provides a history of network properties from each epoch; and used to predict
+inputs using the \texttt{predict} method.
+Models can be saved to a file using the \texttt{save} method, which includes the
+network structure and weights, and loaded using
+\texttt{tensorflow.keras.models.load\_model}.
+
 TensorFlow also supports multithreading and GPU acceleration, making it
 especially suitable for large networks and training sets.
 
@@ -259,17 +266,17 @@ The data was also split into two groups, training and validation, the latter of
 which was not used for training the network.
 For a well-fitting network, the loss values for both groups should be similar,
 and the ratio between them provided a rough measure of over-fitting.
-
+\rfig{\input{DiagramBHTFSGD.tex}}{%
+    Graph of training and validation loss against iteration number for the
+    Boston housing data using SGD.
+}
+%\newpage
 The network was trained over 2000 epochs using the stochastic gradient descent
 optimiser, obtaining an final training loss of 0.0421, and validation loss of
 0.0396.
 The ratio between the loss values is $\sim0.94$, this value is close to 1,
 suggesting that the network was not over-fitting.
-\rfig{\input{DiagramBHTFSGD.tex}}{%
-    Graph of training and validation loss against iteration number for the
-    Boston housing data using SGD.
-}
-\newpage
+
 The network was trained again using the ``Adam'' optimiser
 \citep{Kingma:2014:Adam}, which uses estimations of both first and second-order
 moments, and consistently outperforms the stochastic gradient descent method.
@@ -291,7 +298,7 @@ than SGD.
 Given a sufficient number of epochs, stochastic gradient descent will over-fit
 the data, just as it did with Adam.
 \newpage\noindent
-TensorFlow provides eight optimisers:
+TensorFlow provided eight optimisers at the time writing:
 \begin{enumerate}
 
     \item\textsc{SGD}, stochastic gradient descent, uses a first-order error
@@ -300,7 +307,7 @@ TensorFlow provides eight optimisers:
     \item\textsc{Adam}, uses a first and second-order error approximation
         \citep{Kingma:2014:Adam};
 
-    \item\textsc{Adamax}, Adam variant based on the infinity norm
+    \item\textsc{AdaMax}, Adam variant based on the infinity norm
         \citep{Kingma:2014:Adam};
 
     \item\textsc{AdaGrad}, uses parameter-specific learning rates based on
@@ -326,6 +333,16 @@ See next page for figure.
 
 The overhead of each optimiser is minimal, and is unlikely to affect the time
 taken to train the network.
+
+The choice of optimiser is provided when compiling the model, via the
+\texttt{optimizer} argument.
+If no optimiser if provided, the default option, which was RMSProp, will be
+used.
+If a string is provided, TensorFlow will use the corresponding optimiser with
+default parameters.
+If an optimiser instance is provided, that instance will be used.
+
+One may also define their own optimiser class.
 
 \rfig{\input{DiagramBHTFVary.tex}}{%
     Graph of training loss against time for the Boston housing data using
@@ -360,7 +377,79 @@ taken to train the network.
 %initial vali 0.409027785062789900
 %  final vali 0.044336102902889250
 
-\subsection{Character Recognition}
+\subsection{Activation Functions and Character Recognition}
+
+So far, only $\tanh$ and linear activation functions have been considered.
+TensorFlow provides a total of eleven activation functions:
+\begin{itemize}
+    \item\texttt{linear}, no activation function applied,
+        \begin{align*}
+            \phi(x) &= x,
+        \end{align*}
+
+    \item\texttt{relu}, rectified linear unit,
+        \begin{align*}
+            \phi(x) &= \begin{cases}
+                m, & x > m\\
+                \alpha x, & x < 0\\
+                x, & \text{otherwise}
+            \end{cases},
+        \end{align*}
+        where $\alpha = 0$ and $m = \infty$ by default;
+
+    \item\texttt{exponential},
+        \begin{align*}
+            \phi(x) &= e^x;
+        \end{align*}
+
+    \item\texttt{elu}, exponential linear unit,
+        \begin{align*}
+            \phi(x) &= \begin{cases}
+                \alpha (e^x - 1) & x < 0\\
+                x, & \text{otherwise}
+            \end{cases},
+        \end{align*}
+        where $\alpha = 1$ by default;
+
+    \item\texttt{selu}, special case of elu with an additional scaling factor
+        and fixed parameters;
+
+    \item\texttt{sigmoid},
+        \begin{align*}
+            \phi(x) &= \frac{1}{1 + e^{-x}};
+        \end{align*}
+
+    \item\texttt{hard\_sigmoid}, approximation of sigmoid using three linear
+        segments,
+        \begin{align*}
+            \phi(x) &= \begin{cases}
+                0, & x < -2.5\\
+                1, & x > 2.5\\
+                0.2x+0.5 & \text{otherwise}
+            \end{cases};
+        \end{align*}
+
+    \item\texttt{tanh},
+        \begin{align*}
+            \phi(x) &= \frac{e^x - e^{-x}}{e^x + e^{-x}};
+        \end{align*}
+
+    \item\texttt{softsign}, smoothed sign function,
+        \begin{align*}
+            \phi(x) &= \frac{x}{|x| + 1};
+        \end{align*}
+
+    \item\texttt{softplus}, smoothed $\max(x,0)$ function,
+        \begin{align*}
+            \phi(x) &= \ln(e^x+1);
+        \end{align*}
+
+    \item\texttt{softmax}, normalised exponentials,
+        \begin{align*}
+            y_i &= \frac{e^{x_i}}{\sum_j e^{x_j}},
+        \end{align*}
+        where $x_i$ is the net value into softmax neuron $i$.
+\end{itemize}
 
 Categorisation task
 Softmax: normalised exponentials
@@ -370,9 +459,9 @@ Softmax: normalised exponentials
     and the certainty of the network.
 }
 %500 epochs
-%initial loss: 2.3656811714172363
+%initial loss: 2.36568117141723630
 %  final loss: 0.06899717450141907
-%initial vali: 2.1969106197357178
+%initial vali: 2.19691061973571780
 %  final loss: 0.10314085334539413
 %  training size:   60000
 %validation size:   10000
@@ -382,10 +471,10 @@ Softmax: normalised exponentials
 %validation %err:   12.47
 
 %Convol: 50 epochs, batch=600
-%initial loss: 0.5744658349454403
-%initial vali: 0.2477983083575964
+%initial loss: 0.574465834945440300
+%initial vali: 0.247798308357596400
 %final loss:   0.010112296480219812
-%final loss:   0.05892044545849785
+%final loss:   0.058920445458497850
 %training size:     60000
 %training errors:   482
 %training %err:     0.8033333333333333

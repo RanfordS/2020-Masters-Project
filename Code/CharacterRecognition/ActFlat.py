@@ -62,7 +62,7 @@ def act_threshold (x):
     #return tf.where (condition, c0, tf.math.acos (x))
 
 #act = use_custom and act_threshold or 'relu'
-for act in ['relu','tanh']:
+for act in ['relu','tanh','selu']:
     ## Create model
     tf.random.set_seed (123456)
     model = tf.keras.models.Sequential (

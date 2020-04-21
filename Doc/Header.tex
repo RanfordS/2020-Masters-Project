@@ -54,6 +54,8 @@
     commentstyle=\color{black!50}
 }
 \usepackage{import}
+\usepackage{catchfile}
+\newcommand\loaddata[1]{\CatchFileDef\loadeddata{#1}{\endlinechar=-1}}
 
 \usepackage{booktabs}
 \usepackage{fancyhdr}

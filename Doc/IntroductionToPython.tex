@@ -377,19 +377,19 @@ One may also define their own optimiser class.
 %initial vali 0.409027785062789900
 %  final vali 0.044336102902889250
 
-\subsection{Activation Functions and Character Recognition}
+\subsection{Activation Functions}
 
 So far, only $\tanh$ and linear activation functions have been considered.
 TensorFlow provides a total of eleven activation functions:
 \begin{itemize}
     \item\texttt{linear}, no activation function applied,
         \begin{align*}
-            \phi(x) &= x,
+            \text{linear}(x) &= x;
         \end{align*}
 
     \item\texttt{relu}, rectified linear unit,
         \begin{align*}
-            \phi(x) &= \begin{cases}
+            \text{relu}(x) &= \begin{cases}
                 m, & x > m\\
                 \alpha x, & x < 0\\
                 x, & \text{otherwise}
@@ -399,12 +399,12 @@ TensorFlow provides a total of eleven activation functions:
 
     \item\texttt{exponential},
         \begin{align*}
-            \phi(x) &= e^x;
+            \text{exponential}(x) &= e^x;
         \end{align*}
 
     \item\texttt{elu}, exponential linear unit,
         \begin{align*}
-            \phi(x) &= \begin{cases}
+            \text{elu}(x) &= \begin{cases}
                 \alpha (e^x - 1) & x < 0\\
                 x, & \text{otherwise}
             \end{cases},
@@ -416,32 +416,32 @@ TensorFlow provides a total of eleven activation functions:
 
     \item\texttt{sigmoid},
         \begin{align*}
-            \phi(x) &= \frac{1}{1 + e^{-x}};
+            \text{sigmoid}(x) &= \frac{1}{1 + e^{-x}};
         \end{align*}
 
     \item\texttt{hard\_sigmoid}, approximation of sigmoid using three linear
         segments,
         \begin{align*}
-            \phi(x) &= \begin{cases}
+            \text{hard-sigmoid}(x) &= \begin{cases}
                 0, & x < -2.5\\
                 1, & x > 2.5\\
-                0.2x+0.5 & \text{otherwise}
+                0.2x + 0.5, & \text{otherwise}
             \end{cases};
         \end{align*}
 
     \item\texttt{tanh},
         \begin{align*}
-            \phi(x) &= \frac{e^x - e^{-x}}{e^x + e^{-x}};
+            \tanh(x) &= \frac{e^x - e^{-x}}{e^x + e^{-x}};
         \end{align*}
 
     \item\texttt{softsign}, smoothed sign function,
         \begin{align*}
-            \phi(x) &= \frac{x}{|x| + 1};
+            \text{softsign}(x) &= \frac{x}{|x| + 1};
         \end{align*}
 
     \item\texttt{softplus}, smoothed $\max(x,0)$ function,
         \begin{align*}
-            \phi(x) &= \ln(e^x+1);
+            \text{softplus}(x) &= \ln(e^x+1);
         \end{align*}
 
     \item\texttt{softmax}, normalised exponentials,
@@ -450,14 +450,109 @@ TensorFlow provides a total of eleven activation functions:
         \end{align*}
         where $x_i$ is the net value into softmax neuron $i$.
 \end{itemize}
+With the exception of linear, all of these functions are discontinuous and/or
+bounded.
+These properties are useful for activation functions as they allow groups of
+neurons to approximate heavyside functions, which is necessary for decision
+making.
+Note that the tanh and sigmoid functions are essentially equivalent, as
+\begin{align*}
+    \tanh(x) &= 2\text{sigmoid}(2x) - 1,
+\end{align*}
+and that such a transformation is possible on any, non-output layer.
 
-Categorisation task
-Softmax: normalised exponentials
+The softmax function is typically used on the output layer of classification
+models, with the results representing a probability distribution.
+
+One may also use a custom activation function by using the TensorFlow functions,
+an example of such is given below.
+
+
+
+\subsection{Layer Types and Character Recognition}
+
+TensorFlow provides a large number of layer types that can easily be added to a
+model, as well as tools for defining custom layers.
+The most commonly use ones are:
+\begin{itemize}
+    \item AveragePooling,
+    \item MaxPooling,
+    \item and Convolution, which are available in 1D, 2D, and 3D variants;
+
+    \item Dense, each neuron connects to all neurons from the previous layer;
+    \item Dropout, one to one mapping of the previous layer, setting a random
+        selection of a fix proportion, to zero during training;
+    \item Flatten, takes the previous layer and makes it into a 1D array of
+        neurons;
+
+    \item SimpleRNN, fully connected recurrent neural network layer;
+    \item GRU, layer of gated recurrent units;
+    \item LSTM, layer of long short-term memory units.
+\end{itemize}
+These layers can be roughly categorised into three groups:
+spacial layers, which use neuron locality to encode position, namely pooling and
+convolutional layers;
+simple layers, which act irrespective of input shape, such as dense, dropout,
+and flatten;
+and reccurent layers, which have recurrent connections.
+
+It should be noted that the $N$ dimensional pooling and convolutional layers
+expect $N+1$ dimensional tensors, where the last dimension is the channel of the
+input.
+For example: to use $w \times h$ greyscale images as the network input, the
+inputs must be reshaped into a $w \times h \times 1$ tensor.
+
+To test the spacial layers, an image classification problem was considered.
+The MNIST dataset provides 70000, $28\times28$ images of handwritten numbers,
+and a set of corresponding labels.
+
+The dataset was split into training and validation sets.
+
+First, a network using: a flatten layer, two dense relu layers of 128 and 32
+neuron respectively, and a dense softmax output; was considered.
+% flat
+% dense relu 128
+% dense relu 32
+% dense softmax 10
+% 104,938 parameters
+% 200 epochs
+% full batch
+% initial loss: 2.3475182056427
+% initial vali: 2.2440125942230225
+% final loss:   0.12035820633172989
+% final loss:   0.13796430826187134
+% training size:     60000
+% training errors:   7367
+% training %err:     12.278333333333334
+% validation size:   10000
+% validation errors: 1542
+% validation %err:   15.42
+
+% conv2D relu 7x7
+% conv2D relu 7x7
+% conv2D relu 7x7
+% flat
+% drop 0.5
+% dense softmax 10
+% 18,502 parameters
+% 10 epochs
+% 600 batch
+% initial loss: 0.7164383625984192
+% initial vali: 0.22188324071466922
+% final loss:   0.07247635614126921
+% final loss:   0.04654992789961398
+% training size:     60000
+% training errors:   3160
+% training %err:     5.266666666666667
+% validation size:   10000
+% validation errors: 592
+% validation %err:   5.92
 
 \rfig{\input{DiagramCRResults.tex}}{%
     Hand written numbers from the MNIST validation set, the network prediction,
     and the certainty of the network.
 }
+
 %500 epochs
 %initial loss: 2.36568117141723630
 %  final loss: 0.06899717450141907
@@ -504,4 +599,7 @@ Softmax: normalised exponentials
 }
 %initial loss 0.62278741598129270000
 %  final loss 0.00022495193115901202
+
+\subsection{Chaos Prediction}
+
 

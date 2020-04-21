@@ -17,6 +17,7 @@ plt.rc ('font', family='serif')
 #Does not work well
 plot_filename = False#"ResultFlat.pgf"
 data_filename = "DataFlat{}.csv"
+figr_filename = False#"FigrFlat.txt"
 data_stride = 1
 
 tf.random.set_seed (123456)
@@ -68,8 +69,10 @@ act = use_custom and act_threshold or 'relu'
 model = tf.keras.models.Sequential (
 [   layers.Flatten (input_shape=sample_shape)
 ,   layers.Dense (128, activation=act)#'relu' or act_threshhold
+,   layers.Dense (32, activation=act)#'relu' or act_threshhold
 ,   layers.Dense (10, activation="softmax")
 ])
+model.summary ()
 model.compile (optimizer='adam',
                loss='sparse_categorical_crossentropy',
                metrics=[])
@@ -106,11 +109,22 @@ errs_train = np.sum (np.absolute (diff_train))
 errs_test  = np.sum (np.absolute (diff_test))
 print ("training size:    ", x_train.shape[0])
 print ("training errors:  ", errs_train)
+print ("training %err:    ", 100*errs_train/x_train.shape[0])
 print ("validation size:  ", x_test.shape[0])
 print ("validation errors:", errs_test)
+print ("validation %err:  ", 100*errs_test/x_test.shape[0])
 
 ## Show elements with predictions
 predictions = model.predict (x_test)
+if figr_filename:
+    with open (figr_filename, "w") as f:
+        for i in range (25):
+            y_pred = pred_test[i]
+            y_cert = max (predictions[i])
+            if i != 0:
+                f.write (",\n")
+            f.write ("{0:d}/{1:d}/{2:d}/{3:.2f}/{4:d}".format (
+                i%5, i//5, y_pred, y_cert, y_test[i]))
 plt.figure ()
 for i in range (25):
     plt.subplot (5, 5, i+1)
@@ -121,7 +135,7 @@ for i in range (25):
     y_pred = np.argmax (predictions[i])
     y_cert = max (predictions[i])
     plt.xlabel ("NN:{0} ({1:.2f}), Is:{2}".format (y_pred, y_cert, y_test[i]))
-    print ("{0}/{1:.2f}/{2}".format (y_pred, y_cert, y_test[i]))
+    #print ("{0}/{1:.2f}/{2}".format (y_pred, y_cert, y_test[i]))
 
 if plot_filename:
     plt.savefig (plot_filename)

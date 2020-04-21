@@ -62,7 +62,7 @@ def act_threshold (x):
     #return tf.where (condition, c0, tf.math.acos (x))
 
 #act = use_custom and act_threshold or 'relu'
-for act in ['relu','tanh','selu']:
+for act in ['relu','tanh','selu','softsign','softplus']:
     ## Create model
     tf.random.set_seed (123456)
     model = tf.keras.models.Sequential (
@@ -95,8 +95,8 @@ for act in ['relu','tanh','selu']:
                 prop = result.history[att[0]]
                 for i in range (0, num_epochs, data_stride):
                     f.write ("{0:d},{1:f}\n".format (i, prop[i]))
-    plt.plot (range (num_epochs), result.history['loss'], label='loss')
-    plt.plot (range (num_epochs), result.history['val_loss'], label='validation')
+    plt.plot (range (num_epochs), result.history['loss'], label=act+' loss')
+    plt.plot (range (num_epochs), result.history['val_loss'], label=act+' validation')
     pred_train = np.argmax (model.predict (x_train), axis=1)
     pred_test  = np.argmax (model.predict (x_test),  axis=1)
     diff_train = pred_train - y_train

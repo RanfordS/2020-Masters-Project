@@ -34,9 +34,15 @@ x_test  = x_test /255.0
 ## Create model
 model = tf.keras.models.Sequential ()
 model.add (layers.Conv2D (4, (7,7), activation='relu', input_shape=sample_shape))
+#model.add (layers.AveragePooling2D ((2,2)))
+#model.add (layers.Conv2D (6, (7,7), activation='relu'))
 model.add (layers.Conv2D (8, (7,7), activation='relu'))
+#model.add (layers.AveragePooling2D ((2,2)))
+model.add (layers.Conv2D (12, (7,7), activation='relu'))
 model.add (layers.Flatten ())
+model.add (layers.Dropout (0.5))
 model.add (layers.Dense (10, activation="softmax"))
+model.summary ()
 
 model.compile (optimizer='adam',
                loss='sparse_categorical_crossentropy',
@@ -45,7 +51,7 @@ model.compile (optimizer='adam',
 ## Train
 result = model.fit (x_train, y_train,
                     epochs=num_epochs,
-                    batch_size=10,#6000,
+                    batch_size=600,#6000,
                     verbose=1,
                     validation_data=(x_test, y_test))
 

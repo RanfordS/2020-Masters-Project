@@ -8,7 +8,7 @@ import tensorflow as tf
 layers = tf.keras.layers
 
 ## Parameters
-num_epochs = 200
+num_epochs = 350
 use_custom = False
 
 ## Plot settings
@@ -16,7 +16,7 @@ plt.rc ('text', usetex=True)
 plt.rc ('font', family='serif')
 #Does not work well
 plot_filename = False#"ResultFlat.pgf"
-data_filename = "DataFlat{}.csv"
+data_filename = False#"DataFlat{}.csv"
 figr_filename = False#"FigrFlat.txt"
 data_stride = 1
 
@@ -69,7 +69,11 @@ act = use_custom and act_threshold or 'relu'
 model = tf.keras.models.Sequential (
 [   layers.Flatten (input_shape=sample_shape)
 ,   layers.Dense (128, activation=act)#'relu' or act_threshhold
+#,   layers.Dropout (0.2)
+,   layers.Dense (64, activation=act)#'relu' or act_threshhold
+#,   layers.Dropout (0.2)
 ,   layers.Dense (32, activation=act)#'relu' or act_threshhold
+#,   layers.Dropout (0.2)
 ,   layers.Dense (10, activation="softmax")
 ])
 model.summary ()

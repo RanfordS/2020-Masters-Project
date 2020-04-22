@@ -494,7 +494,11 @@ spacial layers, which use neuron locality to encode position, namely pooling and
 convolutional layers;
 simple layers, which act irrespective of input shape, such as dense, dropout,
 and flatten;
-and reccurent layers, which have recurrent connections.
+and recurent layers, which have recurrent connections, such as SimpleRNN, GRU,
+and LSTM.
+There is also ConvLSTM2D layer, which has convolutional connections on both
+input and recurrent transformations, which may be classed as spacial and
+recurrent.
 
 It should be noted that the $N$ dimensional pooling and convolutional layers
 expect $N+1$ dimensional tensors, where the last dimension is the channel of the
@@ -506,76 +510,104 @@ To test the spacial layers, an image classification problem was considered.
 The MNIST dataset provides 70000, $28\times28$ images of handwritten numbers,
 and a set of corresponding labels.
 
-The dataset was split into training and validation sets.
+The dataset was split into training and validation sets of 60000 and 10000
+samples respectively.
 
-First, a network using: a flatten layer, two dense relu layers of 128 and 32
-neuron respectively, and a dense softmax output; was considered.
+For all of the following networks, the
+\texttt{sparse\_categorical\_crossentropy} loss function was used, which uses
+the data label as the index of the neuron that should be most active.
+
+First, a network using: a flatten layer, three dense relu layers of 128, 64, and
+32 neurons respectively, and a dense softmax output; was considered.
+From preliminary testing, the relu function was the most optimal choice for the
+hidden layers.
+
+With a total of 111,146 parameters, the network was trained for 350 epochs.
+The final training and validation loss values were 0.0264 and 0.0956
+respectively.
+The trained network correctly predicted 58674/60000 of the training samples and
+8923/10000 of the validation samples, giving an error of 2.21\% and 10.77\%
+respectively.
+With a loss ratio of $\sim3.6$, the network is very likely to be over-fitting,
+which is further supported by difference in error rates.
+
+In order to prevent over-fitting, dropout layers were added after each relu
+layer.
+By setting random neurons to 0, the dropout layers prevent neurons from forming
+codependence \citep{Hinton:2012:Dropout}.
+All three dropout layers used a rate of 0.2, meaning that a fifth of the neurons
+were set to zero during training.
+
+After training the new network for 350 epochs, the training and validation loss
+values were 0.1055 and 0.0941 respectively.
+It should be noted that the training loss is based of the network with dropout
+enabled, whereas the validation loss is with dropout disabled.
+The trained network correctly predicted 57157/60000 of the training samples and
+9024/10000 of the validation samples, with dropout disabled in both cases,
+giving an error of 4.74\% and 9.76\%.
+
+Although the new network has clearly underperformed on the training data in
+comparison to the previous model, the amount of over-fitting has been reduced,
+and the network performance on the training data is much more representative of
+the actual network performance.
+
+The difference in validation performance measures, however, suggest an
+improvement, as both loss and error values are reduced by the new model.
+
+Next, a network using: three, $7\times7$ convolutional relu layers with 4, 6,
+and 10 filters respectively, a flatten layer, and a dense softmax output, was
+considered.
+Due to the number of neurons in the network and memory constraints, full-batch
+processing was not possible; for all of the following the networks a batch size
+of 600 was used.
+
+% conv2D relu 7x7 4
+% conv2D relu 7x7 6
+% conv2D relu 7x7 10
 % flat
-% dense relu 128
-% dense relu 32
 % dense softmax 10
-% 104,938 parameters
-% 200 epochs
-% full batch
-% initial loss: 2.3475182056427
-% initial vali: 2.2440125942230225
-% final loss:   0.12035820633172989
-% final loss:   0.13796430826187134
+% 14,342 parameters
+% 20 epochs
+% 600 batch
+% initial loss: 0.8275484666228294
+% initial vali: 0.3297951301932335
+% final loss:   0.055728820748627186
+% final vali:   0.05658671461977065
 % training size:     60000
-% training errors:   7367
-% training %err:     12.278333333333334
+% training errors:   3834
+% training %err:     6.39
 % validation size:   10000
-% validation errors: 1542
-% validation %err:   15.42
+% validation errors: 687
+% validation %err:   6.87
 
-% conv2D relu 7x7
-% conv2D relu 7x7
-% conv2D relu 7x7
+
+
+% conv2D relu 7x7 4
+% drop 0.2
+% conv2D relu 7x7 6
+% drop 0.2
+% conv2D relu 7x7 10
 % flat
-% drop 0.5
+% drop 0.2
 % dense softmax 10
-% 18,502 parameters
+% 14,342 parameters
 % 10 epochs
 % 600 batch
-% initial loss: 0.7164383625984192
-% initial vali: 0.22188324071466922
-% final loss:   0.07247635614126921
-% final loss:   0.04654992789961398
+% initial loss: 0.9578521600365639
+% initial vali: 0.3023364455997944
+% final loss:   0.09055570904165507
+% final loss:   0.05302550220862031
 % training size:     60000
-% training errors:   3160
-% training %err:     5.266666666666667
+% training errors:   3918
+% training %err:     6.53
 % validation size:   10000
-% validation errors: 592
-% validation %err:   5.92
+% validation errors: 632
+% validation %err:   6.32
 
 \rfig{\input{DiagramCRResults.tex}}{%
     Hand written numbers from the MNIST validation set, the network prediction,
     and the certainty of the network.
 }
-
-%500 epochs
-%initial loss: 2.36568117141723630
-%  final loss: 0.06899717450141907
-%initial vali: 2.19691061973571780
-%  final loss: 0.10314085334539413
-%  training size:   60000
-%validation size:   10000
-%  training errors: 4223
-%validation errors: 1247
-%  training %err:   7.038333333333333
-%validation %err:   12.47
-
-%Convol: 50 epochs, batch=600
-%initial loss: 0.574465834945440300
-%initial vali: 0.247798308357596400
-%final loss:   0.010112296480219812
-%final loss:   0.058920445458497850
-%training size:     60000
-%training errors:   482
-%training %err:     0.8033333333333333
-%validation size:   10000
-%validation errors: 493
-%validation %err:   4.93
 
 %own theory of composition
 % functions f and g are compositionally similar if:

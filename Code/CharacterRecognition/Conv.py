@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 layers = tf.keras.layers
 
-num_epochs = 10
+num_epochs = 20
 
 data_filename = "DataConv{}.cvs"
 data_stride = 1
@@ -34,13 +34,12 @@ x_test  = x_test /255.0
 ## Create model
 model = tf.keras.models.Sequential ()
 model.add (layers.Conv2D (4, (7,7), activation='relu', input_shape=sample_shape))
-#model.add (layers.AveragePooling2D ((2,2)))
-#model.add (layers.Conv2D (6, (7,7), activation='relu'))
-model.add (layers.Conv2D (8, (7,7), activation='relu'))
-#model.add (layers.AveragePooling2D ((2,2)))
-model.add (layers.Conv2D (12, (7,7), activation='relu'))
+#model.add (layers.Dropout (0.2))
+model.add (layers.Conv2D (6, (7,7), activation='relu'))
+#model.add (layers.Dropout (0.2))
+model.add (layers.Conv2D (10, (7,7), activation='relu'))
 model.add (layers.Flatten ())
-model.add (layers.Dropout (0.5))
+#model.add (layers.Dropout (0.2))
 model.add (layers.Dense (10, activation="softmax"))
 model.summary ()
 
@@ -60,7 +59,7 @@ result = model.fit (x_train, y_train,
 print ("initial loss:", result.history['loss'][0])
 print ("initial vali:", result.history['val_loss'][0])
 print ("final loss:  ", result.history['loss'][-1])
-print ("final loss:  ", result.history['val_loss'][-1])
+print ("final vali:  ", result.history['val_loss'][-1])
 pred_train = np.argmax (model.predict (x_train), axis=1)
 pred_test  = np.argmax (model.predict (x_test),  axis=1)
 diff_train = pred_train - y_train

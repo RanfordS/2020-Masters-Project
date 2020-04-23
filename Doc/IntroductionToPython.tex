@@ -517,20 +517,29 @@ For all of the following networks, the
 \texttt{sparse\_categorical\_crossentropy} loss function was used, which uses
 the data label as the index of the neuron that should be most active.
 
-First, a network using: a flatten layer, three dense relu layers of 128, 64, and
-32 neurons respectively, and a dense softmax output; was considered.
+First, a network using: a flatten layer; three dense relu layers of 128, 64, and
+32 neurons respectively; and a dense softmax output; was considered.
 From preliminary testing, the relu function was the most optimal choice for the
 hidden layers.
 
 With a total of 111,146 parameters, the network was trained for 350 epochs.
 The final training and validation loss values were 0.0264 and 0.0956
 respectively.
-The trained network correctly predicted 58674/60000 of the training samples and
-8923/10000 of the validation samples, giving an error of 2.21\% and 10.77\%
+The trained network correctly identified 58674/60000 training samples, and
+8923/10000 validation samples, giving an error of 2.21\% and 10.77\%
 respectively.
 With a loss ratio of $\sim3.6$, the network is very likely to be over-fitting,
 which is further supported by difference in error rates.
-
+\newpage
+~
+\vfill
+\rfig[2em]{\input{DiagramCRResults.tex}}{%
+    Hand written numbers from the MNIST validation set, with the prediction and
+    certainty values, for the dense, non-dropout network.
+}
+\vfill
+~
+\newpage
 In order to prevent over-fitting, dropout layers were added after each relu
 layer.
 By setting random neurons to 0, the dropout layers prevent neurons from forming
@@ -542,72 +551,66 @@ After training the new network for 350 epochs, the training and validation loss
 values were 0.1055 and 0.0941 respectively.
 It should be noted that the training loss is based of the network with dropout
 enabled, whereas the validation loss is with dropout disabled.
-The trained network correctly predicted 57157/60000 of the training samples and
-9024/10000 of the validation samples, with dropout disabled in both cases,
-giving an error of 4.74\% and 9.76\%.
+The trained network correctly identified 57157/60000 training samples, and
+9024/10000 validation samples, with dropout disabled in both cases, giving an
+error of 4.74\% and 9.76\% respectively.
 
 Although the new network has clearly underperformed on the training data in
 comparison to the previous model, the amount of over-fitting has been reduced,
 and the network performance on the training data is much more representative of
 the actual network performance.
+The difference in validation performance measures suggest an improvement, as
+both loss and error values are reduced by the new model.
 
-The difference in validation performance measures, however, suggest an
-improvement, as both loss and error values are reduced by the new model.
-
-Next, a network using: three, $7\times7$ convolutional relu layers with 4, 6,
-and 10 filters respectively, a flatten layer, and a dense softmax output, was
-considered.
+As mentioned in Section \ref{subsec:history:conv}, densely connected networks
+struggle to correctly identify shifted inputs, which makes them less suited to
+image recognition tasks.
+As such a network using: three, $7\times7$ convolutional relu layers with 4, 6,
+and 10 filters respectively; a flatten layer; and a dense softmax output; was
+also considered.
 Due to the number of neurons in the network and memory constraints, full-batch
 processing was not possible; for all of the following the networks a batch size
 of 600 was used.
 
-% conv2D relu 7x7 4
-% conv2D relu 7x7 6
-% conv2D relu 7x7 10
-% flat
-% dense softmax 10
-% 14,342 parameters
-% 20 epochs
-% 600 batch
-% initial loss: 0.8275484666228294
-% initial vali: 0.3297951301932335
-% final loss:   0.055728820748627186
-% final vali:   0.05658671461977065
-% training size:     60000
-% training errors:   3834
-% training %err:     6.39
-% validation size:   10000
-% validation errors: 687
-% validation %err:   6.87
+With a total of 14,342 parameters, the network was trained 20 epochs.
+The final training and validation loss values were 0.0557 and 0.0566
+respectively.
+The trained network correctly identified 56166/60000 training samples, and
+9313/10000 validation samples, giving an error of 6.39\% and 6.87\%
+respectively.
 
+Comparing the convolutional network against both dense networks, the
+convolutional network may have reduced performance on the training samples, but
+is significantly better on the validation samples.
+Further more, with a loss ratio of $\sim1.02$, the network does not appear to be
+over-fitting.
 
+As with the dense network, dropout layers were then added after each
+convolutional layer.
+After training the new network for 20 epochs, the training and validation loss
+values were 0.0593 and 0.0408 respectively.
+The trained network correctly identified 57493/60000 training samples and
+9499/10000 validation samples, giving an error of 4.18\% and 5.01\%
+respectively.
 
-% conv2D relu 7x7 4
-% drop 0.2
-% conv2D relu 7x7 6
-% drop 0.2
-% conv2D relu 7x7 10
-% flat
-% drop 0.2
-% dense softmax 10
-% 14,342 parameters
-% 10 epochs
-% 600 batch
-% initial loss: 0.9578521600365639
-% initial vali: 0.3023364455997944
-% final loss:   0.09055570904165507
-% final loss:   0.05302550220862031
-% training size:     60000
-% training errors:   3918
-% training %err:     6.53
-% validation size:   10000
-% validation errors: 632
-% validation %err:   6.32
+Even though over-fitting was not a problem in the non-dropout convolutional network, the use of dropout layers has improved the performance of the network
 
-\rfig{\input{DiagramCRResults.tex}}{%
-    Hand written numbers from the MNIST validation set, the network prediction,
-    and the certainty of the network.
+\rfig{\begin{tabular}{r|cc|cc}
+        & \multicolumn{2}{c|}{Dense} & \multicolumn{2}{c}{Convolutional}\\
+        \hline
+        Dropout?         & No      & Yes     & No      & Yes   \\
+        \hline
+        Training Loss    &  0.0264 &  0.1055 &  0.0557 &  0.0593\\
+        Training Error   &  2.21\% &  4.74\% &  6.39\% &  4.18\%\\
+        \hline
+        Validation Loss  &  0.0956 &  0.0941 &  0.0566 &  0.0408\\
+        Validation Error & 10.77\% &  9.76\% &  6.87\% &  5.01\%\\
+    \end{tabular}}{%
+    Table summarising the network loss and error values for all of the character
+    recognition networks.
 }
+
+
 
 %own theory of composition
 % functions f and g are compositionally similar if:

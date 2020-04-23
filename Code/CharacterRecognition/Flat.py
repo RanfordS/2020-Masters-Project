@@ -17,7 +17,7 @@ plt.rc ('font', family='serif')
 #Does not work well
 plot_filename = False#"ResultFlat.pgf"
 data_filename = False#"DataFlat{}.csv"
-figr_filename = False#"FigrFlat.txt"
+figr_filename = "FigrFlat.txt"
 data_stride = 1
 
 tf.random.set_seed (123456)

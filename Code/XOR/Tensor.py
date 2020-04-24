@@ -9,12 +9,12 @@ layers = tf.keras.layers
 
 ##### Settings #####
 
-num_epochs = 2000
+num_epochs = 10000
 ## Plot settings
 plt.rc ('text', usetex=True)
 plt.rc ('font', family='serif')
 
-data_filename = "DataTensor{}.csv"
+data_filename = False#"DataTensor{}.csv"
 data_stride = 10
 
 ##### End of Settings #####
@@ -31,7 +31,7 @@ for num_hidden in [1,2,3]:
     model = tf.keras.models.Sequential (
     [   layers.Dense (num_hidden,
                       input_dim=2,
-                      activation='tanh')
+                      activation='relu')#'tanh')
     ,   layers.Dense (1)
     ])
     model.compile (#optimizer='RMSprop',#'adam',

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2020.3.11)  23 APR 2020 14:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2020.3.11)  24 APR 2020 17:21
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1715,7 +1715,7 @@ LaTeX Info: Redefining \nameref on input line 29.
 \openout9 = `NeuralNetworksWithPythonAndTensorflow.out'.
 
  (./TitlePage.tex
-<MMU_Logo_Colour.pdf, id=147, 1420.30624pt x 1607.00375pt>
+<MMU_Logo_Colour.pdf, id=143, 1420.30624pt x 1607.00375pt>
 File: MMU_Logo_Colour.pdf Graphic file (type pdf)
 
 <use MMU_Logo_Colour.pdf>
@@ -1737,7 +1737,7 @@ l.1 \chapter
             *{Declaration} [1
 
 ]
-<Signiture.jpg, id=169, 1194.4625pt x 331.2375pt>
+<Signiture.jpg, id=165, 1194.4625pt x 331.2375pt>
 File: Signiture.jpg Graphic file (type jpg)
  <use Signiture.jpg>
 Package pdftex.def Info: Signiture.jpg used on input line 7.
@@ -1838,151 +1838,151 @@ PGFPlots: reading {../Code/BostonHousing/DataTensorVaryNAdamLoss.csv}
 PGFPlots: reading {../Code/BostonHousing/DataTensorVaryRMSpropLoss.csv}
 ) [28] [29] [30] [31] [32] (./DiagramCRResults.tex
 (../Code/CharacterRecognition/FigrFlat.txt)
-<CRResults/img0.png, id=432, 64.24pt x 64.24pt>
+<CRResults/img0.png, id=427, 64.24pt x 64.24pt>
 File: CRResults/img0.png Graphic file (type png)
  <use CRResults/img0.png>
 Package pdftex.def Info: CRResults/img0.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img1.png, id=434, 64.24pt x 64.24pt>
+<CRResults/img1.png, id=429, 64.24pt x 64.24pt>
 File: CRResults/img1.png Graphic file (type png)
  <use CRResults/img1.png>
 Package pdftex.def Info: CRResults/img1.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img2.png, id=435, 64.24pt x 64.24pt>
+<CRResults/img2.png, id=430, 64.24pt x 64.24pt>
 File: CRResults/img2.png Graphic file (type png)
  <use CRResults/img2.png>
 Package pdftex.def Info: CRResults/img2.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img3.png, id=436, 64.24pt x 64.24pt>
+<CRResults/img3.png, id=431, 64.24pt x 64.24pt>
 File: CRResults/img3.png Graphic file (type png)
  <use CRResults/img3.png>
 Package pdftex.def Info: CRResults/img3.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img4.png, id=437, 64.24pt x 64.24pt>
+<CRResults/img4.png, id=432, 64.24pt x 64.24pt>
 File: CRResults/img4.png Graphic file (type png)
  <use CRResults/img4.png>
 Package pdftex.def Info: CRResults/img4.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img5.png, id=438, 64.24pt x 64.24pt>
+<CRResults/img5.png, id=433, 64.24pt x 64.24pt>
 File: CRResults/img5.png Graphic file (type png)
  <use CRResults/img5.png>
 Package pdftex.def Info: CRResults/img5.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img6.png, id=439, 64.24pt x 64.24pt>
+<CRResults/img6.png, id=434, 64.24pt x 64.24pt>
 File: CRResults/img6.png Graphic file (type png)
  <use CRResults/img6.png>
 Package pdftex.def Info: CRResults/img6.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img7.png, id=440, 64.24pt x 64.24pt>
+<CRResults/img7.png, id=435, 64.24pt x 64.24pt>
 File: CRResults/img7.png Graphic file (type png)
  <use CRResults/img7.png>
 Package pdftex.def Info: CRResults/img7.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img8.png, id=441, 64.24pt x 64.24pt>
+<CRResults/img8.png, id=436, 64.24pt x 64.24pt>
 File: CRResults/img8.png Graphic file (type png)
  <use CRResults/img8.png>
 Package pdftex.def Info: CRResults/img8.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img9.png, id=442, 64.24pt x 64.24pt>
+<CRResults/img9.png, id=437, 64.24pt x 64.24pt>
 File: CRResults/img9.png Graphic file (type png)
  <use CRResults/img9.png>
 Package pdftex.def Info: CRResults/img9.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img10.png, id=443, 64.24pt x 64.24pt>
+<CRResults/img10.png, id=438, 64.24pt x 64.24pt>
 File: CRResults/img10.png Graphic file (type png)
  <use CRResults/img10.png>
 Package pdftex.def Info: CRResults/img10.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img11.png, id=444, 64.24pt x 64.24pt>
+<CRResults/img11.png, id=439, 64.24pt x 64.24pt>
 File: CRResults/img11.png Graphic file (type png)
  <use CRResults/img11.png>
 Package pdftex.def Info: CRResults/img11.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img12.png, id=445, 64.24pt x 64.24pt>
+<CRResults/img12.png, id=440, 64.24pt x 64.24pt>
 File: CRResults/img12.png Graphic file (type png)
  <use CRResults/img12.png>
 Package pdftex.def Info: CRResults/img12.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img13.png, id=446, 64.24pt x 64.24pt>
+<CRResults/img13.png, id=441, 64.24pt x 64.24pt>
 File: CRResults/img13.png Graphic file (type png)
  <use CRResults/img13.png>
 Package pdftex.def Info: CRResults/img13.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img14.png, id=447, 64.24pt x 64.24pt>
+<CRResults/img14.png, id=442, 64.24pt x 64.24pt>
 File: CRResults/img14.png Graphic file (type png)
  <use CRResults/img14.png>
 Package pdftex.def Info: CRResults/img14.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img15.png, id=448, 64.24pt x 64.24pt>
+<CRResults/img15.png, id=443, 64.24pt x 64.24pt>
 File: CRResults/img15.png Graphic file (type png)
  <use CRResults/img15.png>
 Package pdftex.def Info: CRResults/img15.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img16.png, id=449, 64.24pt x 64.24pt>
+<CRResults/img16.png, id=444, 64.24pt x 64.24pt>
 File: CRResults/img16.png Graphic file (type png)
  <use CRResults/img16.png>
 Package pdftex.def Info: CRResults/img16.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img17.png, id=450, 64.24pt x 64.24pt>
+<CRResults/img17.png, id=445, 64.24pt x 64.24pt>
 File: CRResults/img17.png Graphic file (type png)
  <use CRResults/img17.png>
 Package pdftex.def Info: CRResults/img17.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img18.png, id=451, 64.24pt x 64.24pt>
+<CRResults/img18.png, id=446, 64.24pt x 64.24pt>
 File: CRResults/img18.png Graphic file (type png)
  <use CRResults/img18.png>
 Package pdftex.def Info: CRResults/img18.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img19.png, id=452, 64.24pt x 64.24pt>
+<CRResults/img19.png, id=447, 64.24pt x 64.24pt>
 File: CRResults/img19.png Graphic file (type png)
  <use CRResults/img19.png>
 Package pdftex.def Info: CRResults/img19.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img20.png, id=453, 64.24pt x 64.24pt>
+<CRResults/img20.png, id=448, 64.24pt x 64.24pt>
 File: CRResults/img20.png Graphic file (type png)
  <use CRResults/img20.png>
 Package pdftex.def Info: CRResults/img20.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img21.png, id=454, 64.24pt x 64.24pt>
+<CRResults/img21.png, id=449, 64.24pt x 64.24pt>
 File: CRResults/img21.png Graphic file (type png)
  <use CRResults/img21.png>
 Package pdftex.def Info: CRResults/img21.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img22.png, id=455, 64.24pt x 64.24pt>
+<CRResults/img22.png, id=450, 64.24pt x 64.24pt>
 File: CRResults/img22.png Graphic file (type png)
  <use CRResults/img22.png>
 Package pdftex.def Info: CRResults/img22.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img23.png, id=456, 64.24pt x 64.24pt>
+<CRResults/img23.png, id=451, 64.24pt x 64.24pt>
 File: CRResults/img23.png Graphic file (type png)
  <use CRResults/img23.png>
 Package pdftex.def Info: CRResults/img23.png used on input line 19.
 (pdftex.def)             Requested size: 42.67912pt x 42.67984pt.
 
-<CRResults/img24.png, id=457, 64.24pt x 64.24pt>
+<CRResults/img24.png, id=452, 64.24pt x 64.24pt>
 File: CRResults/img24.png Graphic file (type png)
  <use CRResults/img24.png>
 Package pdftex.def Info: CRResults/img24.png used on input line 19.
@@ -1995,16 +1995,8 @@ CRResults/img10.png> <./CRResults/img11.png> <./CRResults/img12.png> <./CRResul
 ts/img13.png> <./CRResults/img14.png> <./CRResults/img15.png> <./CRResults/img1
 6.png> <./CRResults/img17.png> <./CRResults/img18.png> <./CRResults/img19.png> 
 <./CRResults/img20.png> <./CRResults/img21.png> <./CRResults/img22.png> <./CRRe
-sults/img23.png> <./CRResults/img24.png>] [34] (./DiagramRegLinear.tex
-\pgf@layerbox@bottom=\box72
-\pgf@layerboxsaved@bottom=\box73
-\pgf@layerbox@top=\box74
-\pgf@layerboxsaved@top=\box75
-Package pgfplots info on input line 28: Setting layers 'bottom,main,top'...
-PGFPlots: reading {../Code/Regression/DataLinearPoints.csv}
-PGFPlots: reading {../Code/Regression/DataLinearPrediction.csv}
-))
-(./IntroductionToTensorflow.tex [35]
+sults/img23.png> <./CRResults/img24.png>] [34]) (./IntroductionToTensorflow.tex
+[35]
 Chapter 3.
 
 Package TODO Warning: "Chapter: Introduction To TensorFlow" on input line 4.
@@ -2083,20 +2075,20 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 68.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 68.
 Package rerunfilecheck Info: File `NeuralNetworksWithPythonAndTensorflow.out' h
 as not changed.
-(rerunfilecheck)             Checksum: 7843F21E252F9862A82EC71F2996CAEF;2409.
+(rerunfilecheck)             Checksum: 97876A092DDAF1676B860963B9ADF4F5;2338.
 Package logreq Info: Writing requests to 'NeuralNetworksWithPythonAndTensorflow
 .run.xml'.
 \openout1 = `NeuralNetworksWithPythonAndTensorflow.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 42845 strings out of 494953
- 953306 string characters out of 6180977
+ 42810 strings out of 494953
+ 952438 string characters out of 6180977
  1821323 words of memory out of 5000000
- 45139 multiletter control sequences out of 15000+600000
+ 45114 multiletter control sequences out of 15000+600000
  14051 words of font info for 53 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 65i,17n,90p,841b,2225s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 64i,17n,84p,841b,2225s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texli
@@ -2114,11 +2106,11 @@ e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on NeuralNetworksWithPythonAndTensorflow.pdf (45 pages, 526034 b
+Output written on NeuralNetworksWithPythonAndTensorflow.pdf (45 pages, 514438 b
 ytes).
 PDF statistics:
- 644 PDF objects out of 1000 (max. 8388607)
- 519 compressed objects within 6 object streams
- 137 named destinations out of 1000 (max. 500000)
- 428 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 638 PDF objects out of 1000 (max. 8388607)
+ 513 compressed objects within 6 object streams
+ 135 named destinations out of 1000 (max. 500000)
+ 420 words of extra memory for PDF output out of 10000 (max. 10000000)
 

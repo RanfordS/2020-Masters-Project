@@ -64,7 +64,7 @@ fitt_x += np.random.uniform (-0.10, 0.10, fitt_x.shape)
 layers = tf.keras.layers
 model = tf.keras.Sequential ()
 
-model.add (layers.LSTM (neurons))
+model.add (layers.LSTM (neurons, stateful = False))
 #model.add (layers.Flatten (input_shape = fitt_x[0].shape))
 #model.add (layers.Dense (neurons, activation = 'tanh'))
 #model.add (layers.Dense (neurons, activation = 'tanh'))

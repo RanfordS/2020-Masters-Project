@@ -1,0 +1,39 @@
+1# Steps
+create env
+create model, inherits from tf.keras.Model
+- __init__ (self, num_actions)
+  - super ().__init__ ('mlp_policy')
+  - create keras layers and store as members
+  - .value = final layer
+  - .logits = layer with: num_actions, name='policy_logits'
+  - .dist = probability distribution
+    - tf.squeeze (tf.random.categorical (num_actions, 1), axis = -1)
+- call (self, inputs, **kwargs)
+  - convert input to tensor
+  - calculate layers to get logits and value
+- action_value (self, obs)
+  - get logits and value from obs
+  - predict action
+create agent using model
+- __init__ (self, model, <params>)
+  - .model = model
+  - compile with loss = [self._logits_loss, self._value_loss]
+- train (self, env, batch_size, updates)
+  - create storage units
+    - actions = np.empty ((batch_size,), dtype = np.int32)
+    - rewards, dones, values = np.empty ((3, batch_size))
+    - observations = np.empty ((batch_size,) + env.observation_space.shape)
+      ~> addition = tuple append
+  - prep
+    - rewards list = [0.0]
+    - reset env
+    - initialize observations_next
+  - for updates
+    - for batch step
+      - calculate the actions to take
+      - perform observe the rewards
+      ? if done, add to rewards list and reset env
+    - done
+
+    
+train agent with env

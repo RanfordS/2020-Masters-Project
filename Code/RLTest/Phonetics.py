@@ -1,4 +1,4 @@
-words =
+words = \
 {   "thank": "θˈæŋk"
 ,   "hello": "həlˈoʊ"
 ,   "the": "ðə"

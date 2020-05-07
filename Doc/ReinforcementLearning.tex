@@ -1,0 +1,98 @@
+\chapter{Reinforcement Learning}
+
+The neural network structures previously discussed for the Boston Housing data
+are essentially curve fitting models, with continuous inputs and output.
+The character recognition networks for the MNIST dataset can also be though of
+as an abstract curve fitting model with multiple outputs, where the result is
+a probability value.
+
+In both cases, training is performed on a set of inputs with known target
+outputs.
+
+Not all problems can be constructed in this manner as some problems require
+discrete actions to be taken.
+Similarly, problems may contain reward systems.
+Such systems may have delayed rewards, were one action provides an immediate
+reward, but prevents reaching a state of higher reward.
+
+Consider the ``Chain'' problem from \cite{Strens:2000:ABF}:
+\rfig{\input{DiagramRLChain.tex}}{%
+    Five-state chain problem.
+    Arrows from the top of the states denote action 0, and from the bottom
+    denote action 1.
+    The labels on each arrow denote the reward associated with that action.
+    The system is initially at state 0.
+}
+The optimal, long term strategy for this system is to always perform action 0,
+which will cause the system to reach state 4 and obtain a reward of 10 on each
+step.
+A greedy algorithm will discover the reward from always performing action 1,
+which will cause the system to stay at state 0 and obtain a reward of 1 on each
+step.
+The greedy algorithm is only optimal for four steps or less.
+
+
+
+\section{Q-Learning}
+
+One way to find a solution to this problem without neural networks is
+Q-Learning.
+Proposed by \cite{Watkins:1992:Q}, Q-Learning is an algorithm for finding
+optimal solutions to Markovian domain problems, such as the chain.
+
+The algorithm starts with a table, referred to as the Q-table, which has a row
+for each system state, and a column for each action, initialised as zero.
+Once trained, each element of the Q-table will represent the maximum expected
+reward for each action in each state.
+
+Let $Q(s,a)$ denote the Q-table value for state $s$ and action $a$.
+
+Initially, actions are taken at random, which allows the agent to explore the
+network; but as training progresses, the agent gradually shifts towards making
+decisions based on the Q-table values.
+
+Each time an action $a$ is taken from state $s$, the reward $r$ and new state
+$s'$ are observed, and the Q-table is updated using the equation
+\begin{align*}
+    Q(s,a) := Q(s,a) + \alpha (r + \gamma\max_{a'}Q(s',a') - Q(s,a)),
+\end{align*}
+where $\alpha$ is the learning rate, and $\gamma$ is the discount rate, which is
+needed to prevent the values from growing exponentially.
+Note that $\max_{a'}Q(s',a')$ is the maximum expected future reward of state
+$s'$, according to the current Q-table values.
+
+The algorithm was applied to the chain problem with learning rate $\alpha =
+0.8$, and discount rate $\gamma = 0.7$, for 200 episodes, each consisting of 50
+steps.
+During training, the probability of the agent performing a random action was
+given by $0.01^{t/200}$, where $t$ is the episode number.
+\rfig{\input{DiagramChainQLearn.tex}}{%
+    Graph of score against episode number for the Q-Learning chain problem.
+}
+Once trained, the agent was able to obtain the highest possible score of 490.
+The final values of the Q-table are provided below.
+\rfig{%
+    \begin{tabular}{c|c c}
+        State & Action 0 & Action 1\\
+        \hline
+        0 &  8.00 & 6.60\\
+        1 & 11.43 & 6.60\\
+        2 & 16.33 & 6.60\\
+        3 & 23.33 & 6.60\\
+        4 & 33.33 & 6.60\\
+    \end{tabular}}{%
+    Q-table for the full trained Q-Learning chain problem.
+}
+Note that all of the values in the Action 0 column are larger than the
+corresponding values in the Action 1 column, which denotes the larger expected
+future reward.
+
+
+
+\section{Deep Q-Learning}
+
+The Q-Learning algorithm works well for problems with well defined states and
+actions, but cannot accommodate problems where the state in not discrete.
+
+To solve this problem,
+

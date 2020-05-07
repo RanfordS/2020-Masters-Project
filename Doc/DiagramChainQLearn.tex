@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+    \begin{axis}
+        [   width = 0.8\textwidth
+        ,   ymin = 0
+        ,   ymax = 500
+        ,   xtick = {0,40,80,120,160,200}
+        ,   xlabel = {Episode}
+        ,   ylabel = {Score}
+        ]
+        \addplot [color = Rblue]   table [col sep = comma]
+        {../Code/RLChain/DataQLearning.csv};
+    \end{axis}
+\end{tikzpicture}

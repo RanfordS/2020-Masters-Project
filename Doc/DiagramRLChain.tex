@@ -1,0 +1,35 @@
+\begin{tikzpicture}
+    [   state/.style=
+        {   draw
+        ,   circle
+        }
+    ,   baseline=0pt
+    ,   >={Stealth[scale=1.2]}
+    ]
+    \foreach\n in {0,...,4}
+    {   \node[state] (N\n) at (2cm*\n, 0mm) {$\n$};
+    }
+    \foreach\np in {1,...,4}
+    {   \pgfmathtruncatemacro{\nm}{\np-1}
+        \draw[->]
+        (N\np)
+            to [out=225,in=315]
+            node [near start, anchor = north west, inner sep = 2pt] {1}
+        (N0);
+        \draw[->]
+        (N\nm)
+            to [out=45,in=135]
+            node [anchor = south, inner sep = 2pt] {0}
+        (N\np);
+    }
+    \draw[->]
+    (N0)
+        .. controls ++(-1cm,-1cm) and ++(-1cm,1cm) ..
+        node [anchor = east, inner sep = 2pt] {1}
+    (N0);
+    \draw[->]
+    (N4)
+        .. controls ++(1cm,1cm) and ++(1cm,-1cm) ..
+        node [anchor = west, inner sep = 2pt] {10}
+    (N4);
+\end{tikzpicture}

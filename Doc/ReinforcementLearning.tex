@@ -52,10 +52,11 @@ network; but as training progresses, the agent gradually shifts towards making
 decisions based on the Q-table values.
 
 Each time an action $a$ is taken from state $s$, the reward $r$ and new state
-$s'$ are observed, and the Q-table is updated using the equation
-\begin{align*}
-    Q(s,a) := Q(s,a) + \alpha (r + \gamma\max_{a'}Q(s',a') - Q(s,a)),
-\end{align*}
+$s'$ are observed, and the Q-table is updated using the Bellman equation:
+\begin{align}
+    Q(s,a) \leftarrow Q(s,a) + \alpha (r + \gamma\max_{a'}Q(s',a') - Q(s,a)),
+    \label{eq:RL:QL}
+\end{align}
 where $\alpha$ is the learning rate, and $\gamma$ is the discount rate, which is
 needed to prevent the values from growing exponentially.
 Note that $\max_{a'}Q(s',a')$ is the maximum expected future reward of state
@@ -69,7 +70,7 @@ given by $0.01^{t/200}$, where $t$ is the episode number.
 \rfig{\input{DiagramChainQLearn.tex}}{%
     Graph of score against episode number for the Q-Learning chain problem.
 }
-Once trained, the agent was able to obtain the highest possible score of 490.
+Once trained, the agent was able to obtain the highest possible score of 460.
 The final values of the Q-table are provided below.
 \rfig{%
     \begin{tabular}{c|c c}
@@ -92,7 +93,41 @@ future reward.
 \section{Deep Q-Learning}
 
 The Q-Learning algorithm works well for problems with well defined states and
-actions, but cannot accommodate problems where the state in not discrete.
+actions, but cannot accommodate problems where the state is either to too large,
+not directly visible, or non-discrete.
+To solve this problem, a neural network may be trained to take in a set of
+observations and predict the corresponding Q-values for each action
+\citep{Riedmiller:2005:Neural}.
 
-To solve this problem,
+To prevent over-training, a replay memory was created, which stores a limited
+number of state transitions.
+Each transition contains: the initial observations, the action performed,
+the reward received, and the new observations.
 
+After each action, the transition is added to the replay memory.
+If the memory is full, the oldest element is removed to accommodate the newest.
+In python, this behaviour is handled automatically by using the \texttt{deque}
+class, from the inbuilt \texttt{collections} package.
+
+Initially, a number of random trails are performed to populate the memory with
+enough data to fill a batch.
+
+Training is then performed in a similar manner as Q-Learning.
+As the Q-values cannot be modified directly, a batch of random transitions from
+the replay memory are selected for training the network.
+The network target is calculated using a modified version of Equation
+\ref{eq:RL:QL},
+\begin{align*}
+    Q(s,a) = r + \gamma\max_{a'}Q(s',a'),
+\end{align*}
+where $Q(s,a)$ is the network's Q-value prediction.
+The learning rate, $\alpha$, and associated references to $Q(s,a)$ have been
+omitted as they can be controlled by the network training parameters.
+
+Deep Q-Learning was applied to the chain problem using a single-layer network
+with: five input neurons, one for each state; and two densely connected, ReLU
+output neuron.
+
+\rfig{\input{DiagramChainDeepQLearn.tex}}{%
+    Graph of score against episode number for the Deep Q-Learning chain problem.
+}

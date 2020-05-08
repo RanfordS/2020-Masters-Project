@@ -16,7 +16,7 @@ class Chain:
         if action == 1:
             self.state = 0
             return 1
-        if state == 4:
+        if self.state == 4:
             return 10
         self.state += 1
         return 0

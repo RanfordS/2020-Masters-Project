@@ -36,8 +36,8 @@ The greedy algorithm is only optimal for four steps or less.
 \section{Q-Learning}
 
 One way to find a solution to this problem without neural networks is
-Q-Learning.
-Proposed by \cite{Watkins:1992:Q}, Q-Learning is an algorithm for finding
+``Q-Learning''.
+Proposed by \cite{Watkins:1989:Learning}, Q-Learning is an algorithm for finding
 optimal solutions to Markovian domain problems, such as the chain.
 
 The algorithm starts with a table, referred to as the Q-table, which has a row
@@ -97,10 +97,11 @@ actions, but cannot accommodate problems where the state is either to too large,
 not directly visible, or non-discrete.
 To solve this problem, a neural network may be trained to take in a set of
 observations and predict the corresponding Q-values for each action
-\citep{Riedmiller:2005:Neural}.
+\citep{Lin:1990:Self}.
 
-To prevent over-training, a replay memory was created, which stores a limited
-number of state transitions.
+To prevent the system from forgetting past experiences, a replay memory was
+created, which stores a limited number of state transitions
+\citep{Lin:1992:Self}.
 Each transition contains: the initial observations, the action performed,
 the reward received, and the new observations.
 
@@ -116,18 +117,56 @@ Training is then performed in a similar manner as Q-Learning.
 As the Q-values cannot be modified directly, a batch of random transitions from
 the replay memory are selected for training the network.
 The network target is calculated using a modified version of Equation
-\ref{eq:RL:QL},
-\begin{align*}
-    Q(s,a) = r + \gamma\max_{a'}Q(s',a'),
-\end{align*}
-where $Q(s,a)$ is the network's Q-value prediction.
-The learning rate, $\alpha$, and associated references to $Q(s,a)$ have been
-omitted as they can be controlled by the network training parameters.
+\ref{eq:RL:QL}, where $Q(s,a)$ is the network's Q-value prediction.
 
 Deep Q-Learning was applied to the chain problem using a single-layer network
 with: five input neurons, one for each state; and two densely connected, ReLU
 output neuron.
-
 \rfig{\input{DiagramChainDeepQLearn.tex}}{%
+    Graph of score against episode number for the Deep Q-Learning chain problem.
+}
+
+
+
+\subsection{Prioritised Experience Replay}
+
+The replay memory provided a simple way for the network to remember and reuse
+past experiences.
+In the first instance, experiences were randomly sampled from the memory with a
+uniform distribution.
+
+\cite{Schaul:2015:Prioritized}, notes that improved training performance can be
+obtained by prioritising some experiences over others.
+This is achieved by creating a weighted distribution that favours elements with
+higher priority values.
+The probability of picking the $i^\text{th}$ memory is given by
+\begin{align*}
+    P(i) = \frac{p_i^a}{\sum_{k} p_k^a},
+\end{align*}
+where $p_i$ is the priority value of the $i^\text{th}$ memory, and $a$ is a
+parameter that controls the distribution.
+Using $a = 0$ will make the distribution uniform.
+
+The priority value is defined as
+\begin{align*}
+    p_t = \left|\delta_t\right| + e,
+\end{align*}
+where $e$ is some constant to prevent zeros, and $\delta_t$ is the temporal
+difference,
+\begin{align*}
+    \delta_t = r + \gamma\max_{a'}Q(s',a') - Q(s,a).
+\end{align*}
+
+However, a problem arises from using this distribution, which is that the sample
+distribution no longer matches the source distribution, which in turn causes
+bias.
+To compensate, a weighting is introduced:
+\begin{align*}
+    \left(\frac{1}{N}\cdot\frac{1}{P(i)}\right)^{\beta},
+\end{align*}
+where $\beta$ is a parameter to be increased during training.
+
+
+\rfig{\input{DiagramChainPERDeepQLearn.tex}}{%
     Graph of score against episode number for the Deep Q-Learning chain problem.
 }

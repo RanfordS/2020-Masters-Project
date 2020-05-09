@@ -95,7 +95,7 @@ for episode in range (num_episodes):
         next_q = model.predict (b_state1)
         b_target = curr_q
         for i in range (size_batch):
-            b_target[i,b_action[i]] = b_reward[i] + gamma*max (next_q[i])
+            b_target[i,b_action[i]] += lr*(b_reward[i] + gamma*max (next_q[i]) - b_target[i,b_action[i]])
         model.fit (b_state0, b_target, epochs = 10, batch_size = size_batch, verbose = 0)
     print ("episode {0:3d}, score {1:3d}, dings {2:2d}, eps {3:6f}"
             .format (episode, score, env.dings, eps))

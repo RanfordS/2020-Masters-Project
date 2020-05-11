@@ -7,8 +7,6 @@ import matplotlib.pyplot as plt
 class Chain:
     def __init__ (self):
         self.state = 0
-        self.action_space = 2
-        self.observation_space = 5
     def reset (self):
         self.state = 0
         return 0
@@ -23,10 +21,7 @@ class Chain:
 env = Chain ()
 
 # Q-Table
-act_size = env.action_space
-state_size = env.observation_space
-
-qtable = np.zeros ((state_size, act_size))
+qtable = np.zeros ((5, 2))
 print (qtable)
 
 # Hyperparameters
@@ -63,7 +58,6 @@ for episode in range (num_episodes):
         qtable[state,action] = qtable[state,action] + lr*(reward + gamma*np.max (qtable[new_state,:]) - qtable[state,action])
         state = new_state
     scores.append (score)
-    #eps = min_eps + (max_eps - min_eps)*np.exp (-dr*episode)
     eps = max_eps*(min_eps/max_eps)**(episode/num_episodes)
 
 if data_filename:

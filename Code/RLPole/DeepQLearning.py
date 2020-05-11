@@ -7,38 +7,18 @@ import matplotlib.pyplot as plt
 import random
 from collections import deque
 
-# Environment
-class Chain:
-    def __init__ (self):
-        self.state = 0
-        self.dings = 0
-    def reset (self):
-        self.state = 0
-        self.dings = 0
-        return 0
-    def step (self, action):
-        if action == 1:
-            self.state = 0
-            return 1
-        if self.state == 4:
-            self.dings += 1
-            return 10
-        self.state += 1
-        return 0
-env = Chain ()
+import gym
 
-def state_to_array (index):
-    z = np.zeros (5)
-    z[index] = 1.0
-    return z
+# Environment
+env = gym.make ('CartPole-v1')
 
 # Hyperparameters
-num_episodes = 50
-num_testepis = 1
-num_steps = 50
+num_episodes = 75
+num_testepis = 5
+num_steps = 200
 
-size_batch = 100
-size_memory = 500
+size_batch = 1000
+size_memory = 2000
 
 lr = 0.8
 gamma = 0.7
@@ -53,23 +33,33 @@ memory = deque (maxlen = size_memory)
 
 model = tf.keras.models.Sequential ()
 l = tf.keras.layers
-model.add (l.Dense (2, input_dim = 5, activation = 'relu'))
-model.compile (optimizer = 'adam', loss = 'mean_squared_error', metrics = [])
+model.add (
+        l.Dense (16,
+            input_dim = env.observation_space.shape[0],
+            activation = 'tanh'))
+model.add (l.Dense (2, activation = 'linear'))
+model.compile (
+        optimizer = 'adam',
+        loss = 'mean_squared_error',
+        metrics = [])
 
 # Prep
+state0 = env.reset ()
 for i in range (size_batch):
-    state0 = state_to_array (env.state)
-    action = random.randrange (2)
-    reward = env.step (action)
-    state1 = state_to_array (env.state)
-    memory.append ((state0, action, reward, state1))
+    action = random.randrange (env.action_space.n)
+    state1, reward, isdone, info = env.step (action)
+    memory.append ((state0, action, reward, state1, isdone))
+    if isdone:
+        state0 = env.reset ()
+    else:
+        state0 = state1
 
 # Training
 scores = []
 for episode in range (num_episodes):
     eps = max_eps*(min_eps/max_eps)**(episode/num_episodes)
 
-    state0 = state_to_array (env.reset ())
+    state0 = env.reset ()
     score = 0
     for step in range (num_steps):
         # choose action
@@ -77,12 +67,14 @@ for episode in range (num_episodes):
             q_vals = model.predict (np.array ([state0]))
             action = np.argmax (q_vals)
         else:
-            action = random.randrange (2)
+            action = random.randrange (env.action_space.n)
         # perform
-        reward = env.step (action)
+        state1, reward, isdone, info = env.step (action)
+        #env.render ()
         score += reward
-        state1 = state_to_array (env.state)
-        memory.append ((state0, action, reward, state1))
+        if isdone:
+            reward = 0
+        memory.append ((state0, action, reward, state1, isdone))
         state0 = state1
         # create training batch
         batch = random.sample (memory, size_batch)
@@ -91,36 +83,47 @@ for episode in range (num_episodes):
         b_action = np.array (batch[1])
         b_reward = np.array (batch[2])
         b_state1 = np.array (batch[3])
+        b_isdone = np.array (batch[4])
         curr_q = model.predict (b_state0)
         next_q = model.predict (b_state1)
         b_target = curr_q
         for i in range (size_batch):
-            b_target[i,b_action[i]] += lr*(b_reward[i] + gamma*max (next_q[i]) - b_target[i,b_action[i]])
-        model.fit (b_state0, b_target, epochs = 10, batch_size = size_batch, verbose = 0)
-    print ("episode {0:3d}, score {1:3d}, dings {2:2d}, eps {3:6f}"
-            .format (episode, score, env.dings, eps))
+            b_target[i,b_action[i]] += lr*(b_reward[i] + gamma*max (next_q[i]) \
+                    - b_target[i,b_action[i]])
+        model.fit (
+                b_state0,
+                b_target,
+                epochs = 10,
+                batch_size = size_batch,
+                verbose = 0)
+        if isdone:
+            break
+    print ("episode {0:3d}, score {1:d}, eps {2:6f}"
+            .format (episode, int (score), eps))
     scores.append (score)
 
 if data_filename:
     with open (data_filename, 'w') as f:
         for i in range (num_episodes):
-            f.write ("{0:d},{1:d}\n".format (i, scores[i]))
+            f.write ("{0:d},{1:d}\n".format (i, int (scores[i])))
 
 plt.plot (scores)
 plt.show ()
 
 # Play
 for episode in range (num_testepis):
-    state0 = state_to_array (env.reset ())
+    state0 = env.reset ()
     done = False
     score = 0
 
     for step in range (num_steps):
         q_vals = model.predict (np.array ([state0]))
         action = np.argmax (q_vals)
-        reward = env.step (action)
+        state0, reward, isdone, info = env.step (action)
         score += reward
-        state = state_to_array (env.state)
+        env.render ()
+        if isdone:
+            break
 
     print ("score", score)
 

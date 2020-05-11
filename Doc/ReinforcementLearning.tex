@@ -105,6 +105,9 @@ created, which stores a limited number of state transitions
 Each transition contains: the initial observations, the action performed,
 the reward received, and the new observations.
 
+The use of replay memory also allows training to be performed with fewer
+experiences.
+
 After each action, the transition is added to the replay memory.
 If the memory is full, the oldest element is removed to accommodate the newest.
 In python, this behaviour is handled automatically by using the \texttt{deque}
@@ -160,13 +163,10 @@ difference,
 However, a problem arises from using this distribution, which is that the sample
 distribution no longer matches the source distribution, which in turn causes
 bias.
-To compensate, a weighting is introduced:
+To compensate, a weighting is introduced to the network training loss:
 \begin{align*}
     \left(\frac{1}{N}\cdot\frac{1}{P(i)}\right)^{\beta},
 \end{align*}
 where $\beta$ is a parameter to be increased during training.
 
 
-\rfig{\input{DiagramChainPERDeepQLearn.tex}}{%
-    Graph of score against episode number for the Deep Q-Learning chain problem.
-}

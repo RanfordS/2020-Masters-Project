@@ -61,9 +61,9 @@ dataset = tf.data.Dataset.from_tensor_slices ((phonetic_index, language_index))
 
 # Parameters
 
-embedding_dim = 32 #num_phonemes*16
+embedding_dim = num_phonemes #32 #num_phonemes*16
 rnn_units = 128
-epochs = 4*256
+epochs = 4#4*256
 
 print ("Examples: ", num_examples)
 print ("Langauges:", num_languages)
@@ -94,8 +94,8 @@ def build_model (batch_size):
     return tf.keras.Sequential (
     [   l.Input (shape = (None,))
     ,   l.Embedding (num_phonemes,
-                     embedding_dim,
-                     batch_input_shape = [batch_size, None])
+                     embedding_dim)#,
+                     #batch_input_shape = [batch_size, None])
     ,   l.LSTM (rnn_units)
     ,   l.Dense (num_languages, activation='softmax')
     ])
@@ -120,3 +120,7 @@ for i in range (50):
     g = np.argmax (prediction[i])
     print ("pred idx", g)
     print ("predlang", index_to_language[g])
+    if g == language_index[i]:
+        print ("~ correct")
+    else:
+        print ("~ incorrect")

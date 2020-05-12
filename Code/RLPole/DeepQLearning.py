@@ -13,18 +13,18 @@ import gym
 env = gym.make ('CartPole-v1')
 
 # Hyperparameters
-num_episodes = 75
+num_episodes = 200
 num_testepis = 5
-num_steps = 200
+num_steps = 400
 
 size_batch = 1000
-size_memory = 2000
+size_memory = 6000
 
 lr = 0.8
-gamma = 0.7
+gamma = 0.95
 
 max_eps = 1.0
-min_eps = 0.01
+min_eps = 0.05
 
 data_filename = "DataDeepQLearning.csv"
 
@@ -37,7 +37,9 @@ model.add (
         l.Dense (16,
             input_dim = env.observation_space.shape[0],
             activation = 'tanh'))
-model.add (l.Dense (2, activation = 'linear'))
+model.add (l.Dense (12, activation = 'tanh'))
+model.add (l.Dense (8, activation = 'tanh'))
+model.add (l.Dense (env.action_space.n, activation = 'linear'))
 model.compile (
         optimizer = 'adam',
         loss = 'mean_squared_error',
@@ -62,6 +64,7 @@ for episode in range (num_episodes):
     state0 = env.reset ()
     score = 0
     for step in range (num_steps):
+        #env.render ()
         # choose action
         if random.random () > eps:
             q_vals = model.predict (np.array ([state0]))
@@ -70,10 +73,9 @@ for episode in range (num_episodes):
             action = random.randrange (env.action_space.n)
         # perform
         state1, reward, isdone, info = env.step (action)
-        #env.render ()
-        score += reward
         if isdone:
             reward = 0
+        score += reward
         memory.append ((state0, action, reward, state1, isdone))
         state0 = state1
         # create training batch
@@ -113,15 +115,14 @@ plt.show ()
 # Play
 for episode in range (num_testepis):
     state0 = env.reset ()
-    done = False
     score = 0
 
     for step in range (num_steps):
+        env.render ()
         q_vals = model.predict (np.array ([state0]))
         action = np.argmax (q_vals)
         state0, reward, isdone, info = env.step (action)
         score += reward
-        env.render ()
         if isdone:
             break
 

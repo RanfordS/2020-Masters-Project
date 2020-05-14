@@ -33,7 +33,7 @@ def state_to_array (index):
     return z
 
 # Hyperparameters
-num_episodes = 50
+num_episodes = 30
 num_testepis = 1
 num_steps = 50
 

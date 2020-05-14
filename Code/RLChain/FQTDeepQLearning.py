@@ -33,9 +33,10 @@ def state_to_array (index):
     return z
 
 # Hyperparameters
-num_episodes = 40
+num_episodes = 35
 num_testepis = 1
 num_steps = 50
+tau = 10
 
 size_batch = 100
 size_memory = 500
@@ -46,15 +47,21 @@ gamma = 0.7
 max_eps = 1.0
 min_eps = 0.01
 
-data_filename = "DataDeepQLearning.csv"
+data_filename = "DataFQTDeepQLearning.csv"
 
 #
 memory = deque (maxlen = size_memory)
 
-model = tf.keras.models.Sequential ()
-l = tf.keras.layers
-model.add (l.Dense (2, input_dim = 5, activation = 'relu'))
-model.compile (optimizer = 'adam', loss = 'mean_squared_error', metrics = [])
+def MakeModel ():
+    model = tf.keras.models.Sequential ()
+    l = tf.keras.layers
+    model.add (l.Dense (2, input_dim = 5, activation = 'relu'))
+    model.compile (optimizer = 'adam', loss = 'mean_squared_error', metrics = [])
+    return model
+
+policy = MakeModel ()
+target = MakeModel ()
+target.set_weights (policy.get_weights ())
 
 # Prep
 for i in range (size_memory):
@@ -74,7 +81,7 @@ for episode in range (num_episodes):
     for step in range (num_steps):
         # choose action
         if random.random () > eps:
-            q_vals = model.predict (np.array ([state0]))
+            q_vals = policy.predict (np.array ([state0]))
             action = np.argmax (q_vals)
         else:
             action = random.randrange (2)
@@ -91,12 +98,14 @@ for episode in range (num_episodes):
         b_action = np.array (batch[1])
         b_reward = np.array (batch[2])
         b_state1 = np.array (batch[3])
-        curr_q = model.predict (b_state0)
-        next_q = model.predict (b_state1)
+        curr_q = policy.predict (b_state0)
+        next_q = target.predict (b_state1)
         b_target = curr_q
         for i in range (size_batch):
             b_target[i,b_action[i]] += lr*(b_reward[i] + gamma*max (next_q[i]) - b_target[i,b_action[i]])
-        model.fit (b_state0, b_target, epochs = 10, batch_size = size_batch, verbose = 0)
+        policy.fit (b_state0, b_target, epochs = 10, batch_size = size_batch, verbose = 0)
+        if (step + 1) % tau == 0:
+            target.set_weights (policy.get_weights ())
     print ("episode {0:3d}, score {1:3d}, dings {2:2d}, eps {3:6f}"
             .format (episode, score, env.dings, eps))
     scores.append (score)
@@ -116,7 +125,7 @@ for episode in range (num_testepis):
     score = 0
 
     for step in range (num_steps):
-        q_vals = model.predict (np.array ([state0]))
+        q_vals = policy.predict (np.array ([state0]))
         action = np.argmax (q_vals)
         reward = env.step (action)
         score += reward

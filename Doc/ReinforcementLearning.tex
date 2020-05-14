@@ -66,7 +66,8 @@ The algorithm was applied to the chain problem with learning rate $\alpha =
 0.8$, and discount rate $\gamma = 0.7$, for 200 episodes, each consisting of 50
 steps.
 During training, the probability of the agent performing a random action was
-given by $0.01^{t/200}$, where $t$ is the episode number.
+given by $0.01^{t/E}$, where $t$ is the episode number, and $E$ in the total
+number of episodes.
 \rfig{\input{DiagramChainQLearn.tex}}{%
     Graph of score against episode number for the Q-Learning chain problem.
 }
@@ -94,7 +95,7 @@ future reward.
 
 The Q-Learning algorithm works well for problems with well defined states and
 actions, but cannot accommodate problems where the state is either to too large,
-not directly visible, or non-discrete.
+not directly visible, or non-Markovian.
 To solve this problem, a neural network may be trained to take in a set of
 observations and predict the corresponding Q-values for each action
 \citep{Lin:1990:Self}.
@@ -113,8 +114,7 @@ If the memory is full, the oldest element is removed to accommodate the newest.
 In python, this behaviour is handled automatically by using the \texttt{deque}
 class, from the inbuilt \texttt{collections} package.
 
-Initially, a number of random trails are performed to populate the memory with
-enough data to fill a batch.
+Initially, a number of random trails are performed to fill the memory.
 
 Training is then performed in a similar manner as Q-Learning.
 As the Q-values cannot be modified directly, a batch of random transitions from
@@ -125,6 +125,10 @@ The network target is calculated using a modified version of Equation
 Deep Q-Learning was applied to the chain problem using a single-layer network
 with: five input neurons, one for each state; and two densely connected, ReLU
 output neuron.
+Training was performed over 40 episodes, each consisting of 50 steps, with the
+same parameters as before.
+After each step, the network trained using a random sample of 100 transitions
+from a replay memory with a capacity of 500.
 \rfig{\input{DiagramChainDeepQLearn.tex}}{%
     Graph of score against episode number for the Deep Q-Learning chain problem.
 }
@@ -169,4 +173,46 @@ To compensate, a weighting is introduced to the network training loss:
 \end{align*}
 where $\beta$ is a parameter to be increased during training.
 
+This technique is known as Prioritised Experience Replay (PER).
+
+Deep Q-Learning with PER was applied to the chain problem using the same
+network layout as before.
+Using PER, the agent could be reliably trained using fewer episodes.
+Training was performed over 30 episodes, each consisting of 50 steps, with the
+same memory capacity, batch size, and parameters as before.
+\rfig{\input{DiagramChainPERDeepQLearn.tex}}{%
+    Graph of score against episode number for the Deep Q-Learning chain problem
+    with Prioritised Experience Replay.
+}
+
+
+
+\subsection{Fixed Q-Targets}
+
+When training, the expected future reward from state $s'$ is calculated using
+the same network as the expected future reward from state $s$, which is being
+updated each step.
+This causes both $Q(s',a')$ and $Q(s,a)$ to change on each step, which can cause
+instabilities.
+
+To reduce the instability, a separate target network may be introduced.
+This gives
+\begin{align*}
+    \delta_t = r + \gamma\max_{a'}Q^T(s',a') - Q^P(s,a),
+\end{align*}
+where $Q^T$ is the target network, and $Q^P$ is the policy network.
+Both networks are initialised with the same weights, but only the policy network
+is trained, hence providing a fixed approximation of the future Q-values.
+
+The weights of the target network are periodically updated to match those of the
+policy network, this is done every $\tau$ steps, where $\tau$ is some chosen
+parameter.
+
+Fixed Q-Targets can be implemented with or without PER.
+
+Deep Q-Learning with Fixed Q-Targets was applied to the chain problem using the
+same network layout as before.
+Training was reliably performed over 35 episodes, each consisting of 50 steps,
+with $\tau = 5$, and the same memory capacity, batch size and parameters as
+before.
 

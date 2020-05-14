@@ -13,7 +13,7 @@ import gym
 env = gym.make ('CartPole-v1')
 
 # Hyperparameters
-num_episodes = 200
+num_episodes = 50
 num_testepis = 5
 num_steps = 400
 
@@ -21,10 +21,10 @@ size_batch = 1000
 size_memory = 6000
 
 lr = 0.8
-gamma = 0.95
+gamma = 0.9
 
 max_eps = 1.0
-min_eps = 0.05
+min_eps = 0.1
 
 data_filename = "DataDeepQLearning.csv"
 

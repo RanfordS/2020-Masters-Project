@@ -212,7 +212,7 @@ Fixed Q-Targets can be implemented with or without PER.
 Deep Q-Learning with Fixed Q-Targets was applied to the chain problem using the
 same network layout as before.
 Training was reliably performed over 35 episodes, each consisting of 50 steps,
-with $\tau = 10$, and the same memory capacity, batch size and parameters as
+with $\tau = 10$, and the same memory capacity, batch size, and parameters as
 before.
 
 
@@ -235,12 +235,12 @@ At each step, one network is randomly chosen for training, and the other is used
 to predict the maximum future value, giving either:
 \begin{align*}
     \delta_t^A &= r + \gamma Q^B(s',a*) - Q^A(s,a),\\
-    a* &= \text{arg}\max_a Q^A(s',a);
+    a* &= \underset{a}{\text{argmax }} Q^A(s',a);
 \end{align*}
 or
 \begin{align*}
     \delta_t^B &= r + \gamma Q^A(s',a*) - Q^B(s,a),\\
-    a* &= \text{arg}\max_a Q^B(s',a).
+    a* &= \underset{a}{\text{argmax }} Q^B(s',a).
 \end{align*}
 Doing this reduces the overestimation of the Q-values and improves training
 stability.
@@ -248,6 +248,49 @@ stability.
 For the trivial case of the chain problem, applying Double Deep Q-Networks
 negatively impacts performance, and often prevented the network from learning
 the optimal policy.
-A possible explanation for the reduced training performance is that the network
-does not suffer the problems which Double Deep Q-Networks attempt to solve, and
-so separating the training across two networks only slows the training.
+%A possible explanation for the reduced training performance is that the network
+%does not suffer the problems which Double Deep Q-Networks attempt to solve, and
+%so separating the training across two networks only slows the training.
+A possible reason for the reduced training performance is that the network does
+not suffer from overestimation when learning the chain problem, and so applying
+Double Deep Q-Networks to the problem causes underestimation, which in turn 
+prevents the policy from progressing through the chain.
+
+
+
+\subsection{Dueling Deep Q-Networks}
+
+When recalling the interpretation of the Q-value, \cite{Wang:2015:Dueling} noted
+that the Q-value represents a combination of both the state values and the state
+dependent action advantages, and proposed an architecture that explicitly
+separates the two.
+This might be naively implemented as $Q(s,a) = V(s) + A(s,a)$, but
+\citeauthor{Wang:2015:Dueling} noted that this does not produce unique values
+for $V(s)$ and $A(s,a)$.
+To counteract this, the $A(s,a)$ value are offset by a property thereof, such as
+the maximum or mean value, the latter giving
+\begin{align}
+    Q(s,a) = V(s) + \left(A(s,a) - \underset{a'}{\text{mean }}A(s,a')\right).
+    \label{eq:RL:Dueling}
+\end{align}
+Implementing this into the neural network is achieved as follows:
+\begin{enumerate}
+    \item a number of layers input the observations and produce a set of state
+        representations;
+    \item the state representation is inputted into two sets of layer streams,
+        the former predicts the single state value, and the latter predicts the
+        advantage values for each action;
+    \item the two streams are merged according to Equation \ref{eq:RL:Dueling},
+        producing a Q-value for each action.
+\end{enumerate}
+
+
+Dueling Deep Q-Learning was applied to the chain problem using a network with
+five input neurons, one for each state of the environment; which is connected
+to two streams: a single densely connected ReLU for the state value, and two
+densely connected ReLUs for the advantage values which feed into a ``lambda''
+layer; and an add layer, which provides the output Q-value.
+
+
+Training was reliably performed over 30 episodes, each consisting of 50 steps,
+with the same memory capacity, batch size, and parameters as before.

@@ -174,15 +174,19 @@ where $\beta$ is a parameter to be increased during training.
 
 This technique is known as Prioritised Experience Replay (PER).
 
+Efficient sampling of the replay memory according to the priority values was
+achieved by implementing a ``sum tree'', which replaces the \texttt{deque}
+structure, see Appendix \ref{app:SumTree} for details.
+
 Deep Q-Learning with PER was applied to the chain problem using the same
 network layout as before.
 Using PER, the agent could be reliably trained using fewer episodes.
 Training was performed over 30 episodes, each consisting of 50 steps, with the
 same memory capacity, batch size, and parameters as before.
-\rfig{\input{DiagramChainPERDeepQLearn.tex}}{%
-    Graph of score against episode number for the Deep Q-Learning chain problem
-    with Prioritised Experience Replay.
-}
+%\rfig{\input{DiagramChainPERDeepQLearn.tex}}{%
+%    Graph of score against episode number for the Deep Q-Learning chain problem
+%    with Prioritised Experience Replay.
+%}
 
 
 
@@ -206,8 +210,6 @@ is trained, hence providing a fixed approximation of the future Q-values.
 The weights of the target network are periodically updated to match those of the
 policy network, this is done every $\tau$ steps, where $\tau$ is some chosen
 parameter.
-
-Fixed Q-Targets can be implemented with or without PER.
 
 Deep Q-Learning with Fixed Q-Targets was applied to the chain problem using the
 same network layout as before.
@@ -235,12 +237,12 @@ At each step, one network is randomly chosen for training, and the other is used
 to predict the maximum future value, giving either:
 \begin{align*}
     \delta_t^A &= r + \gamma Q^B(s',a*) - Q^A(s,a),\\
-    a* &= \underset{a}{\text{argmax }} Q^A(s',a);
+    a* &= \underset{a}{\operatorname{argmax}}\ Q^A(s',a);
 \end{align*}
 or
 \begin{align*}
     \delta_t^B &= r + \gamma Q^A(s',a*) - Q^B(s,a),\\
-    a* &= \underset{a}{\text{argmax }} Q^B(s',a).
+    a* &= \underset{a}{\operatorname{argmax}}\ Q^B(s',a).
 \end{align*}
 Doing this reduces the overestimation of the Q-values and improves training
 stability.
@@ -253,12 +255,12 @@ the optimal policy.
 %so separating the training across two networks only slows the training.
 A possible reason for the reduced training performance is that the network does
 not suffer from overestimation when learning the chain problem, and so applying
-Double Deep Q-Networks to the problem causes underestimation, which in turn 
+Double Deep Q-Networks to the problem causes underestimation, which in turn
 prevents the policy from progressing through the chain.
 
 
 
-\subsection{Dueling Deep Q-Networks}
+\subsection{Dueling Deep Q-Network}
 
 When recalling the interpretation of the Q-value, \cite{Wang:2015:Dueling} noted
 that the Q-value represents a combination of both the state values and the state
@@ -270,7 +272,7 @@ for $V(s)$ and $A(s,a)$.
 To counteract this, the $A(s,a)$ value are offset by a property thereof, such as
 the maximum or mean value, the latter giving
 \begin{align}
-    Q(s,a) = V(s) + \left(A(s,a) - \underset{a'}{\text{mean }}A(s,a')\right).
+    Q(s,a) = V(s) + \left(A(s,a) - \underset{a'}{\operatorname{mean}}A(s,a')\right).
     \label{eq:RL:Dueling}
 \end{align}
 Implementing this into the neural network is achieved as follows:
@@ -289,8 +291,84 @@ Dueling Deep Q-Learning was applied to the chain problem using a network with
 five input neurons, one for each state of the environment; which is connected
 to two streams: a single densely connected ReLU for the state value, and two
 densely connected ReLUs for the advantage values which feed into a ``lambda''
-layer; and an add layer, which provides the output Q-value.
+layer, which calculates the offset values; and an add layer, which provides the
+output Q-value.
 
 
 Training was reliably performed over 30 episodes, each consisting of 50 steps,
 with the same memory capacity, batch size, and parameters as before.
+
+
+
+\subsection{Combined}
+
+All of the previously discussed improvements can be used simultaneously, in any
+combination, to enhance the training performance of a policy.
+
+A Dueling Deep Q-Network with PER and Fixed Q-Targets was applied to the chain
+problem.
+Training was reliably performed over 25 episodes, each consisting of 50 steps,
+with the same memory capacity, batch size, and parameters as before.
+
+
+
+\section{Policy Gradient}
+
+Although Q-Learning provided an efficient method to produce deterministic
+polices, many problems require stochastic policy, where actions are selected
+according to probabilities.
+Another issue with Q-Learning is that it uses an implicit greedy algorithm,
+where the action with the highest q-value is always selected; small changes in
+the q-value can radically change the policy.
+
+A method for producing stochastic polices was introduced by
+\cite{Sutton:2000:Policy}, which defined probability of taking action $a$ at
+state $s$ as $\pi(s,a,\theta)$, where $\pi$ is a general function approximator,
+such as a neural network, and $\theta$ a vector of parameters for $\pi$.
+
+It is necessary to calculate the state distribution, which is given by
+\begin{align*}
+    d^\pi(s) = \frac{N(s)}{\sum_{s'} N(s')},
+\end{align*}
+where $N(s)$ is the number of occurrences of state $s$.
+
+One of two possible objectives may be chosen, either:
+maximise the cumulative discounted reward from a designated initial state,
+$s_0$, or;
+maximise the long-term expected reward per step.
+In either case, two functions are defined:
+$\rho(\pi)$, which is the long-term performance metric;
+and $Q^\pi(s,a)$, which is the value of a given state-action pair.
+
+In the case of cumulative discounted reward, the long-term performance is given
+by
+\begin{align*}
+    \rho(\pi) = E\left\{ \sum_{i=1}^{\infty} \gamma^{i-1}r_{i}
+    \Rgiven s_0,\, \pi \right\}
+\end{align*}
+and the state-action pair value is given by
+\begin{align*}
+    Q^\pi(s,a) = E\left\{ \sum_{i=1}^{\infty} \gamma^{i-1}r_{t+i}
+    \Rgiven s_t=s,\, a_t=a,\, \pi \right\},
+\end{align*}
+where $\gamma$ is the discount rate, and $r_i$ is the reward at step $i$.
+
+In the case of expected reward per step, the long-term performance is given by
+\begin{align*}
+    \rho(\pi) = \sum_s d^\pi(s) \sum_a \pi(s,a) R_s^a,
+\end{align*}
+where $R_s^a$ is the reward for taking action $a$ at state $s$;
+and the state-action pair value is given by
+\begin{align*}
+    Q^\pi(s,a) = \sum_{t=1}^{\infty} E\left\{ r_t - \rho(\pi)
+    \Rgiven s_t=s,\, a_t=a,\, \pi \right\}.
+\end{align*}
+
+In either case, the policy gradient is given by
+\begin{align*}
+    \Rpdiff{\rho}{\theta} = \sum_s d^\pi(s) \sum_a \Rpdiff{\pi(s,a)}{\theta} Q^\pi(s,a),
+\end{align*}
+which can be discretised to give an iterative formula for learning.
+
+Unlike Q-Learning, training is performed at the end of an episode, not during;
+as such, a replay memory cannot be applied.

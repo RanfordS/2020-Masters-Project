@@ -343,12 +343,12 @@ and $Q^\pi(s,a)$, which is the value of a given state-action pair.
 In the case of cumulative discounted reward, the long-term performance is given
 by
 \begin{align*}
-    \rho(\pi) = E\left\{ \sum_{i=1}^{\infty} \gamma^{i-1}r_{i}
+    \rho(\pi) = E\left\{ \sum_{i=0}^{\infty} \gamma^{i}r_{i}
     \Rgiven s_0,\, \pi \right\}
 \end{align*}
 and the state-action pair value is given by
 \begin{align*}
-    Q^\pi(s,a) = E\left\{ \sum_{i=1}^{\infty} \gamma^{i-1}r_{t+i}
+    Q^\pi(s,a) = E\left\{ \sum_{i=0}^{\infty} \gamma^{i}r_{t+i}
     \Rgiven s_t=s,\, a_t=a,\, \pi \right\},
 \end{align*}
 where $\gamma$ is the discount rate, and $r_i$ is the reward at step $i$.

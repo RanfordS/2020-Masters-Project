@@ -326,11 +326,13 @@ A method for producing stochastic polices was introduced by
 state $s$ as $\pi(s,a,\theta)$, where $\pi$ is a general function approximator,
 such as a neural network, and $\theta$ a vector of parameters for $\pi$.
 
-It is necessary to calculate the state distribution, which is given by
+It is necessary to know the state distribution, which may be given by
 \begin{align*}
     d^\pi(s) = \frac{N(s)}{\sum_{s'} N(s')},
 \end{align*}
 where $N(s)$ is the number of occurrences of state $s$.
+When summing across an experience replay memory, the distribution is included
+implicitly.
 
 One of two possible objectives may be chosen, either:
 maximise the cumulative discounted reward from a designated initial state,
@@ -363,12 +365,42 @@ and the state-action pair value is given by
     Q^\pi(s,a) = \sum_{t=1}^{\infty} E\left\{ r_t - \rho(\pi)
     \Rgiven s_t=s,\, a_t=a,\, \pi \right\}.
 \end{align*}
+Note that the terms $\sum_s d^\pi(s)$ and $\sum_a \pi(s,a)$ in the $\rho(\pi)$
+represent the state and action distribution respectively.
 
 In either case, the policy gradient is given by
 \begin{align*}
-    \Rpdiff{\rho}{\theta} = \sum_s d^\pi(s) \sum_a \Rpdiff{\pi(s,a)}{\theta} Q^\pi(s,a),
+    \Rpdiff{\rho}{\theta} = \sum_s d^\pi(s) \sum_a \Rpdiff{\pi(s,a)}{\theta} Q^\pi(s,a).
 \end{align*}
-which can be discretised to give an iterative formula for learning.
+Unlike Q-Learning, policy gradient training is performed at the end of an
+episode, not during.
 
-Unlike Q-Learning, training is performed at the end of an episode, not during;
-as such, a replay memory cannot be applied.
+
+
+\subsection{Proximal Policy}
+
+\cite{Schulman:2017:Proximal}
+
+\subsection{Actor-Critic}
+
+So far, two kinds of model have considered:
+actor-only methods, such as policy gradients, where the parameters of the model
+are directly estimated by simulation;
+and critic-only methods, such as Q-Learning, which attempt to approximate the
+value function of simulation.
+
+A form of hybrid methods, known as Actor-Critic methods, were introduced by
+\cite{Konda:2000:Actor}, to combine the advantages of actor and critic-only
+methods.
+In these methods, a critic model learns an approximate value function, which is
+then used to update the actor model.
+
+
+
+
+
+
+
+
+
+

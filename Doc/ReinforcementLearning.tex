@@ -260,7 +260,7 @@ prevents the policy from progressing through the chain.
 
 
 
-\subsection{Dueling Deep Q-Network}
+\subsection{Dueling Deep Q-Network}\label{sec:RL:Dueling}
 
 When recalling the interpretation of the Q-value, \cite{Wang:2015:Dueling} noted
 that the Q-value represents a combination of both the state values and the state
@@ -323,7 +323,7 @@ the q-value can radically change the policy.
 
 A method for producing stochastic polices was introduced by
 \cite{Sutton:2000:Policy}, which defined probability of taking action $a$ at
-state $s$ as $\pi(s,a,\theta)$, where $\pi$ is a general function approximator,
+state $s$ as $\pi_\theta(s,a)$, where $\pi$ is a general function approximator,
 such as a neural network, and $\theta$ a vector of parameters for $\pi$.
 
 It is necessary to know the state distribution, which may be given by
@@ -345,13 +345,17 @@ and $Q^\pi(s,a)$, which is the value of a given state-action pair.
 In the case of cumulative discounted reward, the long-term performance is given
 by
 \begin{align*}
-    \rho(\pi) = E\left\{ \sum_{i=0}^{\infty} \gamma^{i}r_{i}
-    \Rgiven s_0,\, \pi \right\}
+    \rho(\pi) = E\left\{
+        \sum_{i=0}^{\infty} \gamma^{i}r_{i}
+        \Rgiven s_0,\, \pi
+    \right\}
 \end{align*}
 and the state-action pair value is given by
 \begin{align*}
-    Q^\pi(s,a) = E\left\{ \sum_{i=0}^{\infty} \gamma^{i}r_{t+i}
-    \Rgiven s_t=s,\, a_t=a,\, \pi \right\},
+    Q^\pi(s,a) = E\left\{
+        \sum_{i=0}^{\infty} \gamma^{i}r_{t+i}
+        \Rgiven s_t=s,\, a_t=a,\, \pi
+    \right\},
 \end{align*}
 where $\gamma$ is the discount rate, and $r_i$ is the reward at step $i$.
 
@@ -362,26 +366,102 @@ In the case of expected reward per step, the long-term performance is given by
 where $R_s^a$ is the reward for taking action $a$ at state $s$;
 and the state-action pair value is given by
 \begin{align*}
-    Q^\pi(s,a) = \sum_{t=1}^{\infty} E\left\{ r_t - \rho(\pi)
-    \Rgiven s_t=s,\, a_t=a,\, \pi \right\}.
+    Q^\pi(s,a) = \sum_{t=1}^{\infty} E\left\{
+        r_t - \rho(\pi)
+        %\Rgiven s_t=s,\, a_t=a,\, \pi
+    \right\}.
 \end{align*}
-Note that the terms $\sum_s d^\pi(s)$ and $\sum_a \pi(s,a)$ in the $\rho(\pi)$
-represent the state and action distribution respectively.
 
 In either case, the policy gradient is given by
 \begin{align*}
-    \Rpdiff{\rho}{\theta} = \sum_s d^\pi(s) \sum_a \Rpdiff{\pi(s,a)}{\theta} Q^\pi(s,a).
+    \Rpdiff{\rho}{\theta} =
+    \sum_s d^\pi(s)
+    \sum_a \Rpdiff{\pi(s,a)}{\theta}
+    Q^\pi(s,a),
 \end{align*}
-Unlike Q-Learning, policy gradient training is performed at the end of an
-episode, not during.
+which is used to form a discretised iterative formula.
+As with neural networks, a step size is included as a factor of the
+gradient, which controls the learning rate of the policy.
+
+For neural networks, the policy gradient problem is often reformulated as
+minimising the loss function,
+\begin{align*}
+    L^\text{PG}(\theta') = E_t\left\{
+        \log(\pi_\theta(s_t,a_t))\hat{A}_t
+    \right\},
+\end{align*}
+where $\hat{A}_t$ is the discounted advantage from time step $t$.
+
+It should be noted that, unlike Q-Learning, policy gradient training is
+performed at the end of an episode, not during.
 
 
 
-\subsection{Proximal Policy}
+\subsection{Trust Region Policy Optimisation}
 
-\cite{Schulman:2017:Proximal}
+The convergence of a policy gradient method is highly dependent on the chosen
+learning rate:
+if the learning rate is too small, the training process will be slow to
+converge;
+if the learning rate is too large, training will be unstable, due too high
+parameter variance.
+Further more, the optimal choice of learning rate can often change during
+training.
 
-\subsection{Actor-Critic}
+In order to address instabilities, \cite{Schulman:2015:Trust}, introduced a
+method called Trust Region Policy Optimisation (TRPO).
+The method considers the optimisation problem
+\begin{align*}
+    \underset{\theta'}{\operatorname{maximize}} = E_t\left\{
+        r_t(\theta')\hat{A}_t
+    \right\},
+    r_t(\theta') = \frac{\pi_{\theta'}(s_t,a_t)}{\pi_{\theta}(s_t,a_t)},
+\end{align*}
+where $\theta'$ is the new set of policy parameters; which is subject to the
+constraint,
+\begin{align*}
+    E_t\left\{ \operatorname{KL}\left[\pi_{\theta},\pi_{\theta'}\right]
+        \Rgiven s_t
+    \right\} \leq \delta,
+\end{align*}
+where $\operatorname{KL}$ is the Kullback–Leibler divergence, and $\delta$ is
+some value.
+
+This constrains the amount by which the parameters can change between each
+iteration.
+
+
+
+\subsection{Proximal Policy Optimisation}
+
+Although trust region policy optimisation has better convergence than normal
+policy gradient methods, solving the optimisation constraint is computationally
+expensive.
+
+An alternate method for restricting the maximum change between steps was
+introduced by \cite{Schulman:2017:Proximal}, called Proximal Policy
+Optimisation (PPO).
+Instead of introducing a constraint, PPO clips values to a fixed interval.
+\begin{align*}
+    L^\text{CLIP}(\theta') = E_t\left\{ \min\left(
+        r_t(\theta')\hat{A}_t,\,
+        \operatorname{clip} (r_t(\theta'), 1 - \epsilon, 1 + \epsilon)\hat{A}_t
+    \right) \right\},
+\end{align*}
+where $\epsilon$ is some value, and $\operatorname{clip}$ is the function given
+by
+\begin{align*}
+    \operatorname{clip}(x,l,u) = \begin{cases}
+        l, & x < l;\\
+        u, & x > u;\\
+        x, & \text{otherwise};
+    \end{cases}
+\end{align*}
+which limits the input $x$ to the region $[l,u]$.
+
+
+
+\section{Actor-Critic}
 
 So far, two kinds of model have considered:
 actor-only methods, such as policy gradients, where the parameters of the model
@@ -393,14 +473,22 @@ A form of hybrid methods, known as Actor-Critic methods, were introduced by
 \cite{Konda:2000:Actor}, to combine the advantages of actor and critic-only
 methods.
 In these methods, a critic model learns an approximate value function, which is
-then used to update the actor model.
+then used to update the actor model policy.
 
+Two networks are defined:
+the actor network, $\pi_\theta(s,a)$, with learning rate $\alpha$;
+and the critic network, $Q_w(s,a)$, with learning rate $\eta$.
+The parameter updates for the actor and critic networks are given by
+\begin{align*}
+    \Delta\theta = \alpha Q_w(s,a)\nabla_\theta(\log\pi_\theta(s,a))
+\end{align*}
+and
+\begin{align*}
+    \Delta w = \eta (R(s_t,a_t) + \gamma Q(s_{t+1},a_{t+1} - Q(s_t,a_t))\nabla_wQ(s_t,a_t)
+\end{align*}
+respectively.
 
-
-
-
-
-
-
-
+As with Deep Q-Learning, improved performance can be achieved by splitting the
+critic networks Q-value calculation into separate state and advantage values
+(Section \ref{sec:RL:Dueling}).
 

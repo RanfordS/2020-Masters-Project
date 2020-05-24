@@ -44,10 +44,10 @@ If no left child node is present, the search is complete.
         child
         {   node {0.75}
             child
-            {   node {0.35}
+            {   node {0.4}
             }
             child
-            {   node {0.4}
+            {   node {0.35}
             }
         };
     \end{tikzpicture}
@@ -55,7 +55,7 @@ If no left child node is present, the search is complete.
 Suppose the value $r = 0.45$ is randomly generated from a uniform distribution:
 $r$ is greater than the left child node, $0.25$, so subtract the left node value
 and move to the right child node, $r \leftarrow r - 0.25 = 0.2$;
-$r$ is less than the left child node, $0.35$, so move to the left child node;
+$r$ is less than the left child node, $0.4$, so move to the left child node;
 no left child node is present, search complete;
-search ended on the $3^\text{rd}$ child node, select the $3^\text{rd}$
+search ended on the $3^\text{rd}$ leaf node, select the $3^\text{rd}$
 experience from the replay memory.

@@ -459,6 +459,12 @@ where $\hat{A}_t$ is the discounted advantage from time step $t$.
 It should be noted that, unlike Q-Learning, policy gradient training is
 performed at the end of an episode, not during.
 
+Whilst implementing policy gradients in TensorFlow is possible, it requires the
+use of lower level functions and classes, which are lacking the thorough
+resources that are available for the higher level functions.
+As such, an implementation of policy gradients, or any of it's subsequent
+variations, was not possible in the available time.
+
 
 
 \subsection{Trust Region Policy Optimisation}
@@ -548,11 +554,17 @@ The parameter updates for the actor and critic networks are given by
 \end{align*}
 and
 \begin{align*}
-    \Delta w = \eta (R(s_t,a_t) + \gamma Q(s_{t+1},a_{t+1} - Q(s_t,a_t))\nabla_wQ(s_t,a_t)
+    \Delta w = \eta (R(s_t,a_t) + \gamma Q(s_{t+1},a_{t+1}) - Q(s_t,a_t))\nabla_wQ(s_t,a_t)
 \end{align*}
 respectively.
 
 As with Deep Q-Learning, improved performance can be achieved by splitting the
-critic networks Q-value calculation into separate state and advantage values
+critic network's Q-value calculation into separate state and advantage values
 (Section \ref{sec:RL:Dueling}).
 
+As example applications have not been provided throughout this section, consider
+reading ``DeepLoco: Dynamic Locomotion Skills Using Hierarchical Deep
+Reinforcement Learning'' \citep{Peng:2017:Deeploco}, as it provides an excellent
+example of how actor-critic models can be used to solve complex problems.
+
+%% EOF

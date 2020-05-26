@@ -43,7 +43,7 @@ The first explorations of artificial neural networks was done by
 \cite{McCulloch:1943:Logical}, who investigated how simple logic functions
 might be performed by idealised networks.
 The neurons within these networks operated using some basic logic rules, applied
-to a discrete time system which, can be summarised using the expression
+to a discrete time system, which, can be summarised using the expression
 \begin{align*}
     N(t) &= (E_1(t-1) \vee E_2(t-1) \vee \dots)
         \wedge \neg(I_1(t-1) \vee I_2(t-1) \vee \dots),
@@ -96,11 +96,9 @@ The network was trained using a set of input patterns, which were subject to
 non-linear transformations.
 Similar to the Hebbian theory, when the network produces the correct responses,
 the active connections are strengthened.
-Although the results were of little neurophysiological significance, the results
-were of great use for demonstrating computational simulations, which were
+Although the results were of little neurophysiological significance, they were
+of great use for demonstrating computational simulations, which were
 considerably slower at the time.
-
-%\TODO{Section: Artificial Intelligence}
 
 
 
@@ -112,7 +110,7 @@ intelligent systems free from particularities of biological organisms, whilst
 maintaining some of their fundamental properties.
 
 The perceptron was built as a dedicated machine that consisted of a number of
-photovoltaic cells, analogous to a retina, that feed into an``association
+photovoltaic cells, analogous to a retina, that feed into an ``association
 area''.
 This association area contains a number of cells that each calculate a weighted
 sum of the receptor values and output a signal if it exceeds a threshold.
@@ -125,7 +123,7 @@ Expressed mathematically, the output of a given association cell is given by
 \end{align*}
 where $x_j$ is the value from the $j^\text{th}$ photovoltaic cell, $w_{i,j}$
 is the weight of the connection between association cell $i$ and photovoltaic
-cell $j$, and $\theta$ is the threshold.
+cell $j$, and $\theta$ is the activation threshold.
 These value weights were implemented using variable resistance wires that the
 perceptron could adjust automatically.
 The outputs from the association area are then connected to response cells,
@@ -267,7 +265,7 @@ contexts.
 \label{subsec:history:conv}
 
 Many of the neural networks that had been employed for image recognition, such
-as the preceptron, suffered from two major issues:
+as the perceptron, suffered from two major issues:
 \begin{enumerate}
     \item processing high resolution images required each neuron in the first
         layer to be connected to every input, which caused the number of
@@ -284,9 +282,10 @@ response regions.
 Later research by \cite{Hubel:1962:Receptive}, also distinguished two categories
 of cells termed:
 ``simple'', which had distinct excitatory and inhibitory connections, where
-firing was maximised by slits at specific angles that passed through the centre;
-and ``complex'', which could not be mapped out as trivial inhibitory/excitatory
-regions, but were maximised slits at specific angles, regardless of position.
+firing was maximised by light slits at specific angles that passed through the
+centre; and ``complex'', which could not be mapped out as trivial
+inhibitory/excitatory regions, but were maximised by light slits at specific
+angles, regardless of position.
 
 
 

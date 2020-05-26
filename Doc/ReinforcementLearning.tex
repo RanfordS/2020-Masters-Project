@@ -25,7 +25,7 @@ Consider the ``Chain'' problem from \cite{Strens:2000:ABF}:
 }
 The optimal, long term strategy for this system is to always perform action 0,
 which will cause the system to reach state 4 and obtain a reward of 10 on each
-step.
+step there-after.
 A greedy algorithm will discover the reward from always performing action 1,
 which will cause the system to stay at state 0 and obtain a reward of 1 on each
 step.
@@ -52,7 +52,7 @@ Proposed by \cite{Watkins:1989:Learning}, Q-Learning is an algorithm for finding
 optimal solutions to Markovian domain problems, such as the chain.
 
 The algorithm starts with a table, referred to as the Q-table, which has a row
-for each system state, and a column for each action, initialised as zero.
+for each system state, and a column for each action, initialised with zeros.
 Once trained, each element of the Q-table will represent the maximum expected
 reward for each action in each state.
 
@@ -106,8 +106,8 @@ future reward.
 \subsection{Learning Condition for Generalised Chain Problem}
 
 In order for Q-Learning to converge on the optimal policy for the chain problem,
-at each state, the Q-value for action 0 must be greater than the value of action
-1.
+the Q-value for action 0 must be greater than the value of action 1, at each
+state.
 
 Consider a generalised Q-Learning chain problem, consisting of $N$ states
 ($[0,N-1]$), where:
@@ -176,7 +176,7 @@ total experiences.
 After each action, the experience is added to the replay memory.
 If the memory is full, the oldest element is removed to accommodate the newest.
 In python, this behaviour is handled automatically by using the \texttt{deque}
-class, from the inbuilt \texttt{collections} package.
+class, from the inbuilt \texttt{collections} module.
 
 Initially, a number of random trails are performed to fill the memory.
 
@@ -463,7 +463,7 @@ Whilst implementing policy gradients in TensorFlow is possible, it requires the
 use of lower level functions and classes, which are lacking the thorough
 resources that are available for the higher level functions.
 As such, an implementation of policy gradients, or any of it's subsequent
-variations, was not possible in the available time.
+variations, was not possible in the time available.
 
 
 
@@ -501,7 +501,7 @@ This constrains the amount by which the parameters can change between each
 iteration.
 
 
-
+\newpage
 \subsection{Proximal Policy Optimisation}
 
 Although trust region policy optimisation has better convergence than normal
@@ -563,8 +563,8 @@ critic network's Q-value calculation into separate state and advantage values
 (Section \ref{sec:RL:Dueling}).
 
 As example applications have not been provided throughout this section, consider
-reading ``DeepLoco: Dynamic Locomotion Skills Using Hierarchical Deep
-Reinforcement Learning'' \citep{Peng:2017:Deeploco}, as it provides an excellent
-example of how actor-critic models can be used to solve complex problems.
+reading ``\citetitle{Peng:2017:Deeploco}'' \citep{Peng:2017:Deeploco}, as it
+provides an excellent example of how actor-critic models can be used to solve
+complex problems.
 
 %% EOF

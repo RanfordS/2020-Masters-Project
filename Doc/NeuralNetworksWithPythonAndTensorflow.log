@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2020.3.11)  25 MAY 2020 21:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2020.3.11)  26 MAY 2020 16:04
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1767,13 +1767,13 @@ Chapter 1.
 Package HIDE Warning: Hidden text in 1.3.1 on input line 31.
 
 ) [11] [12]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 394.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 393.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 394.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 393.
 
 (./DiagramJordan.tex) [13] (./DiagramElman.tex) [14] [15] [16]
 (./DiagramLSTM.tex)) (./IntroductionToPython.tex [17]
@@ -2007,7 +2007,7 @@ PGFPlots: reading {../Code/RLChain/DataQLearning.csv}
 ) [38] [39] [40] (./DiagramChainDeepQLearn.tex
 PGFPlots: reading {../Code/RLChain/DataDeepQLearning.csv}
 )
-[41] [42] [43] [44] [45] [46] [47]) (./Conclusions.tex [48] [49]
+[41] [42] [43] [44] [45] [46] [47] [48]) (./Conclusions.tex [49]
 Chapter 4.
 ) [50
 
@@ -2055,7 +2055,7 @@ Package logreq Info: Writing requests to 'NeuralNetworksWithPythonAndTensorflow
 Here is how much of TeX's memory you used:
  43008 strings out of 494953
  956546 string characters out of 6180977
- 1832881 words of memory out of 5000000
+ 1832899 words of memory out of 5000000
  45245 multiletter control sequences out of 15000+600000
  14051 words of font info for 53 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -2078,7 +2078,7 @@ ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/amsfonts/symbols/msam10.pfb>
-Output written on NeuralNetworksWithPythonAndTensorflow.pdf (64 pages, 586375 b
+Output written on NeuralNetworksWithPythonAndTensorflow.pdf (64 pages, 586648 b
 ytes).
 PDF statistics:
  785 PDF objects out of 1000 (max. 8388607)

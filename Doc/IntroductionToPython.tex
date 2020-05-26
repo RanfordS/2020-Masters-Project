@@ -139,7 +139,7 @@ and for the hidden neurons by
 \end{align*}
 where $\odot$ is the component-wise product, and $\hat{\mathbf{w}}$ is the
 weight vector without the bias term.
-Note that $\hat{\mathbf{w}}^T$ and $\mathbf{e}$ are column and row vectors
+Note that $\hat{\mathbf{w}}^T$ and $\mathbf{d}$ are column and row vectors
 respectively, and that their product is a matrix.
 See Appendix \ref{app:BHMDeriv} for full derivation.
 \rfig{\input{DiagramBHPyMulti.tex}}{%
@@ -201,8 +201,8 @@ learning the XOR problem, as proven by \cite{Minsky:1969:Perceptrons}, and is
 only capable of solving three of the four inputs at a time.
 Two nonlinear neurons is sufficient for solving the problem.
 
-It is important to note that the learning rates were much more susceptible to
-the initial weights than that of the Boston housing data.
+It is important to note that the training performance was much more susceptible
+to the initial weights than that of the Boston housing data.
 Under certain initial conditions, the network displayed long periods of
 negligible change before significant learning occurred, the longest of which
 that had been observed lasted over 800 iterations.
@@ -285,10 +285,10 @@ With the Adam optimiser, the final training and validation loss values were
 0.0147 and 0.0443 respectively.
 Although the loss value is smaller than with stochastic gradient descent, the
 loss ratio was $\sim3.01$, which suggests that the network was over-fitting.
-This was further evidenced the loss graph, which show that beyond a certain
+This was further evidenced by the loss graph, which shows that beyond a certain
 point, the training loss and validation loss diverge, with the validation loss
 increasing.
-As such, the network is expected to be less generalised.
+As such, the network results were expected to be less generalised.
 \rfig{\input{DiagramBHTFAdam.tex}}{%
     Graph of training and validation loss against iteration number for the
     Boston housing data using Adam.
@@ -327,8 +327,8 @@ TensorFlow provided eight optimisers at the time writing:
 
 \end{enumerate}
 The optimal choice of optimiser varies with the network and data set size.
-Adaptive rate optimisers, such as Adagrad, perform best with sparse input data;
-but Adam, Adamax, NAdam, and RMSProp are typically the best options.
+Adaptive rate optimisers, such as AdaGrad, perform best with sparse input data;
+but Adam, AdaMax, NAdam, and RMSProp are typically the best options.
 See next page for figure.
 
 The overhead of each optimiser is minimal, and is unlikely to affect the time
@@ -572,7 +572,7 @@ Due to the number of neurons in the network and memory constraints, full-batch
 processing was not possible; for all of the following the networks a batch size
 of 600 was used.
 
-With a total of 14,342 parameters, the network was trained 20 epochs.
+With a total of 14,342 parameters, the network was trained for 20 epochs.
 The final training and validation loss values were 0.0557 and 0.0566
 respectively.
 The trained network correctly identified 56166/60000 training samples, and
@@ -593,7 +593,9 @@ The trained network correctly identified 57493/60000 training samples and
 9499/10000 validation samples, giving an error of 4.18\% and 5.01\%
 respectively.
 
-Even though over-fitting was not a problem in the non-dropout convolutional network, the use of dropout layers has improved the performance of the network
+Even though over-fitting was not a problem in the non-dropout convolutional
+network, the use of dropout layers still improved the performance of the
+network.
 
 \rfig{\begin{tabular}{r|cc|cc}
         & \multicolumn{2}{c|}{Dense} & \multicolumn{2}{c}{Convolutional}\\

@@ -353,13 +353,23 @@ Implementing this into the neural network is achieved as follows:
 
 
 Dueling Deep Q-Learning was applied to the chain problem using a network with
-five input neurons, one for each state of the environment; which is connected
-to two streams: a single densely connected ReLU for the state value, and two
-densely connected ReLUs for the advantage values which feed into a ``lambda''
-layer, which calculates the offset values; and an add layer, which provides the
-output Q-value.
-
-
+five distinct sections.
+\begin{enumerate}
+    \item An input layer of five neurons, one for each state of the environment.
+    \item A single ReLU, densely connected to the input layer, which
+        predicted the state value $V(s)$.
+    \item Two ReLUs, also densely connected to the input layer, which
+        predicted the advantage values $A(s,a)$.
+    \item A ``lambda'' layer which calculated the offset advantage values
+        $A(s,a) - \operatorname{mean}_{a'} A(s,a')$.
+    \item An add layer, connected to the state and offset advantage values,
+        which predicted the output Q-value.
+\end{enumerate}
+%five input neurons, one for each state of the environment; which is connected
+%to two streams: a single densely connected ReLU for the state value, and two
+%densely connected ReLUs for the advantage values which feed into a ``lambda''
+%layer, which calculates the offset values; and an add layer, which provides the
+%output Q-value.
 Training was reliably performed over 30 episodes, each consisting of 50 steps,
 with the same memory capacity, batch size, and parameters as before.
 
@@ -475,7 +485,7 @@ if the learning rate is too small, the training process will be slow to
 converge;
 if the learning rate is too large, training will be unstable, due too high
 parameter variance.
-Further more, the optimal choice of learning rate can often change during
+Furthermore, the optimal choice of learning rate can often change during
 training.
 
 In order to address instabilities, \cite{Schulman:2015:Trust}, introduced a

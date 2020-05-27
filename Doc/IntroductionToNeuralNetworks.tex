@@ -4,7 +4,7 @@
 
 \section{Biological Neurons}
 
-Biological neurons are electrically excitable cells that are found in almost all
+biological neurons are electrically excitable cells that are found in almost all
 animals.
 These neurons can transmit and receive electrical signals to one another via
 synaptic connections, which maybe either excitatory or inhibitory.
@@ -239,10 +239,10 @@ Further more, backpropagation and a simple variant the model outlined by
 \cite{McClelland:1986:Parallel}, have become the standard for neural networks.
 Namely
 \begin{align*}
-    x_i &= \phi\left(b_i + \sum_j w_{i,j} x_i\right),
+    x_i &= \phi\left(b_i + \sum_j w_{i,j} x_j\right),
 \end{align*}
 where $x_i$ is the output of neuron $i$, $w_{i,j}$ is the weight of connection
-from $j$ to $j$, $b_i$ is the input bias of $i$, and $\phi$ is the activation
+from $j$ to $i$, $b_i$ is the input bias of $i$, and $\phi$ is the activation
 function.
 
 %\TODO{Subsection: Backpropagation}
@@ -280,12 +280,12 @@ Another important observation was that neighboring cells had overlapping
 response regions.
 
 Later research by \cite{Hubel:1962:Receptive}, also distinguished two categories
-of cells termed:
-``simple'', which had distinct excitatory and inhibitory connections, where
+of cells termed: ``simple'' and ``complex''.
+Simple cells had distinct excitatory and inhibitory connections, where
 firing was maximised by light slits at specific angles that passed through the
-centre; and ``complex'', which could not be mapped out as trivial
-inhibitory/excitatory regions, but were maximised by light slits at specific
-angles, regardless of position.
+centre.
+Complex cells could not be mapped out as trivial inhibitory/excitatory regions,
+but were maximised by light slits at specific angles, regardless of position.
 
 
 

@@ -1,3 +1,10 @@
+# UNUSED/FAILED
+# Uses International Phonetic Alphabet spellings of words
+# to predict language of origin.
+# Data extracted from https://www.wiktionary.org/
+# Problem: Network learns to always predict English
+
+# Import
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow as tf

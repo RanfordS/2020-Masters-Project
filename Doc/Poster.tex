@@ -1,0 +1,136 @@
+\documentclass[final]{beamer}
+\usepackage%
+[   orientation = portrait
+,   size = a1
+,   scale = 1.5
+]{beamerposter}
+\geometry{margin=2cm}
+
+\usepackage[citestyle=authoryear,bibstyle=authoryear,natbib]{biblatex}
+\addbibresource{Sources.bib}
+
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{lipsum}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.13}
+\usepackage{tikz}
+\usetikzlibrary{arrows,arrows.meta,patterns,matrix,shapes,calc,positioning}
+\usepackage{amsmath,amssymb,amsthm}
+
+\definecolor{Rred}   {RGB}{191, 63, 63}%BF1F7F
+\definecolor{Rgreen} {RGB}{ 63,191, 63}%1FBF1F
+\definecolor{Rblue}  {RGB}{ 63, 63,255}%1F1FBF
+
+\definecolor{Rpink}  {RGB}{255, 31,127}%FF1F7F
+\definecolor{Rpurple}{RGB}{127, 31,255}%7F1FFF
+\definecolor{Rorange}{RGB}{255,127, 31}%FF7F1F
+\definecolor{Rlime}  {RGB}{127,255, 31}%7FFF1F
+\definecolor{Rocean} {RGB}{ 31,127,255}%1F7FFF
+\definecolor{Raqua}  {RGB}{ 31,255,127}%1FFF7F
+
+\linespread{1.15}
+\setlength{\columnsep}{1cm}
+
+\newcommand{\rfig}[3][1em]{%
+    \refstepcounter{figure}
+    \vspace{1cm}
+    \begin{center}
+        #2
+        \vspace{#1}\\
+        \parbox{0.8\columnwidth}{\centering Figure \thefigure: #3}
+    \end{center}
+    \vspace{1cm}
+}
+
+\begin{document}
+\begin{frame}[t]
+\begin{center}
+    \Large Neural Networks with Python and TensorFlow\\
+    \large Manchester Metropolitan University\\
+    Student: Alexander J. Johnson \hspace{2cm} Supervisor: Dr Stephen Lynch
+\end{center}
+\begin{tikzpicture}
+    [   remember picture
+    ,   overlay
+    ]
+    \node[anchor = north west]
+    at ($(current page.north west) + (2cm,-5mm)$)
+    {\includegraphics[height=10cm]{MMU_Logo_Colour.pdf}};
+\end{tikzpicture}
+
+\rule{\textwidth}{1pt}
+\vspace{5mm}
+
+\begin{columns}
+\begin{column}[t]{0.3\textwidth}
+
+    \begin{block}{Brief History}
+        The design of artificial neural networks were initially inspired by
+        biological neurons.
+        The first mathematical models of neurons was created by
+        \cite{McCulloch:1943:Logical}, using a simple activation rule: if at
+        least one excitatory connection is active and all inhibitory connections
+        are inactive, the cell will be active.
+        \rfig{\input{PosterDiagramMcculSRFlipFlop.tex}}{%
+            Example SR Flip-Flop using McCulloch's neurons.
+        }
+        Later, a concept called the perceptron was built by
+        \cite{Rosenblatt:1958:Perceptron}.
+        The perceptron consisted of a number of photovoltaic cells, which
+        connected to a number of association cells, which then connected to a
+        number of response cells.
+
+        Each photovoltaic cell was connected to every association cell, and each
+        association cell was connected to every response cell, this kind of
+        connectivity is referred to a being densely connected.
+        The output of each association cell was a boolean value based on the
+        weighted sum of the input values, where the weights are automatically
+        adjusted by the perceptron.
+    \end{block}
+    \vspace{1cm}
+    \begin{block}{Modern Neural Networks}
+        The most common architecture for artificial neurons was outlined by
+        \cite{McClelland:1986:Parallel}, where the activation is given by
+        \begin{align*}
+            y_i = \phi\left(b_i + \sum_j w_{i,j}x_j\right),
+        \end{align*}
+        where $x_j$ is the $j^\text{th}$ input, $w_{i,j}$ is the connection
+        weight from $j$ to $i$, $b_i$ is the input bias, and $\phi$ is some
+        activation function.
+
+        Learning is performed using a technique called backpropagation, which
+        applies the chain rule to differentiate an value function with respect
+        to each weight.
+    \end{block}
+
+\end{column}
+\begin{column}[t]{0.3\textwidth}
+
+    \begin{block}{Curve Fitting}
+        An implementation of a neural network was written in python to predict
+        the values of houses within Boston, based on three attributes:
+        number of rooms, highway accessibility, and percentage of lower status
+        population.
+        The network consisted of three input neurons and one output neuron,
+        using $\tanh$ as the activation function.
+        \rfig[-1ex]{\input{PosterDiagramBHPySingle.tex}}{%
+            Network weights against iteration number.
+        }
+    \end{block}
+
+\end{column}
+\begin{column}[t]{0.3\textwidth}
+
+    \begin{block}{Bibliography}
+        \linespread{1}
+        \printbibliography
+    \end{block}
+
+\end{column}
+\end{columns}
+\end{frame}
+\end{document}

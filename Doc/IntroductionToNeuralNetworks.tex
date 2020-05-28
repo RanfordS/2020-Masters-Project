@@ -239,9 +239,9 @@ Further more, backpropagation and a simple variant the model outlined by
 \cite{McClelland:1986:Parallel}, have become the standard for neural networks.
 Namely
 \begin{align*}
-    x_i &= \phi\left(b_i + \sum_j w_{i,j} x_j\right),
+    y_i &= \phi\left(b_i + \sum_j w_{i,j} x_j\right),
 \end{align*}
-where $x_i$ is the output of neuron $i$, $w_{i,j}$ is the weight of connection
+where $x_j$ is the $j^\text{th}$ input, $w_{i,j}$ is the weight of connection
 from $j$ to $i$, $b_i$ is the input bias of $i$, and $\phi$ is the activation
 function.
 

@@ -21,6 +21,10 @@
 \usetikzlibrary{arrows,arrows.meta,patterns,matrix,shapes,calc,positioning}
 \usepackage{amsmath,amssymb,amsthm}
 
+\usepackage{import}
+\usepackage{catchfile}
+\newcommand\loaddata[1]{\CatchFileDef\loadeddata{#1}{\endlinechar=-1}}
+
 \definecolor{Rred}   {RGB}{191, 63, 63}%BF1F7F
 \definecolor{Rgreen} {RGB}{ 63,191, 63}%1FBF1F
 \definecolor{Rblue}  {RGB}{ 63, 63,255}%1F1FBF
@@ -121,15 +125,86 @@
             Network weights against iteration number.
         }
     \end{block}
+    \vspace{1cm}
+    \begin{block}{Image Recognition}
+        Creating neural networks in python can be repetitive without the use of
+        a library.
+        TensorFlow provides an easy-to-use framework for creating neural
+        networks in python which includes a variety of options for layers,
+        activation functions, and optimisers.
+
+        For image recognition, it is advantageous to use convolutional layers,
+        in which each neuron is connected to a small region of the previous
+        layer, and all the neurons share the same weight scheme.
+        A convolutional neural network was in python using TensorFlow to perform
+        character recognition on the MNIST dataset, which contains a large
+        number of handwritten numbers.
+        The network also contained ``dropout'' layers, which prevent the network
+        from over fitting.
+        \rfig{\input{PosterDiagramCRResults.tex}}{%
+            Network predictions for MNIST dataset.
+        }
+    \end{block}
 
 \end{column}
 \begin{column}[t]{0.3\textwidth}
 
+    \begin{block}{Deep Q-Learning}
+        Neural networks can also be used to interact with systems.
+        The basis for the method is an algorithm called Q-Learning
+        \citep{Watkins:1989:Learning}, which uses the Bellman equation,
+        \begin{align*}
+            Q(s,a) \leftarrow Q(s,a)
+            + \alpha (&r + \gamma\max_{a'}Q(s',a')\\ &- Q(s,a)),
+        \end{align*}
+        where $Q(s,a)$ is the estimated future reward of taking action $a$ from
+        state $s$, $s'$ is the state after the action,  $r$ is the reward of
+        taking the action, $\gamma$ is the discount rate, and $\alpha$ is the
+        learning rate.
+        These Q-values are stored in a table.
+
+        Once trained, the action with the highest Q-value from a given state is
+        the optimal choice.
+
+        The Q-table can be replaced with a neural network, which is trained to
+        match its output with the Bellman equation.
+    \end{block}
+    \vspace{1cm}
+
+    \begin{block}{Policy Gradient}
+        For many problems, a deterministic policy is not optimal, and a
+        stochastic policy is required.
+        \cite{Sutton:2000:Policy} introduced an algorithm for learning
+        probabilities, which defined the policy gradient as
+        \begin{align*}
+            \frac{\partial\rho}{\partial\theta} = \sum_s d(s) \sum_a
+            \frac{\partial\pi(s,a)}{\partial\theta}Q(s,a),
+        \end{align*}
+        where $\rho$ is the expect reward, $\pi$ is the policy, $\theta$ is the
+        parameter vector of $\pi$, $d(s)$ is the state distribution, and
+        $Q(s,a)$ is the state-action pair value.
+
+        Policy gradients and Q-Learning can be combined to form Actor-Critic
+        methods, which are the current state-of-the-art for reinforcement
+        learning.
+    \end{block}
+    \vspace{1cm}
+
     \begin{block}{Bibliography}
+        \renewcommand*{\bibfont}{\normalfont\scriptsize}
         \linespread{1}
         \printbibliography
     \end{block}
-
+    \begin{tikzpicture}
+        [   remember picture
+        ,   overlay
+        ]
+        \fill[white]
+            ($(current page.north west) + (388mm,-15cm)$)
+            rectangle ++(10mm,-70cm);
+    \end{tikzpicture}
+    \vspace{2cm}
+    Email: alexanderjjohnson@outlook.com
 \end{column}
 \end{columns}
 \end{frame}

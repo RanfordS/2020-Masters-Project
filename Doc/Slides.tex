@@ -1,0 +1,98 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.13}
+\usepackage{tikz}
+\usetikzlibrary{arrows,arrows.meta,patterns,matrix,shapes,calc,positioning}
+\usepackage{amsmath,amssymb,amsthm}
+
+\usepackage{import}
+\usepackage{catchfile}
+\newcommand\loaddata[1]{\CatchFileDef\loadeddata{#1}{\endlinechar=-1}}
+
+\newlength{\rs}
+
+\definecolor{Rred}   {RGB}{191, 63, 63}%BF1F7F
+\definecolor{Rgreen} {RGB}{ 63,191, 63}%1FBF1F
+\definecolor{Rblue}  {RGB}{ 63, 63,255}%1F1FBF
+
+\definecolor{Rpink}  {RGB}{255, 31,127}%FF1F7F
+\definecolor{Rpurple}{RGB}{127, 31,255}%7F1FFF
+\definecolor{Rorange}{RGB}{255,127, 31}%FF7F1F
+\definecolor{Rlime}  {RGB}{127,255, 31}%7FFF1F
+\definecolor{Rocean} {RGB}{ 31,127,255}%1F7FFF
+\definecolor{Raqua}  {RGB}{ 31,255,127}%1FFF7F
+
+\title{Neural Networks with Python and TensorFlow}
+\author{Alexander J. Johnson}
+\institute{Manchester Metropolitan University}
+\date{2020}
+
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+    \frametitle{Aims and Objectives}
+
+    \begin{itemize}
+        \item Provide an introduction to a variety of neural network
+            architectures.
+        \item Implement the architectures in python using TensorFlow.
+        \item Use neural networks to solve simple problems.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Basis}
+
+    Biological Neuron:
+    \begin{center}
+        \input{SlidesDiagramNeuron.tex}
+    \end{center}
+    Receives signals via dendrites and soma,
+    applies threshold,
+    outputs via axon terminal.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Perceptron}
+    
+    \begin{align*}
+        A_i = \begin{cases}
+            1, & \sum_j w_{i,j}x_j > \theta\\
+            0, & \text{otherwise}
+        \end{cases}
+    \end{align*}
+
+    Boolean output.
+
+    Weights adjusted according to activation and response correctness.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Modern Neural Network}
+    
+    \begin{align*}
+        y_i = \phi \left(b + \sum_j w_{i,j}x_j\right)
+    \end{align*}
+
+    Weights adjusted via backpropagation / chain rule.
+
+    \begin{align*}
+        w_i' = w_i + \eta\frac{\partial f}{\partial w_i}
+    \end{align*}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Convolutional}
+    
+    Neurons only connect to regions of previous layers.
+\end{frame}
+
+\end{document}

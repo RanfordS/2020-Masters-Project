@@ -1,6 +1,9 @@
 \documentclass{beamer}
 \usepackage[utf8]{inputenc}
 
+\usepackage[citestyle=authoryear,bibstyle=authoryear,natbib]{biblatex}
+\addbibresource{Sources.bib}
+
 \usepackage{array}
 \usepackage{graphicx}
 \usepackage{xcolor}
@@ -62,7 +65,8 @@
 
 \begin{frame}
     \frametitle{Perceptron}
-    
+
+    \cite{Rosenblatt:1958:Perceptron}:
     \begin{align*}
         A_i = \begin{cases}
             1, & \sum_j w_{i,j}x_j > \theta\\
@@ -77,22 +81,132 @@
 
 \begin{frame}
     \frametitle{Modern Neural Network}
-    
+
+    Most common activation equation outlined by \cite{McClelland:1986:Parallel}:
     \begin{align*}
-        y_i = \phi \left(b + \sum_j w_{i,j}x_j\right)
+        y_i = \phi \left(b + \sum_j w_{i,j}x_j\right).
     \end{align*}
 
-    Weights adjusted via backpropagation / chain rule.
-
+    Weights adjusted via backpropagation / chain rule:
     \begin{align*}
-        w_i' = w_i + \eta\frac{\partial f}{\partial w_i}
+        w_i' = w_i + \eta\frac{\partial f}{\partial w_i}.
     \end{align*}
+
+    Supported out-of-the-box by TensorFlow.
 \end{frame}
 
 \begin{frame}
     \frametitle{Convolutional}
-    
-    Neurons only connect to regions of previous layers.
+
+    Original concept by \cite{Fukushima:1980:Neocognitron}.
+
+    Features of convolutional layers:
+    \begin{itemize}
+        \item Neurons only connect to regions of previous layers.
+        \item Share same weight scheme.
+        \item Implicitly encodes position.
+        \item Shift invariant, useful in image processing.
+    \end{itemize}
+
+    Supported out-of-the-box by TensorFlow.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Convolutional}
+
+    \begin{center}
+        \input{SlidesDiagramCRResults.tex}
+    \end{center}
+    Character recognition for the MNIST dataset using a convolutional neural
+    network.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Recurrent}
+
+    Features of recurrent layers:
+    \begin{itemize}
+        \item Has an internal state.
+        \item Useful for temporal tasks.
+        \item Suitable for both short and long time scales.
+    \end{itemize}
+
+    Supported out-of-the-box by TensorFlow.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Reinforcement Learning}
+
+    Example: Chain problem from \cite{Strens:2000:ABF}.
+    \begin{center}
+        \input{DiagramRLChain.tex}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Reinforcement Learning}
+
+    Q-Learning \citep{Watkins:1989:Learning}:
+    \begin{align*}
+        Q(s,a) \leftarrow Q(s,a) + \alpha(r + \gamma\max_{a'} Q(s',a') - Q(s,a))
+    \end{align*}
+    Deep Q-Learning replaces table with network.
+
+    Improvements:
+    \begin{itemize}
+        \item Prioritised Experience Replay.
+        \item Fixed Q-Targets.
+        \item Double Deep Q-Networks.
+        \item Dueling Deep Q-Network.
+    \end{itemize}
+    Implementing Dueling Deep Q-Networks requires some additional work, but is
+    relatively simple.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Reinforcement Learning}
+
+    Policy Gradient \citep{Sutton:2000:Policy}:
+    \begin{align*}
+        \frac{\partial\rho}{\partial\theta} = \sum_s d^\pi(s)
+        \sum_a \frac{\partial\pi(s,a)}{\partial\theta}Q^\pi(s,a)
+    \end{align*}
+    Stochastic policy instead of deterministic.
+
+    Could not implement in TensorFlow during project due to limited informal
+    resources about lower-level functions.
+
+    Can be combined with Deep Q-Learning to create Actor-Critic methods, which
+    are currently the start-of-the-art method for reinforcement learning.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Conclusions}
+
+    \begin{itemize}
+        \item Neural networks can be applied to a large variety of problems.
+        \item TensorFlow provides an easy-to-use framework for defining and
+            training models.
+        \item Although well documented, TensorFlow's lower-level features and
+            functions lack sufficient informal resources.
+    \end{itemize}
+
+    Project source code: \texttt{https://github.com/RanfordS/2020-Masters-Project}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Bibliography}
+    \renewcommand*{\bibfont}{\normalfont\scriptsize}
+    \printbibliography
+    \begin{tikzpicture}
+        [   remember picture
+        ,   overlay
+        ]
+        \fill[white]
+            ($(current page.north west) + (0pt,-1cm)$)
+            rectangle
+            ($(current page.south west) + (1cm,0pt)$);
+    \end{tikzpicture}
 \end{frame}
 
 \end{document}

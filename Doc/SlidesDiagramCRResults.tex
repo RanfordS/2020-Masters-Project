@@ -1,0 +1,20 @@
+\begin{tikzpicture}
+    \loaddata{../Code/CharacterRecognition/PosterFigrFlat.txt}
+    \foreach\posx/\posy/\pred/\cert/\actu in \loadeddata
+    {   \pgfmathtruncatemacro{\indx}{5*\posy+\posx}
+        \node[draw] (N\indx) at (3*\posx,0)
+        {\includegraphics[width=20mm]{CRResults/img\indx}};
+        \node (P\indx) at (N\indx.north) [anchor=south]
+        {\scriptsize Predicted: \pred};
+        \node (A\indx) at (P\indx.north) [anchor=south,outer sep=0,inner sep=0]
+        {\scriptsize Was: \actu};
+        \node (S\indx) at (N\indx.south) [anchor=north]
+        {\scriptsize \ifnum \actu=\pred
+                Correct
+            \else
+                \underline{\textbf{Incorrect}}
+            \fi};
+        \node (C\indx) at (S\indx.south) [anchor=north,outer sep=0,inner sep=0]
+        {\scriptsize Certainty: \cert};
+    }
+\end{tikzpicture}
